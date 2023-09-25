@@ -2,6 +2,7 @@ import VideoAutoplay from "../components/VideoAutoplay";
 import ResortList from "../components/ResortList";
 import ViewCard from "../components/ViewCard";
 import { useState } from "react";
+import NearbyResortList from "../components/NearbyResortList";
 
 const MainPage = () => {
   const [isShow, setShow] = useState(false);
@@ -222,6 +223,10 @@ const MainPage = () => {
             </span>
           </div>
         </div>
+      </section>
+      <section className="page-container">
+        <h1 className="text-center pb-5 text-3xl font-bold">Nearby Resorts</h1>
+        <NearbyResortList></NearbyResortList>
       </section>
     </>
   );

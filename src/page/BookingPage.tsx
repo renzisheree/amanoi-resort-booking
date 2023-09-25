@@ -1,5 +1,11 @@
+import BookingCalendar from "../components/BookingCalendar";
+
 const BookingPage = () => {
-  return <div>This is Booking Page</div>;
+  return (
+    <div>
+      <BookingCalendar></BookingCalendar>
+    </div>
+  );
 };
 
 export default BookingPage;
