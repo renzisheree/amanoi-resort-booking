@@ -4,7 +4,7 @@ import list from "../data/listLanguage.json";
 const LangChooser = () => {
   const [isOpen, setOpen] = useState(false);
   return (
-    <div className=" flex w-[350px]   items-center justify-between  align-middle  rounded-sm ">
+    <div className=" flex w-[350px]   items-center justify-between  align-middle   rounded-sm ">
       <button
         onClick={() => {
           console.log(list);
@@ -42,7 +42,7 @@ const LangChooser = () => {
             <div className="bg-primary absolute top-10  mt-1 left-3 w-full p-3  rounded-lg z-999999">
               {" "}
               {list.map((item) => (
-                <div className="flex w-full text-[5px] font-normal justify-between p-2 hover:bg-blue-300 cursor-pointer rounded-r-lg border-l-transparent">
+                <div className="flex w-full text-[15px] font-normal justify-between p-2 hover:bg-blue-300 cursor-pointer rounded-r-lg border-l-transparent">
                   <h1>{item.language}</h1>
                 </div>
               ))}{" "}

@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className={`pt-5 w-full`}>
       <div
-        className="flex items-center justify-evenly
+        className="flex items-center justify-around
         align-middle"
       >
         <div className="left-header-bar">
@@ -17,6 +17,7 @@ const Header = () => {
           <MiddleLogo
             srcImg="https://www.aman.com/themes/custom/aman/logo.svg
           "
+            width={200}
           ></MiddleLogo>
         </div>
         <div className="right-header-bar">

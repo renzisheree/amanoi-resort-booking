@@ -7,7 +7,7 @@ import "swiper/scss";
 
 const ResortList: React.FC = () => {
   return (
-    <div className="swiper-list ">
+    <div className="swiper-list">
       <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
         {ListResort.length > 0 &&
           ListResort.map((item) => (

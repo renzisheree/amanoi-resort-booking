@@ -63,7 +63,7 @@ const MainPage = () => {
       <section className="p-20 bg-white">
         <div className="flex items-center justify-center gap-10">
           <ViewCard
-            cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+            cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
             cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
@@ -77,7 +77,7 @@ const MainPage = () => {
             cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
           ></ViewCard>
           <ViewCard
-            cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+            cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
             center={false}
@@ -94,7 +94,7 @@ const MainPage = () => {
             slide={2}
           ></ViewCard>
           <ViewCard
-            cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+            cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
             center={false}
@@ -132,9 +132,9 @@ const MainPage = () => {
                 <path
                   d="M15.5 15.5L13.6213 13.6213M13.6213 13.6213C14.1642 13.0784 14.5 12.3284 14.5 11.5C14.5 9.84315 13.1569 8.5 11.5 8.5C9.84315 8.5 8.5 9.84315 8.5 11.5C8.5 13.1569 9.84315 14.5 11.5 14.5C12.3284 14.5 13.0784 14.1642 13.6213 13.6213ZM21 12C21 16.9706 16.9706 21 12 21C9.96359 21 3.00072 21 3.00072 21C3.00072 21 4.55992 17.2561 3.93591 16.0008C3.33685 14.7956 3 13.4372 3 12C3 7.02944 7.02943 3 12 3C16.9706 3 21 7.02944 21 12Z"
                   stroke="#000000"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             ) : (

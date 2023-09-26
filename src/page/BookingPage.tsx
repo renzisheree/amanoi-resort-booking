@@ -2,7 +2,7 @@ import BookingCalendar from "../components/BookingCalendar";
 
 const BookingPage = () => {
   return (
-    <div>
+    <div className="w-full h-full ">
       <BookingCalendar></BookingCalendar>
     </div>
   );
