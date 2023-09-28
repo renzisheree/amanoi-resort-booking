@@ -2,7 +2,7 @@ import MiddleLogo from "../components/MiddleLogo";
 
 const Footer = () => {
   return (
-    <div className="bg-white py-10 ">
+    <div className="bg-primary py-10 ">
       <div className="flex justify-start gap-20 ml-10 items-center py-10">
         <h1 className="text-2xl font-semibold">AMANOI</h1>
 
@@ -22,7 +22,7 @@ const Footer = () => {
       </div>
       <hr />
 
-      <div className="flex items-center justify-evenly gap-20  py-10 w-full h-full bg-white ">
+      <div className="flex items-center justify-evenly gap-20  py-10 w-full h-full aeg ">
         <MiddleLogo
           width={150}
           srcImg="https://www.aman.com/themes/custom/aman/logo.svg"

@@ -6,7 +6,10 @@ const MiddleLogo = ({
   width?: number;
 }) => {
   return (
-    <div className="">
+    <div
+      className="ml-[15vw]
+    "
+    >
       <img width={width} height={250} src={srcImg} alt="" />
     </div>
   );

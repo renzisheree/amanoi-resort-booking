@@ -3,32 +3,64 @@ import { useState } from "react";
 const MenuBar = () => {
   const [isOpen, setOpen] = useState(false);
   return (
-    <div
-      onClick={() => {
-        setOpen(!isOpen);
-        console.log(isOpen);
-      }}
-    >
-      <div className="flex items-center align-center gap-3 cursor-pointer">
-        <div className="icon-menu">
-          {" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            width="27"
-            height="27"
-            viewBox="0 0 50 50"
-          >
-            <path d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"></path>
-          </svg>
+    <>
+      {" "}
+      <div
+        className={`backdrop ${isOpen ? "visible" : ""}`}
+        onClick={() => setOpen(false)}
+      />
+      <div
+        onClick={() => {
+          setOpen(!isOpen);
+        }}
+      >
+        <div
+          className={`navigation   flex items-center align-center gap-3 bg-primary cursor-pointer top-0 fixed right-[-500px] w-[30vw] ${
+            isOpen ? "left-0" : ""
+          } h-full   z-[9999] transition-all duration-500`}
+        >
+          <div className="fixed block top-[5%] right-[95%] w-[40px] h-[40px]  translate-y-[-50%] border-0">
+            <div
+              className={`top-[3px] bg-gray-700 w-full h-1 transition-all duration-300 ease-in	mb-[1.5px] ${
+                isOpen
+                  ? "bg-red-500 rotate-45 translate-x-1.5 translate-y-[5px]"
+                  : ""
+              } `}
+            ></div>
+            <div
+              className={`top-[11px] bg-gray-700 w-full h-1 transition-all duration-300 ease-in  ${
+                isOpen ? "bg-transparent" : ""
+              }`}
+            ></div>
+            <div
+              className={`top-[19px] bg-gray-700 w-full h-1 transition-all duration-300 ease-in mt-[1.5px] ${
+                isOpen
+                  ? "bg-red-500 -rotate-45 translate-x-1.5 translate-y-[-5px]"
+                  : ""
+              }`}
+            ></div>
+          </div>
+
+          <nav className="absolute w-[250px] left-[50px] top-[100px]">
+            {" "}
+            <ul>
+              <li>
+                <a href="">Home</a>
+              </li>
+              <li>
+                <a href="">About</a>
+              </li>
+              <li>
+                <a href="">Blog</a>
+              </li>
+              <li>
+                <a href="">Contact</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <h1 className="text-[13px]">Menu</h1>
       </div>
-      {/* <div
-        className={`lg:w-[50vw]  w-48 bg-teal-800 h-screen relative duration-500`}
-      ></div> */}
-    </div>
+    </>
   );
 };
 

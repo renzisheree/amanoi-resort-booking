@@ -19,7 +19,7 @@ const NavigationBar = () => {
       <div
         className={`navigation-bar-wrapper flex items-center text-center align-middle  justify-center  gap-x-10 my-10 border-gray-400 border-b-[1px] h-[60px] w-[80vw] mx-auto text-[13px]`}
       >
-        <NavigationItem>Amanoi</NavigationItem>
+        <NavigationItem path="home">Amanoi</NavigationItem>
         <NavigationItem>Thư viện ảnh</NavigationItem>
         <NavigationItem>Phòng ở</NavigationItem>
         <NavigationItem>Các trải nghiệm</NavigationItem>

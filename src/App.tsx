@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import BookingPage from "./page/BookingPage";
 import MainPage from "./page/MainPage";
+// import LoginPage from "./page/LoginPage";
+import RegisterPage from "./page/RegisterPage";
+import LoginPage from "./page/LoginPage";
+
 function App() {
   return (
     <>
@@ -13,7 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/home"
             element={
               <>
                 <MainPage></MainPage>
@@ -26,6 +30,23 @@ function App() {
             element={
               <>
                 <BookingPage></BookingPage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/login"
+            element={
+              <>
+                <LoginPage></LoginPage>
+              </>
+            }
+          ></Route>
+
+          <Route
+            path="/register"
+            element={
+              <>
+                <RegisterPage></RegisterPage>
               </>
             }
           ></Route>

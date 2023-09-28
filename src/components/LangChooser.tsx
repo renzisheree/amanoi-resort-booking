@@ -39,7 +39,7 @@ const LangChooser = () => {
           )}
 
           {isOpen ? (
-            <div className="bg-primary absolute top-10  mt-1 left-3 w-full p-3  rounded-lg z-999999">
+            <div className="bg-primary absolute top-10  mt-1 left-3 w-full p-3  rounded-lg ">
               {" "}
               {list.map((item) => (
                 <div className="flex w-full text-[15px] font-normal justify-between p-2 hover:bg-blue-300 cursor-pointer rounded-r-lg border-l-transparent">

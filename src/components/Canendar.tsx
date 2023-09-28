@@ -1,5 +1,3 @@
-import React from "react";
-
 import { generateDate } from "./test";
 
 const Canendar = () => {
