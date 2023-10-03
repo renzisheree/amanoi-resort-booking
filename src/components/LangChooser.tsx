@@ -51,7 +51,7 @@ const LangChooser = () => {
         </div>
       </button>
 
-      <button className="px-6 py-2  border-black border-[0.5px] rounded-sm bg-gray-400 hover:opacity-80">
+      <button className="px-6 py-2  border-black border-[0.5px] rounded-sm bg-[#E6E2DB] hover:opacity-80">
         Reserve
       </button>
     </div>
