@@ -9,8 +9,8 @@ import MainPage from "./page/MainPage";
 import RegisterPage from "./page/RegisterPage";
 import LoginPage from "./page/LoginPage";
 // import Calendar from "./components/Canendar";
+import ImagePage from "./page/ImagePage";
 import BookingPage from "./page/BookingPage";
-import Test1 from "./components/Test1";
 
 function App() {
   return (
@@ -32,14 +32,28 @@ function App() {
             path="/booking"
             element={
               <>
+                {/* <BookingPage></BookingPage> */}
                 <BookingPage></BookingPage>
-
                 {/* <Test1></Test1> */}
 
                 {/* <Calendar></Calendar> */}
               </>
             }
           ></Route>
+
+          <Route
+            path="/images"
+            element={
+              <>
+                {/* <BookingPage></BookingPage> */}
+                <ImagePage></ImagePage>
+                {/* <Test1></Test1> */}
+
+                {/* <Calendar></Calendar> */}
+              </>
+            }
+          ></Route>
+
           <Route
             path="/login"
             element={
