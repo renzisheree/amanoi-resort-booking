@@ -20,7 +20,6 @@ const RegisterForm = () => {
           initialValues={{
             firstName: "",
             lastName: "",
-
             email: "",
             password: "",
             gender: "male",

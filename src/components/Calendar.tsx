@@ -1,18 +1,74 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
 import { generateDate, months } from "../utils/calendar/calendar";
 import cn from "../utils/calendar/cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
+import isBetween from "dayjs/plugin/isBetween";
+// import InputForm from "./InputForm";
+
+import DropDownData from "../data/dropdownData.json";
+import * as yup from "yup";
+
+import { Formik, useField } from "formik";
+import DropdownFormik from "./DropdownFormik";
+import InputForm from "./InputForm";
+
+useField;
+
+dayjs.extend(isBetween);
+
+interface DateRange {
+  startDate: Dayjs | null;
+  endDate: Dayjs | null;
+}
+
 export default function Calendar() {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
+  const [range, setRange] = useState<DateRange>({
+    startDate: null,
+    endDate: null,
+  });
+
+  // console.log(currentDate);
+
   const [today, setToday] = useState(currentDate);
-  const [selectDate, setSelectDate] = useState(currentDate);
+
+  const selectDateHandler = (date: Dayjs) => {
+    const { startDate, endDate } = range;
+    if (date.isBefore(dayjs())) return;
+    if (!startDate) {
+      setRange({
+        startDate: date,
+        endDate: null,
+      });
+    } else if (!endDate) {
+      setRange({
+        startDate,
+        endDate: date,
+      });
+    } else {
+      setRange({
+        startDate: date,
+        endDate: null,
+      });
+    }
+  };
+
+  function isDateInRange(date: Dayjs) {
+    if (!range.startDate || !range.endDate) return false;
+
+    return date.isBetween(range.startDate, range.endDate);
+  }
+
+  function isPastDate(date: Dayjs) {
+    return date.isBefore(dayjs(), "day");
+  }
   return (
-    <div className="flex gap-10 sm:divide-x justify-center sm:w-1/2 mx-auto  h-screen items-center sm:flex-row flex-col">
-      <div className="w-96 h-96 ">
-        <div className="flex justify-between items-center">
+    <div className="flex gap-[10vw] sm:divide-x justify-center   mx-auto w-screen  h-screen items-center sm:flex-row flex-col">
+      <div className="">
+        <div className="flex justify-between items-center w-full">
           <h1 className="select-none font-semibold">
             {months[today.month()]}, {today.year()}
           </h1>
@@ -64,14 +120,23 @@ export default function Calendar() {
                     className={cn(
                       currentMonth ? "" : "text-gray-400",
                       today ? "bg-[#54524F] text-white" : "",
-                      selectDate.toDate().toDateString() ===
-                        date.toDate().toDateString()
-                        ? "bg-[#3A514C] text-white"
+                      range.startDate &&
+                        range.startDate?.toDate().toDateString() ===
+                          date.toDate().toDateString()
+                        ? "bg-green-500 text-white hover:clear-both"
+                        : "",
+                      isDateInRange(date) ? "bg-pink-400" : "",
+
+                      isPastDate(date) ? "opacity-50 hover:clear-both" : "",
+                      range.endDate &&
+                        range.endDate?.toDate().toDateString() ===
+                          date.toDate().toDateString()
+                        ? "bg-red-500 text-white hover:clear-both"
                         : "",
                       "h-10 w-10 rounded-sm grid place-content-center hover:bg-gray-500 hover:text-white transition-all cursor-pointer select-none"
                     )}
                     onClick={() => {
-                      setSelectDate(date);
+                      selectDateHandler(date);
                     }}
                   >
                     {date.date()}
@@ -82,6 +147,112 @@ export default function Calendar() {
           )}
         </div>
       </div>
+
+      <form className="form w-[30vw]">
+        <div className="flex border-2 border-black p-5">
+          <div className="w-full p-5">
+            <b>Checkin:</b> <br />
+            {range.startDate?.toDate().toDateString()}
+          </div>
+          <div className="w-full p-5 ">
+            <b>Checkout</b> <br />
+            {range.endDate?.toDate().toDateString()}
+          </div>
+        </div>
+
+        <Formik
+          initialValues={{
+            room: "",
+            adult: "",
+            children: false,
+            promocode: "",
+            groupcode: "",
+          }}
+          validationSchema={yup.object({
+            room: yup.number().required("Please choose number of room(s)"),
+
+            children: yup
+              .boolean()
+              .required("Please choose number of children(s)"),
+
+            promocode: yup.string(),
+
+            groupcode: yup.string(),
+
+            adult: yup
+              .number()
+
+              .required("Please enter number of adult(s)"),
+          })}
+          onSubmit={(values, { setSubmitting, resetForm }) => {
+            setTimeout(() => {
+              console.log(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+              resetForm();
+            }, 5000);
+          }}
+        >
+          {(formik) => {
+            return (
+              <form
+                onSubmit={formik.handleSubmit}
+                className=" my-10"
+                autoComplete="off"
+              >
+                <DropdownFormik
+                  labelText="Select room "
+                  data={DropDownData}
+                  dropdownLabel="Select room"
+                  name="room"
+                  setValue={formik.setFieldValue}
+                ></DropdownFormik>{" "}
+                <DropdownFormik
+                  labelText="Number of adults"
+                  data={DropDownData}
+                  dropdownLabel="Number of adults"
+                  name="adult"
+                  setValue={formik.setFieldValue}
+                ></DropdownFormik>{" "}
+                <DropdownFormik
+                  labelText="Number of children"
+                  data={DropDownData}
+                  dropdownLabel="Number of childrens"
+                  name="children"
+                  setValue={formik.setFieldValue}
+                ></DropdownFormik>
+                <div className=" flex w-full">
+                  <InputForm
+                    name="promocode"
+                    placeholder="CORPORATE/PROMO CODE"
+                    id="promocode"
+                    label=""
+                    type="text"
+                  ></InputForm>
+
+                  <InputForm
+                    name="groupcode"
+                    placeholder="GROUP CODE"
+                    id="groupcode"
+                    label=""
+                    type="text"
+                  ></InputForm>
+                </div>
+                <button
+                  type="submit"
+                  disabled={formik.isSubmitting}
+                  className="w-full p-5 mt-5 font-semibold text-white bg-blue-500 rounded-lg"
+                >
+                  {formik.isSubmitting ? (
+                    <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
+              </form>
+            );
+          }}
+        </Formik>
+      </form>
     </div>
   );
 }

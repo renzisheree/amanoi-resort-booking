@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "value": "1",
+    "text": "1 room"
+  },
+  {
+    "id": 2,
+    "value": "2",
+    "text": "2 rooms"
+  },
+  {
+    "id": 3,
+    "value": "3",
+    "text": "3 rooms"
+  },
+  {
+    "id": 4,
+    "value": "4",
+    "text": "4 rooms"
+  }
+]
