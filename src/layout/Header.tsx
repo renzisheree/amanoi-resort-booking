@@ -1,7 +1,6 @@
 import MenuBar from "../components/MenuBar";
 import MiddleLogo from "../components/MiddleLogo";
 import LangChooser from "../components/LangChooser";
-
 const Header = () => {
   return (
     <div className={`pt-5 w-full`}>

@@ -12,7 +12,6 @@ import * as yup from "yup";
 
 import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
-import InputForm from "./InputForm";
 
 useField;
 
@@ -34,10 +33,19 @@ export default function Calendar() {
   // console.log(currentDate);
 
   const [today, setToday] = useState(currentDate);
-
   const selectDateHandler = (date: Dayjs) => {
     const { startDate, endDate } = range;
-    if (date.isBefore(dayjs())) return;
+
+    if (date.isBefore(dayjs()) && date.date() != dayjs().date()) return;
+
+    if (startDate && date.isBefore(startDate)) {
+      setRange({
+        startDate: date,
+        endDate: startDate,
+      });
+      return;
+    }
+
     if (!startDate) {
       setRange({
         startDate: date,
@@ -49,10 +57,17 @@ export default function Calendar() {
         endDate: date,
       });
     } else {
-      setRange({
-        startDate: date,
-        endDate: null,
-      });
+      if (date.isBefore(startDate)) {
+        setRange({
+          startDate: date,
+          endDate: null,
+        });
+      } else {
+        setRange({
+          startDate,
+          endDate: date,
+        });
+      }
     }
   };
 
@@ -148,7 +163,7 @@ export default function Calendar() {
         </div>
       </div>
 
-      <form className="form w-[30vw]">
+      <div className="form w-[30vw]">
         <div className="flex border-2 border-black p-5">
           <div className="w-full p-5">
             <b>Checkin:</b> <br />
@@ -164,20 +179,14 @@ export default function Calendar() {
           initialValues={{
             room: "",
             adult: "",
-            children: false,
-            promocode: "",
-            groupcode: "",
+            children: "",
           }}
           validationSchema={yup.object({
             room: yup.number().required("Please choose number of room(s)"),
 
             children: yup
-              .boolean()
+              .string()
               .required("Please choose number of children(s)"),
-
-            promocode: yup.string(),
-
-            groupcode: yup.string(),
 
             adult: yup
               .number()
@@ -187,6 +196,7 @@ export default function Calendar() {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setTimeout(() => {
               console.log(JSON.stringify(values, null, 2));
+
               setSubmitting(false);
               resetForm();
             }, 5000);
@@ -196,7 +206,7 @@ export default function Calendar() {
             return (
               <form
                 onSubmit={formik.handleSubmit}
-                className=" my-10"
+                className=" my-10 ml-10"
                 autoComplete="off"
               >
                 <DropdownFormik
@@ -220,23 +230,7 @@ export default function Calendar() {
                   name="children"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>
-                <div className=" flex w-full">
-                  <InputForm
-                    name="promocode"
-                    placeholder="CORPORATE/PROMO CODE"
-                    id="promocode"
-                    label=""
-                    type="text"
-                  ></InputForm>
-
-                  <InputForm
-                    name="groupcode"
-                    placeholder="GROUP CODE"
-                    id="groupcode"
-                    label=""
-                    type="text"
-                  ></InputForm>
-                </div>
+                <div className=" flex w-full"></div>
                 <button
                   type="submit"
                   disabled={formik.isSubmitting}
@@ -252,7 +246,7 @@ export default function Calendar() {
             );
           }}
         </Formik>
-      </form>
+      </div>
     </div>
   );
 }

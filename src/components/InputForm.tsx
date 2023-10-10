@@ -31,7 +31,7 @@ const InputForm = ({
         placeholder={placeholder}
         type={type}
         aria-describedby={`${name}-error`}
-        className="p-4 transition-all   bg-white border border-gray-500 rounded-sm outline-none focus:border-blue-500"
+        className="p-4 transition-all  bg-white border border-gray-500 rounded-sm outline-none focus:border-blue-500"
       />
 
       {meta.touched && meta.error && (

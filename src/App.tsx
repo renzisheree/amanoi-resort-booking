@@ -1,8 +1,7 @@
 import "./index.scss";
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavigationBar from "./components/NavigationBar";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Route, Routes } from "react-router-dom";
+
 // import BookingPage from "./page/BookingPage";
 import MainPage from "./page/MainPage";
 // import LoginPage from "./page/LoginPage";
@@ -11,14 +10,13 @@ import LoginPage from "./page/LoginPage";
 // import Calendar from "./components/Canendar";
 import ImagePage from "./page/ImagePage";
 import BookingPage from "./page/BookingPage";
+import Main from "./layout/Main";
 
 function App() {
   return (
     <>
-      <Header />
-      <NavigationBar></NavigationBar>
-      <Router>
-        <Routes>
+      <Routes>
+        <Route element={<Main></Main>}>
           <Route
             path="/"
             element={
@@ -71,10 +69,8 @@ function App() {
               </>
             }
           ></Route>
-        </Routes>
-      </Router>
-
-      <Footer />
+        </Route>
+      </Routes>
     </>
   );
 }

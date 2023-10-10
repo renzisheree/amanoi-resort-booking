@@ -17,9 +17,9 @@ const MenuBar = () => {
         <div
           className={`navigation   flex items-center align-center gap-3 bg-primary cursor-pointer top-0 fixed right-[-500px] w-[30vw] ${
             isOpen ? "left-0" : ""
-          } h-full   z-[9999] transition-all duration-500`}
+          } h-full   z-[9999]  duration-500`}
         >
-          <div className="fixed block top-[5%] right-[95%] w-[40px] h-[40px] hover:scale-105 transition-all  translate-y-[-50%] border-0">
+          <div className="fixed block top-[5%] right-[95%] w-[40px] h-[40px] hover:scale-105  translate-y-[-50%] border-0">
             <div
               className={`top-[3px] bg-gray-700 w-full h-1 transition-all duration-300 ease-in	mb-[1.5px] ${
                 isOpen
