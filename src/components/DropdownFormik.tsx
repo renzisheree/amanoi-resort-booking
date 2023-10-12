@@ -37,7 +37,7 @@ const DropdownFormik = ({
 
   useEffect(() => {
     if (field.value === "") setLabel(dropdownLabel);
-  }, [field.value]);
+  }, [field.value, dropdownLabel]);
 
   return (
     <div className="flex flex-col gap-3 mb-5 ml-5">

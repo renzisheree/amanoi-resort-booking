@@ -3,18 +3,12 @@ import { useState } from "react";
 import { generateDate, months } from "../utils/calendar/calendar";
 import cn from "../utils/calendar/cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-
 import isBetween from "dayjs/plugin/isBetween";
-// import InputForm from "./InputForm";
-
 import DropDownData from "../data/dropdownData.json";
 import * as yup from "yup";
-
 import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
-
 useField;
-
 dayjs.extend(isBetween);
 
 interface DateRange {
@@ -59,8 +53,8 @@ export default function Calendar() {
     } else {
       if (date.isBefore(startDate)) {
         setRange({
+          endDate: startDate,
           startDate: date,
-          endDate: null,
         });
       } else {
         setRange({
@@ -80,6 +74,7 @@ export default function Calendar() {
   function isPastDate(date: Dayjs) {
     return date.isBefore(dayjs(), "day");
   }
+
   return (
     <div className="flex gap-[10vw] sm:divide-x justify-center   mx-auto w-screen  h-screen items-center sm:flex-row flex-col">
       <div className="">
@@ -164,8 +159,8 @@ export default function Calendar() {
       </div>
 
       <div className="form w-[30vw]">
-        <div className="flex border-2 border-black p-5">
-          <div className="w-full p-5">
+        <div className="flex justify-center items-center border-2 border-black p-5">
+          <div className="w-full border-black p-5 border-r-4">
             <b>Checkin:</b> <br />
             {range.startDate?.toDate().toDateString()}
           </div>
@@ -196,6 +191,8 @@ export default function Calendar() {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setTimeout(() => {
               console.log(JSON.stringify(values, null, 2));
+              console.log(range.startDate?.toDate().toDateString());
+              console.log(range.endDate?.toDate().toDateString());
 
               setSubmitting(false);
               resetForm();

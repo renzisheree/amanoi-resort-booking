@@ -23,7 +23,7 @@ const NavigationBar = () => {
         <NavigationItem path="images">Thư viện ảnh</NavigationItem>
         <NavigationItem>Phòng ở</NavigationItem>
         <NavigationItem>Các trải nghiệm</NavigationItem>
-        <NavigationItem>Ẩm thực</NavigationItem>
+        <NavigationItem path="foods">Ẩm thực</NavigationItem>
         <NavigationItem>Chăm sóc sức khoẻ</NavigationItem>
         <NavigationItem>Lễ kỉ niệm</NavigationItem>
         <NavigationItem>Ưu đãi độc quyền</NavigationItem>

@@ -1,27 +1,16 @@
-// import { Dayjs } from "dayjs";
 import Calendar from "./Calendar";
-// import { useState } from "react";
-
-// interface DateRange {
-//   startDate: Dayjs | null;
-//   endDate: Dayjs | null;
-// }
 
 const BookingCalendar = () => {
-  // const [range, setRange] = useState<DateRange>({
-  //   startDate: null,
-  //   endDate: null,
-  // });
-
   return (
-    <div className="flex justify-center  bg-white">
-      <Calendar />
-      {/* <Calendar /> */}
+    <div className="bg-white w-[80vw] m-auto pt-10">
+      <div className="text-3xl italic font-body text-center">
+        SELECT THE DATE
+      </div>
+      <div className="flex justify-center ">
+        <Calendar />
+      </div>
     </div>
   );
 };
 
-// function BookingForm() {
-//   return <div></div>;
-// }
 export default BookingCalendar;

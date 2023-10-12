@@ -1,7 +1,10 @@
 import { useState } from "react";
 import list from "../data/listLanguage.json";
 
+import { useNavigate } from "react-router-dom";
+
 const LangChooser = () => {
+  const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   return (
     <div className=" flex w-[350px]   items-center justify-between  align-middle   rounded-sm ">
@@ -51,7 +54,12 @@ const LangChooser = () => {
         </div>
       </button>
 
-      <button className="px-6 py-2  border-black border-[0.5px] rounded-sm bg-[#E6E2DB] hover:opacity-80">
+      <button
+        className="px-6 py-2  border-black border-[0.5px] rounded-sm bg-[#E6E2DB] hover:opacity-80"
+        onClick={() => {
+          navigate("/booking");
+        }}
+      >
         Reserve
       </button>
     </div>

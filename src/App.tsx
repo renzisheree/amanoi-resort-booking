@@ -2,15 +2,13 @@ import "./index.scss";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Route, Routes } from "react-router-dom";
 
-// import BookingPage from "./page/BookingPage";
 import MainPage from "./page/MainPage";
-// import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
 import LoginPage from "./page/LoginPage";
-// import Calendar from "./components/Canendar";
 import ImagePage from "./page/ImagePage";
 import BookingPage from "./page/BookingPage";
 import Main from "./layout/Main";
+import FoodPage from "./page/FoodPage";
 
 function App() {
   return (
@@ -30,11 +28,16 @@ function App() {
             path="/booking"
             element={
               <>
-                {/* <BookingPage></BookingPage> */}
                 <BookingPage></BookingPage>
-                {/* <Test1></Test1> */}
+              </>
+            }
+          ></Route>
 
-                {/* <Calendar></Calendar> */}
+          <Route
+            path="/foods"
+            element={
+              <>
+                <FoodPage></FoodPage>
               </>
             }
           ></Route>
@@ -43,11 +46,7 @@ function App() {
             path="/images"
             element={
               <>
-                {/* <BookingPage></BookingPage> */}
                 <ImagePage></ImagePage>
-                {/* <Test1></Test1> */}
-
-                {/* <Calendar></Calendar> */}
               </>
             }
           ></Route>
