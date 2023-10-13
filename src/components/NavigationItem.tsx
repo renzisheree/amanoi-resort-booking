@@ -14,7 +14,7 @@ const NavigationItem: React.FC<NavItemProps> = (props) => {
       onClick={() => {
         navigate(`/${props.path}`);
       }}
-      className="w-full h-full py-2 hover:text-blue-600 hover:border-blue-600 hover:border-b-2"
+      className="w-full h-full py-2 hover:text-gray-600 hover:border-gray-600 hover:border-b-2"
     >
       <h2>{props.children}</h2>
     </div>

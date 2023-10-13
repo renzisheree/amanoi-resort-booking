@@ -75,3 +75,6 @@ body {
   height: 20px;
   border: 1px solid;
 }
+.roomlist > li:hover {
+  text-decoration: underline;
+}

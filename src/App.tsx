@@ -9,6 +9,10 @@ import ImagePage from "./page/ImagePage";
 import BookingPage from "./page/BookingPage";
 import Main from "./layout/Main";
 import FoodPage from "./page/FoodPage";
+import RoomDetailPage from "./page/RoomDetailPage";
+import RoomListPage from "./page/RoomListPage";
+import HealthCarePage from "./page/HealthCarePage";
+import EventPage from "./page/EventPage";
 
 function App() {
   return (
@@ -43,6 +47,24 @@ function App() {
           ></Route>
 
           <Route
+            path="/details"
+            element={
+              <>
+                <RoomDetailPage></RoomDetailPage>
+              </>
+            }
+          ></Route>
+
+          <Route
+            path="/events"
+            element={
+              <>
+                <EventPage></EventPage>
+              </>
+            }
+          ></Route>
+
+          <Route
             path="/images"
             element={
               <>
@@ -50,12 +72,28 @@ function App() {
               </>
             }
           ></Route>
-
+          <Route
+            path="/roomlists"
+            element={
+              <>
+                <RoomListPage></RoomListPage>
+              </>
+            }
+          ></Route>
           <Route
             path="/login"
             element={
               <>
                 <LoginPage></LoginPage>
+              </>
+            }
+          ></Route>
+
+          <Route
+            path="/healthcare"
+            element={
+              <>
+                <HealthCarePage></HealthCarePage>
               </>
             }
           ></Route>

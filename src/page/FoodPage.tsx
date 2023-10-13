@@ -69,7 +69,7 @@ const FoodPage = () => {
         <h1 className="text-3xl italic text-center">
           Trải nghiệm ẩm thực nổi bật
         </h1>
-        <div className="flex justify-center items-center w-[80vw] gap-10">
+        <div className="flex justify-center items-center w-[80vwpp] gap-10">
           {" "}
           <ViewCard
             cardImg="https://www.aman.com/sites/default/files/styles/property_nearby_extra_large/public/2021-03/Amanoi_Dining_4.jpg?itok=M_XuHenG"
