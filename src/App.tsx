@@ -47,7 +47,7 @@ function App() {
           ></Route>
 
           <Route
-            path="/details"
+            path="/details/:slug"
             element={
               <>
                 <RoomDetailPage></RoomDetailPage>

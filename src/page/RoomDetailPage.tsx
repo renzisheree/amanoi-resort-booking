@@ -3,45 +3,48 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import listImage from "../data/listImage.json";
 import { useNavigate } from "react-router-dom";
 import ViewCard from "../components/ViewCard";
+import { useParams } from "react-router-dom";
+import useAxios from "../hooks/useAxios";
+import { ro } from "date-fns/locale";
+interface DetailPata {
+  id: string;
+  name: string;
+  path: string;
+  description: string;
+  imageCover: string[];
+  imageThumbnail: string[];
+}
 
+interface amenProps {
+  name: string;
+}
 const RoomDetailPage = () => {
+  const { slug } = useParams();
   const navigate = useNavigate();
+
+  const { data } = useAxios(`http://localhost:3000/rooms/residencies/${slug}`);
+  if (!data) return null;
+  console.log(data);
+  const { imageThumbnail, imageCover, description, amenities, roomType } = data;
+
+  const { inclusion } = roomType;
   return (
     <div className="p-10">
-      <h1 className="text-3xl italic text-center py-10">Room type</h1>
+      <h1 className="text-3xl italic text-center py-10">{data.name}</h1>
       <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
-        {listImage.length > 0 &&
-          listImage.map((item) => (
-            <SwiperSlide key={item.id}>
-              <img className="w-[90vw] mx-auto" src={item.src} alt="" />
+        {imageThumbnail.length > 0 &&
+          imageThumbnail.map((item: string, index: number) => (
+            <SwiperSlide key={index}>
+              <img className="w-[90vw] mx-auto" src={item} alt="" />
             </SwiperSlide>
           ))}
       </Swiper>
       <div className=" flex justify-start items-center gap-10 p-10">
-        <img
-          src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2021-02/Amanoi_5-Bed-Bay-Residence-1.jpg?itok=qp0zNRIk  "
-          alt=""
-        />
-        <img
-          src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2021-02/Amanoi_5-Bed-Bay-Residence-1.jpg?itok=qp0zNRIk"
-          alt=""
-        />
+        <img src={imageCover[0]} alt="" />
+        <img src={imageCover[1]} alt="" />
 
         <span className="flex flex-col gap-20">
-          <p className="text-sm italic">
-            Với diện tích trên 1.000 mét vuông (10.764 bộ vuông) với hướng nhìn
-            tuyệt đẹp ra Vịnh Vĩnh Hy, Biệt thự năm phòng ngủ hướng vịnh của
-            Amanoi tọa lạc ngay gần bãi biển và kết hợp các phòng nghỉ xung
-            quanh hồ bơi riêng. Lý tưởng cho các nhóm và gia đình, biệt thự cung
-            cấp nhiều không gian và sự thoải mái tuyệt vời, cho phép khách tụ
-            họp với nhau ở một địa điểm không thể nào quên. Trong khi hồ bơi vô
-            cực là trung tâm của biệt thự, các khu vực để giải trí bao gồm một
-            phòng ăn và sàn gỗ rộng. Dịch vụ quản gia 24/7 đảm bảo cho kỳ nghỉ
-            suôn sẻ và bao gồm việc chuẩn bị các món ăn Việt Nam hoặc các món Âu
-            tươi ngon trong khu bếp riêng. Trong khi được xây dựng dựa trên chủ
-            đề là sự kết nối và gắn kết, biệt thự cũng mang đến sự riêng tư, với
-            các phòng ngủ cỡ King riêng biệt nằm trong không gian riêng.
-          </p>
+          <p className="text-sm italic">{description}</p>
 
           <a
             href=""
@@ -54,7 +57,7 @@ const RoomDetailPage = () => {
           </a>
         </span>
       </div>
-      list-disc
+
       <div className="">
         <h1 className="text-3xl text-center italic">
           {" "}
@@ -62,35 +65,19 @@ const RoomDetailPage = () => {
         </h1>
 
         <ul className="grid grid-cols-3 gap-10 list-disc	p-20  mt-10 bg-white ">
-          <li>Quầy bar cá nhân</li>
-          <li>Đầu bếp riêng phục vụ cho bữa tối BBQ tại biệt thự</li>
-
-          <li>Xe điện riêng của biệt thự</li>
-          <li>
-            Các môn thể thao dưới nước miễn phí bao gồm chèo thuyền kayak,
-            thuyền Hobie cat, lướt ván đứng SUP, lặn với ống thở và lướt ván
-            buồm
-          </li>
-          <li>
-            Xe riêng đưa đón hai chiều giữa sân bay Cam Ranh (CXR) và Amanoi
-          </li>
-          <li>
-            Miễn phí các hoạt động dành cho trẻ em như câu cá, lớp học nấu ăn,
-            nghệ thuật và thủ công và chiếu phim buổi tối
-          </li>
+          {" "}
+          {inclusion.map((item: amenProps, index: number) => (
+            <li key={index}> {item}</li>
+          ))}
         </ul>
       </div>
       <div className=" mt-10">
         <h1 className="text-3xl text-center italic"> Tiện nghi</h1>
 
         <ul className="grid grid-cols-3 gap-10 list-disc	p-20  mt-10 bg-white ">
-          <li>Tầm nhìn hướng ra vịnh Vĩnh Hy </li>
-          <li>Phòng khách và phòng ăn</li>
-
-          <li>Xe điện riêng của biệt thự</li>
-          <li>Hiên tắm nắng bằng gỗ rộng rãi</li>
-          <li>Năm phòng ngủ trong các căn pavilion riêng với giường cỡ king</li>
-          <li>Dịch vụ quản gia cá nhân 24/7</li>
+          {amenities.map((item: amenProps, index: number) => (
+            <li key={index}> {item.name}</li>
+          ))}
         </ul>
       </div>
       <div className="">

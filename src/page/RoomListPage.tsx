@@ -1,9 +1,83 @@
-import React from "react";
-import ViewCard from "../components/ViewCard";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import ViewCard from "../components/ViewCard";
+// import { useNavigate } from "react-router-dom";
+import useAxios from "../hooks/useAxios";
+import useAxiosSecond from "../hooks/useAxiosSecond";
+import RoomCard from "../components/RoomCard";
 
+interface Item {
+  id: string;
+  name: string;
+  path: string;
+}
+interface DataSecond {
+  id: string;
+  name: string;
+  path: string;
+  description: string;
+  slug: string;
+
+  imageThumbnail: string[];
+}
 const RoomListPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  const [pathURL, setPath] = useState("residencies");
+
+  const [url, setUrl] = useState(`http://localhost:3000/rooms/residencies`);
+  const { data, loading, error } = useAxios(
+    "http://localhost:3000/room-types/all"
+  );
+
+  const { dataSecond } = useAxiosSecond(url);
+  useEffect(() => {
+    setUrl(`http://localhost:3000/rooms/${pathURL}`);
+  }, [pathURL]);
+  if (!dataSecond) return null;
+  const { rooms } = dataSecond;
+  console.log(rooms);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
+  if (!data) return null;
+
+  const { items } = data;
+
+  // const { items };
+
+  // const {
+  //   path,
+  //   name,
+  //   inclusions,
+  //   description,
+  //   title,
+  //   room,
+  // }: {
+  //   path: string;
+  //   name: string;
+  //   inclusions: string[];
+  //   description: string;
+  //   title: string;
+  //   room: string[];
+  // } = data;
+  // data.items.map((info) => {
+  //   const {
+  //     path,
+  //     name,
+  //     inclusions, // Corrected property name
+  //     description,
+  //     title,
+  //     rooms,
+  //   }: {
+  //     path: string;
+  //     name: string;
+  //     inclusions: string[]; // Corrected property name
+  //     description: string;
+  //     title: string;
+  //     rooms: string[];
+  //   } = info;
+  // console.log({ path, name, inclusions, description, title, rooms });
+  // });
   return (
     <div className="p-10">
       <div className="flex flex-col gap-10 items-center justify-center">
@@ -11,10 +85,17 @@ const RoomListPage = () => {
 
         <div className="">
           <ul className="roomlist flex items-center justify-center gap-10 cursor-pointer">
-            <li>Khu biệt thự</li>
-            <li>Pavilion Villa</li>
-            <li>Tổng quan</li>
-            <li>Wellness pool villa</li>
+            {items.map((item: Item) => (
+              <li
+                key={item.id}
+                onClick={() => {
+                  setPath(item.path);
+                  console.log(item.path);
+                }}
+              >
+                {item.name}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -28,68 +109,16 @@ const RoomListPage = () => {
           Vĩnh Hy, chỉ chờ bạn khám phá.
         </p>
       </div>
-      <div
-        className="grid grid-cols-2 gap-20"
-        onClick={() => {
-          navigate("/details");
-        }}
-      >
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-06/5-bedroom_bay_villa_e.jpg?itok=7XAJUNCy"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Residence%20pool%20area_1.jpg?itok=4DGVojA1"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-06/5-bedroom_bay_villa_e.jpg?itok=7XAJUNCy"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Residence%20pool%20area_1.jpg?itok=4DGVojA1"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-06/5-bedroom_bay_villa_e.jpg?itok=7XAJUNCy"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Residence%20pool%20area_1.jpg?itok=4DGVojA1"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-04/Amanoi%2C%20Vietnam%20-%20Accommodation%2C%20Ocean%20Pool%20Villa%2C%20Terrace_4667%20%281%29.jpg?itok=xSihImzE"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Lounge%20in%20Residence_3.jpg?itok=AbJCF68Q"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
+      <div className="grid grid-cols-2 gap-20">
+        {rooms.map((dataSecond: DataSecond) => (
+          <RoomCard
+            cardImg={dataSecond.imageThumbnail[0]}
+            cardTitle={dataSecond.name}
+            button={false}
+            cardParagraph={dataSecond.description}
+            slug={dataSecond.slug}
+          ></RoomCard>
+        ))}
       </div>
     </div>
   );
