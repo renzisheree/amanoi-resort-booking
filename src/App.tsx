@@ -13,6 +13,8 @@ import RoomDetailPage from "./page/RoomDetailPage";
 import RoomListPage from "./page/RoomListPage";
 import HealthCarePage from "./page/HealthCarePage";
 import EventPage from "./page/EventPage";
+import AdvanturePage from "./page/AdvanturePage";
+import ReservationPage from "./page/ReservationPage";
 
 function App() {
   return (
@@ -47,10 +49,19 @@ function App() {
           ></Route>
 
           <Route
-            path="/details/:slug"
+            path="/details/:path/:slug"
             element={
               <>
                 <RoomDetailPage></RoomDetailPage>
+              </>
+            }
+          ></Route>
+
+          <Route
+            path="/adventure"
+            element={
+              <>
+                <AdvanturePage></AdvanturePage>
               </>
             }
           ></Route>
@@ -77,6 +88,15 @@ function App() {
             element={
               <>
                 <RoomListPage></RoomListPage>
+              </>
+            }
+          ></Route>
+
+          <Route
+            path="/reservations"
+            element={
+              <>
+                <ReservationPage></ReservationPage>
               </>
             }
           ></Route>

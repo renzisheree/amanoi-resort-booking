@@ -11,12 +11,14 @@ type RoomCardProps = {
   slide?: number;
   bgWhite?: boolean;
   slug?: string;
+  path?: string;
 };
 const RoomCard: React.FC<RoomCardProps> = ({
   cardImg,
   cardType,
   cardTitle,
   slug,
+  path,
   cardParagraph,
   flexCol = true,
   center = true,
@@ -33,7 +35,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
         bgWhite ? "bg-white" : ""
       } my-10 w-[${100 / slide - 5}vw] pb-5`}
       onClick={() => {
-        navigate(`/details/${slug}`);
+        navigate(`/details/${path}/${slug}`);
       }}
     >
       <img src={cardImg} alt="" className={` w-full `} />

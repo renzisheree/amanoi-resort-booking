@@ -78,3 +78,27 @@ body {
 .roomlist > li:hover {
   text-decoration: underline;
 }
+
+.skeleton {
+  background-color: #eee;
+  background-image: linear-gradient(
+    110deg,
+    #ececec 8%,
+    #f5f5f5 18%,
+    #ececec 33%
+  );
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.banner {
+  background-image: url("./img/BE_Amanoi.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}

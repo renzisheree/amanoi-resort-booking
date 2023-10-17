@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
 // import ViewCard from "../components/ViewCard";
 // import { useNavigate } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import useAxiosSecond from "../hooks/useAxiosSecond";
 import RoomCard from "../components/RoomCard";
+import LoadingSkeleton from "../components/loading/LoadingSkeleton";
 
 interface Item {
   id: string;
@@ -24,18 +25,20 @@ const RoomListPage = () => {
 
   const [pathURL, setPath] = useState("residencies");
 
-  const [url, setUrl] = useState(`http://localhost:3000/rooms/residencies`);
+  const [url, setUrl] = useState(`http://localhost:3000/rooms/${pathURL}`);
   const { data, loading, error } = useAxios(
     "http://localhost:3000/room-types/all"
   );
-
-  const { dataSecond } = useAxiosSecond(url);
+  const { dataSecond, loadingSecond } = useAxiosSecond(url);
   useEffect(() => {
     setUrl(`http://localhost:3000/rooms/${pathURL}`);
   }, [pathURL]);
   if (!dataSecond) return null;
   const { rooms } = dataSecond;
-  console.log(rooms);
+
+  const { path } = dataSecond;
+
+  console.log(data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
@@ -80,6 +83,40 @@ const RoomListPage = () => {
   // });
   return (
     <div className="p-10">
+      {loadingSecond && (
+        <div className="w-10 h-10 rounded-full border-4 border-red-500 border-t-transparent border-t-4 mx-auto animate-spin mb-10 mt-20"></div>
+      )}
+      {loadingSecond && (
+        <div className="flex flex-col justify-center items-center gap-5">
+          <div className="flex items-center justify-center gap-10">
+            {" "}
+            <LoadingSkeleton
+              width="45vw"
+              height="400px"
+              radius="8px"
+              className="mt-5"
+            />
+            <LoadingSkeleton
+              width="45vw"
+              height="400px"
+              radius="8px"
+              className="mt-5"
+            />
+          </div>
+
+          <div className="flex items-center justify-center gap-10">
+            {" "}
+            <LoadingSkeleton width="45vw" height="30px" radius="8px" />
+            <LoadingSkeleton width="45vw" height="30px" radius="8px" />
+          </div>
+
+          <div className="flex items-center justify-center gap-10">
+            {" "}
+            <LoadingSkeleton width="45vw" height="100px" radius="8px" />
+            <LoadingSkeleton width="45vw" height="100px" radius="8px" />
+          </div>
+        </div>
+      )}
       <div className="flex flex-col gap-10 items-center justify-center">
         <h1 className="text-3xl text-center italic">Phòng ở Amanoi</h1>
 
@@ -91,6 +128,9 @@ const RoomListPage = () => {
                 onClick={() => {
                   setPath(item.path);
                   console.log(item.path);
+                }}
+                style={{
+                  fontWeight: pathURL === item.path ? "bold" : "normal",
                 }}
               >
                 {item.name}
@@ -109,6 +149,7 @@ const RoomListPage = () => {
           Vĩnh Hy, chỉ chờ bạn khám phá.
         </p>
       </div>
+
       <div className="grid grid-cols-2 gap-20">
         {rooms.map((dataSecond: DataSecond) => (
           <RoomCard
@@ -117,6 +158,7 @@ const RoomListPage = () => {
             button={false}
             cardParagraph={dataSecond.description}
             slug={dataSecond.slug}
+            path={path}
           ></RoomCard>
         ))}
       </div>

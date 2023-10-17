@@ -1,28 +1,30 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import listImage from "../data/listImage.json";
 import { useNavigate } from "react-router-dom";
 import ViewCard from "../components/ViewCard";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
-import { ro } from "date-fns/locale";
-interface DetailPata {
-  id: string;
-  name: string;
-  path: string;
-  description: string;
-  imageCover: string[];
-  imageThumbnail: string[];
-}
+import LoadingSkeleton from "../components/loading/LoadingSkeleton";
+// interface DetailPata {
+//   id: string;
+//   name: string;
+//   path: string;
+//   description: string;
+//   imageCover: string[];
+//   imageThumbnail: string[];
+// }
 
 interface amenProps {
   name: string;
+  path: string;
 }
 const RoomDetailPage = () => {
-  const { slug } = useParams();
+  const { path, slug } = useParams();
   const navigate = useNavigate();
 
-  const { data } = useAxios(`http://localhost:3000/rooms/residencies/${slug}`);
+  const { data, loading } = useAxios(
+    `http://localhost:3000/rooms/${path}/${slug}`
+  );
   if (!data) return null;
   console.log(data);
   const { imageThumbnail, imageCover, description, amenities, roomType } = data;
@@ -30,6 +32,22 @@ const RoomDetailPage = () => {
   const { inclusion } = roomType;
   return (
     <div className="p-10">
+      {loading && (
+        <div className=" flex flex-col justify-center items-center gap-10">
+          <div className="w-10 h-10 rounded-full border-4 border-red-500 border-t-transparent border-t-4 mx-auto animate-spin mb-10 mt-20"></div>
+
+          <LoadingSkeleton
+            height="5vh"
+            width="80vw"
+            radius="20px"
+          ></LoadingSkeleton>
+          <LoadingSkeleton
+            height="50vh"
+            width="80vw"
+            radius="20px"
+          ></LoadingSkeleton>
+        </div>
+      )}
       <h1 className="text-3xl italic text-center py-10">{data.name}</h1>
       <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
         {imageThumbnail.length > 0 &&
