@@ -1,16 +1,53 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import InputForm from "./InputForm";
-import CheckboxForm from "./CheckboxForm";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+// import CheckboxForm from "./CheckboxForm";
+
+interface loginProps {
+  email: string;
+  password: string;
+}
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (values: loginProps) => {
+    axios({
+      method: "POST",
+      url: "http://localhost:3000/auth/login",
+      data: values,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    })
+      .then(function (res) {
+        const { data } = res;
+
+        if (!data) return null;
+        document.cookie = `token=${data.access_token};expires=${new Date(
+          Date.now() + 86400
+        ).toUTCString()}`;
+        navigate("/");
+      })
+      .catch(function () {});
+  };
+
+  // const cookieValue = Cookies.get("token");
+
+  // useEffect(() => {
+  //   if (cookieValue) {
+  //     navigate("/");
+  //   }
+  // }, [cookieValue]);
+
   return (
     <div className=" flex flex-col items-center justify-center">
       <Formik
         initialValues={{
           email: "",
           password: "",
-          remember: false,
+          // remember: false,
         }}
         validationSchema={yup.object({
           email: yup
@@ -30,8 +67,8 @@ const LoginForm = () => {
             .required("Please enter your password"),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
+          handleSubmit(values);
           setTimeout(() => {
-            console.log(JSON.stringify(values, null, 2));
             setSubmitting(false);
             resetForm();
           }, 5000);
@@ -59,7 +96,7 @@ const LoginForm = () => {
                 type="password"
               ></InputForm>
 
-              <CheckboxForm name="remember">Remember password</CheckboxForm>
+              {/* <CheckboxForm name="remember">Remember password</CheckboxForm> */}
               <button
                 type="submit"
                 disabled={formik.isSubmitting}

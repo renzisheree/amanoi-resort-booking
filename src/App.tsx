@@ -15,6 +15,7 @@ import HealthCarePage from "./page/HealthCarePage";
 import EventPage from "./page/EventPage";
 import AdvanturePage from "./page/AdvanturePage";
 import ReservationPage from "./page/ReservationPage";
+import ProfilePage from "./page/ProfilePage";
 
 function App() {
   return (
@@ -97,6 +98,14 @@ function App() {
             element={
               <>
                 <ReservationPage></ReservationPage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/profile"
+            element={
+              <>
+                <ProfilePage></ProfilePage>
               </>
             }
           ></Route>

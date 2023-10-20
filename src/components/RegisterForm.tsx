@@ -1,12 +1,51 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import InputForm from "./InputForm";
-import RadioForm from "./RadioForm.";
-
-import CheckboxForm from "./CheckboxForm";
+// import RadioForm from "./RadioForm.";
+import axios from "axios";
+// import CheckboxForm from "./CheckboxForm";
 import MiddleLogo from "./MiddleLogo";
+import contryData from "../data/countryList.json";
+import DropdownFormik from "./DropdownFormik";
+
+const newUser = {
+  firstname: "le",
+  lastname: "quang",
+  phone: "0913464425",
+  country: "Indo",
+  email: "thanhquang.5@gmail.com",
+  password: "imluongz@123aA",
+};
+interface RegisterProps {
+  firstname: string;
+  lastname: string;
+
+  phone: string;
+  email: string;
+  country: string;
+  password: string;
+}
 
 const RegisterForm = () => {
+  console.log(newUser);
+  const handleSubmit = (values: RegisterProps) => {
+    console.log(values);
+    const data = JSON.stringify(values);
+    console.log(data);
+    axios({
+      method: "POST",
+      url: "http://localhost:3000/auth/register",
+      data: values,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    })
+      .then(function (res) {
+        console.log(res);
+        alert("Successfully signed up!");
+      })
+      .catch(function (res) {
+        console.log(res);
+      });
+  };
   return (
     <div className="flex items-center justify-around gap-20">
       <div className="">
@@ -18,17 +57,17 @@ const RegisterForm = () => {
       <div className="w-[80vw] mx-auto py-5 ">
         <Formik
           initialValues={{
-            firstName: "",
-            lastName: "",
+            firstname: "",
+            lastname: "",
+            country: "vietnam",
+            phone: "",
             email: "",
             password: "",
-            gender: "male",
-            term: false,
           }}
           validationSchema={yup.object({
-            firstName: yup.string().required("Please enter your firstName"),
+            firstname: yup.string().required("Please enter your firstName"),
 
-            lastName: yup.string().required("Please enter your lastName"),
+            lastname: yup.string().required("Please enter your lastName"),
 
             email: yup
               .string()
@@ -45,27 +84,32 @@ const RegisterForm = () => {
                 }
               )
               .required("Please enter your password"),
-            gender: yup
-              .string()
-              .required("Please select your gender")
-              .oneOf(
-                ["male", "female", "other"],
-                "You can only select male or female or other"
-              ),
-            term: yup
-              .boolean()
-              .oneOf([true], "Please check the term and conditions"),
+            country: yup.string().required("Please select your country"),
+            // gender: yup
+            //   .string()
+            //   .required("Please select your gender")
+            //   .oneOf(
+            //     ["male", "female", "other"],
+            //     "You can only select male or female or other"
+            //   ),
+
+            phone: yup.number().required("Please enter your phone number"),
+            // term: yup
+            //   .boolean()
+            //   .oneOf([true], "Please check the term and conditions"),
           })}
           onSubmit={(values, { setSubmitting, resetForm }) => {
+            handleSubmit(values);
             setTimeout(() => {
               console.log(JSON.stringify(values, null, 2));
+
               setSubmitting(false);
               resetForm();
             }, 5000);
           }}
         >
           {(formik) => {
-            const watchGender = formik.values.gender;
+            // const watchGender = formik.values.gender;
 
             return (
               <form
@@ -74,16 +118,16 @@ const RegisterForm = () => {
                 autoComplete="off"
               >
                 <InputForm
-                  name="firstName"
+                  name="firstname"
                   placeholder="Enter your FirstName"
-                  id="firstName"
+                  id="firstname"
                   label="FirstName"
                   type="text"
                 ></InputForm>
                 <InputForm
-                  name="lastName"
+                  name="lastname"
                   placeholder="Enter your LastName"
-                  id="username"
+                  id="lastname"
                   label="LastName"
                   type="text"
                 ></InputForm>
@@ -94,6 +138,14 @@ const RegisterForm = () => {
                   label="Email address"
                   type="email"
                 ></InputForm>
+
+                <InputForm
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  id="phone"
+                  label="Phone number"
+                  type="text"
+                ></InputForm>
                 <InputForm
                   name="password"
                   placeholder="Enter your password"
@@ -101,7 +153,14 @@ const RegisterForm = () => {
                   label="Password"
                   type="password"
                 ></InputForm>
-                <div className="flex flex-col gap-3 mb-5">
+                <DropdownFormik
+                  labelText="Country"
+                  data={contryData}
+                  dropdownLabel="Select your country"
+                  name="country"
+                  setValue={formik.setFieldValue}
+                ></DropdownFormik>
+                {/* <div className="flex flex-col gap-3 mb-5">
                   <label className="cursor-pointer">Gender</label>
                   <div className="flex items-center gap-5">
                     <RadioForm
@@ -123,11 +182,11 @@ const RegisterForm = () => {
                       content="Other"
                     ></RadioForm>
                   </div>
-                </div>
+                </div> */}
 
-                <CheckboxForm name="term">
+                {/* <CheckboxForm name="term">
                   I accept the terms and conditions
-                </CheckboxForm>
+                </CheckboxForm> */}
                 <button
                   type="submit"
                   disabled={formik.isSubmitting}

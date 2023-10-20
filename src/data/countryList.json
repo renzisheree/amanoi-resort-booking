@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "text": "Việt Nam",
+    "value": "vietnam"
+  },
+  {
+    "id": 2,
+    "text": "United States",
+    "value": "us"
+  },
+  {
+    "id": 3,
+    "text": "United Kingdom",
+    "value": "uk"
+  },
+  {
+    "id": 4,
+    "text": "Brazil",
+    "value": "brazil"
+  },
+  {
+    "id": 5,
+    "text": "Australia",
+    "value": "aus"
+  }
+]

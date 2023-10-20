@@ -40,7 +40,7 @@ const DropdownFormik = ({
   }, [field.value, dropdownLabel]);
 
   return (
-    <div className="flex flex-col gap-3 mb-5 ml-5">
+    <div className="flex flex-col gap-3 mb-5 ">
       <label className="cursor-pointer">{labelText}</label>
 
       <div className="relative" ref={nodeRef}>

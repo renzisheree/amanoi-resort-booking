@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import NavigationItem from "./NavigationItem";
+import Cookies from "js-cookie";
 
 const NavigationBar = () => {
   const [isSticky, setSticky] = useState(false);
+  const tokenCookie = Cookies.get("token");
+  console.log(tokenCookie);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +32,11 @@ const NavigationBar = () => {
         <NavigationItem>Ưu đãi độc quyền</NavigationItem>
         <NavigationItem>Getting here</NavigationItem>
         <NavigationItem>Liên hệ</NavigationItem>
+        {tokenCookie ? (
+          <NavigationItem path="profile">Hello Customer</NavigationItem>
+        ) : (
+          <NavigationItem path="login">Sign In</NavigationItem>
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import LoginForm from "../components/LoginForm";
+import Cookies from "js-cookie";
 
+const token_cookie = Cookies.get("token");
 const LoginPage = () => {
   return (
     <div>
