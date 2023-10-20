@@ -1,8 +1,17 @@
 import LoginForm from "../components/LoginForm";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
-const token_cookie = Cookies.get("token");
+import { useNavigate } from "react-router-dom";
+
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const token_cookie = Cookies.get("token");
+  useEffect(() => {
+    if (token_cookie != null) {
+      navigate("/profile");
+    }
+  });
   return (
     <div>
       <div className="my-5">

@@ -5,14 +5,6 @@ import ViewCard from "../components/ViewCard";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import LoadingSkeleton from "../components/loading/LoadingSkeleton";
-// interface DetailPata {
-//   id: string;
-//   name: string;
-//   path: string;
-//   description: string;
-//   imageCover: string[];
-//   imageThumbnail: string[];
-// }
 
 interface amenProps {
   name: string;

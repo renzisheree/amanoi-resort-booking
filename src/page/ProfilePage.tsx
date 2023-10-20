@@ -19,6 +19,9 @@ const ProfilePage = () => {
   });
   const cookieValue = Cookies.get("token");
 
+  const handleDeleteCookies = () => {
+    Cookies.remove("token");
+  };
   if (cookieValue) {
     axios
       .get(`http://localhost:3000/auth/me`, {
@@ -46,6 +49,7 @@ const ProfilePage = () => {
         <span>{profileData.phone}</span>
         <span>{profileData.email}</span>
         <span>{profileData.country}</span>
+        <button onClick={handleDeleteCookies}>Clear</button>
       </div>
     </div>
   ) : (

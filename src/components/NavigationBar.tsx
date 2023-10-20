@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import NavigationItem from "./NavigationItem";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
   const [isSticky, setSticky] = useState(false);
-  const tokenCookie = Cookies.get("token");
-  console.log(tokenCookie);
+
+  const token_cookie = Cookies.get("token");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,10 +34,10 @@ const NavigationBar = () => {
         <NavigationItem>Ưu đãi độc quyền</NavigationItem>
         <NavigationItem>Getting here</NavigationItem>
         <NavigationItem>Liên hệ</NavigationItem>
-        {tokenCookie ? (
-          <NavigationItem path="profile">Hello Customer</NavigationItem>
-        ) : (
+        {token_cookie == null ? (
           <NavigationItem path="login">Sign In</NavigationItem>
+        ) : (
+          <NavigationItem path="profile">Hello Customer</NavigationItem>
         )}
       </div>
     </div>
