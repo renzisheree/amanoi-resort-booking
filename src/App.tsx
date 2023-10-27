@@ -16,6 +16,8 @@ import EventPage from "./page/EventPage";
 import AdvanturePage from "./page/AdvanturePage";
 import ReservationPage from "./page/ReservationPage";
 import ProfilePage from "./page/ProfilePage";
+import BookingStep2 from "./page/BookingStep2";
+import SelectRoom from "./components/SelectRoom";
 
 function App() {
   return (
@@ -30,7 +32,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/booking"
             element={
@@ -39,7 +40,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/foods"
             element={
@@ -48,7 +48,14 @@ function App() {
               </>
             }
           ></Route>
-
+          <Route
+            path="/booking/step-2"
+            element={
+              <>
+                <SelectRoom></SelectRoom>
+              </>
+            }
+          ></Route>{" "}
           <Route
             path="/details/:path/:slug"
             element={
@@ -57,7 +64,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/adventure"
             element={
@@ -66,7 +72,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/events"
             element={
@@ -75,7 +80,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/images"
             element={
@@ -92,7 +96,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/reservations"
             element={
@@ -117,7 +120,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/healthcare"
             element={
@@ -126,7 +128,6 @@ function App() {
               </>
             }
           ></Route>
-
           <Route
             path="/register"
             element={

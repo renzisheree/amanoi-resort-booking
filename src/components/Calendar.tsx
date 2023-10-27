@@ -6,6 +6,7 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import isBetween from "dayjs/plugin/isBetween";
 import DropDownData from "../data/dropdownData.json";
 import * as yup from "yup";
+import countData from "../data/countData.json";
 import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
 useField;
@@ -15,10 +16,21 @@ interface DateRange {
   startDate: Dayjs | null;
   endDate: Dayjs | null;
 }
-
+interface FormValues {
+  room: string;
+  adult: string;
+  children: string;
+  startDate: string;
+  endDate: string;
+}
 export default function Calendar() {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
+
+  const [submittedData, setSubmittedData] = useState<FormValues>(
+    {} as FormValues
+  );
+
   const [range, setRange] = useState<DateRange>({
     startDate: null,
     endDate: null,
@@ -175,6 +187,8 @@ export default function Calendar() {
             room: "",
             adult: "",
             children: "",
+            startDate: "",
+            endDate: "",
           }}
           validationSchema={yup.object({
             room: yup.number().required("Please choose number of room(s)"),
@@ -190,10 +204,13 @@ export default function Calendar() {
           })}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
-              console.log(range.startDate?.toDate().toDateString());
-              console.log(range.endDate?.toDate().toDateString());
-
+              values.startDate = range.startDate
+                ? dayjs(range.startDate).format("DD-MM-YYYY")
+                : "";
+              values.endDate = range.endDate
+                ? dayjs(range.endDate).format("DD-MM-YYYY")
+                : "";
+              setSubmittedData(values);
               setSubmitting(false);
               resetForm();
             }, 5000);
@@ -215,14 +232,14 @@ export default function Calendar() {
                 ></DropdownFormik>{" "}
                 <DropdownFormik
                   labelText="Number of adults"
-                  data={DropDownData}
+                  data={countData}
                   dropdownLabel="Number of adults"
                   name="adult"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>{" "}
                 <DropdownFormik
                   labelText="Number of children"
-                  data={DropDownData}
+                  data={countData}
                   dropdownLabel="Number of childrens"
                   name="children"
                   setValue={formik.setFieldValue}

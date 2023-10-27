@@ -46,41 +46,6 @@ const RoomListPage = () => {
 
   const { items } = data;
 
-  // const { items };
-
-  // const {
-  //   path,
-  //   name,
-  //   inclusions,
-  //   description,
-  //   title,
-  //   room,
-  // }: {
-  //   path: string;
-  //   name: string;
-  //   inclusions: string[];
-  //   description: string;
-  //   title: string;
-  //   room: string[];
-  // } = data;
-  // data.items.map((info) => {
-  //   const {
-  //     path,
-  //     name,
-  //     inclusions, // Corrected property name
-  //     description,
-  //     title,
-  //     rooms,
-  //   }: {
-  //     path: string;
-  //     name: string;
-  //     inclusions: string[]; // Corrected property name
-  //     description: string;
-  //     title: string;
-  //     rooms: string[];
-  //   } = info;
-  // console.log({ path, name, inclusions, description, title, rooms });
-  // });
   return (
     <div className="p-10">
       {loadingSecond && (
