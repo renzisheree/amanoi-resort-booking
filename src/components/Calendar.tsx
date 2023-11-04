@@ -9,6 +9,9 @@ import * as yup from "yup";
 import countData from "../data/countData.json";
 import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
 useField;
 dayjs.extend(isBetween);
 
@@ -16,20 +19,12 @@ interface DateRange {
   startDate: Dayjs | null;
   endDate: Dayjs | null;
 }
-interface FormValues {
-  room: string;
-  adult: string;
-  children: string;
-  startDate: string;
-  endDate: string;
-}
 export default function Calendar() {
+  const navigate = useNavigate();
+
+  const [data, setData] = useState({});
   const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
-
-  const [submittedData, setSubmittedData] = useState<FormValues>(
-    {} as FormValues
-  );
 
   const [range, setRange] = useState<DateRange>({
     startDate: null,
@@ -141,21 +136,21 @@ export default function Calendar() {
                   <h1
                     className={cn(
                       currentMonth ? "" : "text-gray-400",
-                      today ? "bg-[#54524F] text-white" : "",
+                      today ? "bg-[#a32828] opacity-50 text-white" : "",
                       range.startDate &&
                         range.startDate?.toDate().toDateString() ===
                           date.toDate().toDateString()
-                        ? "bg-green-500 text-white hover:clear-both"
+                        ? "bg-[#aeaca8] text-white hover:clear-both"
                         : "",
-                      isDateInRange(date) ? "bg-pink-400" : "",
+                      isDateInRange(date) ? "bg-[#313131] text-white" : "",
 
-                      isPastDate(date) ? "opacity-50 hover:clear-both" : "",
+                      isPastDate(date) ? "opacity-30 hover:clear-both" : "",
                       range.endDate &&
                         range.endDate?.toDate().toDateString() ===
                           date.toDate().toDateString()
-                        ? "bg-red-500 text-white hover:clear-both"
+                        ? "bg-[#aeaca8] text-white hover:clear-both"
                         : "",
-                      "h-10 w-10 rounded-sm grid place-content-center hover:bg-gray-500 hover:text-white transition-all cursor-pointer select-none"
+                      "h-10 w-10 rounded-sm grid  place-content-center hover:bg-gray-500 hover:text-white transition-all cursor-pointer select-none"
                     )}
                     onClick={() => {
                       selectDateHandler(date);
@@ -210,9 +205,32 @@ export default function Calendar() {
               values.endDate = range.endDate
                 ? dayjs(range.endDate).format("DD-MM-YYYY")
                 : "";
-              setSubmittedData(values);
+
+              // const { data } = axios.post(
+              //   `http://localhost:3000/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values?.adult}&children=${values?.children}`
+              // )
+
+              axios
+                .post(
+                  `http://localhost:3000/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
+                )
+                .then((response) => {
+                  setData(response.data);
+
+                  // pass state to navigate
+
+                  navigate("/booking/step-2", {
+                    state: { data: response.data, values: values },
+                  });
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+
               setSubmitting(false);
               resetForm();
+
+              <Link to="/booking/step-2" state={{ data, values }}></Link>;
             }, 5000);
           }}
         >
@@ -248,7 +266,7 @@ export default function Calendar() {
                 <button
                   type="submit"
                   disabled={formik.isSubmitting}
-                  className="w-full p-5 mt-5 font-semibold text-white bg-blue-500 rounded-lg"
+                  className="w-full p-5 mt-5 font-semibold text-white bg-[#54524F] rounded-lg"
                 >
                   {formik.isSubmitting ? (
                     <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>

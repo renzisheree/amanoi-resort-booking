@@ -17,7 +17,7 @@ import AdvanturePage from "./page/AdvanturePage";
 import ReservationPage from "./page/ReservationPage";
 import ProfilePage from "./page/ProfilePage";
 import BookingStep2 from "./page/BookingStep2";
-import SelectRoom from "./components/SelectRoom";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -52,7 +52,7 @@ function App() {
             path="/booking/step-2"
             element={
               <>
-                <SelectRoom></SelectRoom>
+                <BookingStep2></BookingStep2>
               </>
             }
           ></Route>{" "}
@@ -109,6 +109,14 @@ function App() {
             element={
               <>
                 <ProfilePage></ProfilePage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/booking/reservation"
+            element={
+              <>
+                <ReservationPage></ReservationPage>
               </>
             }
           ></Route>

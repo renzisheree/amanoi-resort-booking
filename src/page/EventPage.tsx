@@ -1,12 +1,21 @@
+import ViewCard from "../components/ViewCard";
 import eventData from "../data/eventData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
+import eventSwiperData from "../data/eventSwiperData.json";
+
+interface eventSwiperDataProps {
+  id: number;
+  img: string;
+  title: string;
+  paragraph: string;
+}
 const EventPage = () => {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center gap-10">
       <div className="flex justify-center items-center flex-col">
         <h1 className="">Tiệc cưới và sự kiện tại Amanoi</h1>
 
-        <div className="w-full flex flex-col items-center  ">
+        <div className=" mx-auto flex flex-col items-center justify-center">
           <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
             {eventData.length > 0 &&
               eventData.map((item) => (
@@ -81,6 +90,30 @@ const EventPage = () => {
               ghế tựa sofa bọc da và nhâm nhi những ly cocktail.
             </p>{" "}
           </span>
+        </div>
+
+        <h1 className="text-3xl font-medium italic my-5">
+          Các địa điểm tổ chức
+        </h1>
+        <h1 className="text-3xl font-medium italic">
+          Cá nhân hoá trải nghiệm và chú trọng tới chi tiết
+        </h1>
+
+        <div className="swiper-list2 flex items-center justify-center rounded-lg">
+          <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
+            {eventSwiperData &&
+              eventSwiperData.map((item: eventSwiperDataProps) => (
+                <SwiperSlide>
+                  <ViewCard
+                    cardImg={item.img}
+                    cardTitle={item.title}
+                    cardParagraph={item.paragraph}
+                    bgWhite={true}
+                    button={false}
+                  ></ViewCard>
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
       </div>
     </div>

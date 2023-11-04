@@ -8,14 +8,6 @@ import MiddleLogo from "./MiddleLogo";
 import contryData from "../data/countryList.json";
 import DropdownFormik from "./DropdownFormik";
 
-const newUser = {
-  firstname: "le",
-  lastname: "quang",
-  phone: "0913464425",
-  country: "Indo",
-  email: "thanhquang.5@gmail.com",
-  password: "imluongz@123aA",
-};
 interface RegisterProps {
   firstname: string;
   lastname: string;
@@ -27,7 +19,6 @@ interface RegisterProps {
 }
 
 const RegisterForm = () => {
-  console.log(newUser);
   const handleSubmit = (values: RegisterProps) => {
     console.log(values);
     const data = JSON.stringify(values);

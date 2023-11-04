@@ -64,7 +64,7 @@ body {
 .custom-radio input:checked + div {
   @apply bg-blue-500;
 
-  box-shadow: 0 0 0 2.5px white,
+  box-shadtow: 0 0 0 2.5px white,
     0 0 0 5px rgb(59 130 246 / var(--tw-bg-opacity));
 }
 .custom-checkbox input:checked + div .custom-checkbox-square {

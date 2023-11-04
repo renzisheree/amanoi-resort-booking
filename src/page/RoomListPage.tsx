@@ -43,7 +43,6 @@ const RoomListPage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
   if (!data) return null;
-
   const { items } = data;
 
   return (
