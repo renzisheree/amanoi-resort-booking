@@ -102,3 +102,40 @@ body {
   width: 100%;
   height: 100vh;
 }
+
+.fade-in {
+  animation: fadeInAnimation 0.5s ease-in;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dropdown {
+  animation: dropdownAnimation 0.5s ease-in;
+}
+
+@keyframes dropdownAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in;
+}
+
+.hidden {
+  transform: translateY(100%);
+}

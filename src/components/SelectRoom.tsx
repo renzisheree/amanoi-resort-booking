@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import RoomSearchCard from "./RoomSearchCard";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
+
 interface RoomProps {
   name: string;
   _id: string;
@@ -11,9 +14,14 @@ interface RoomProps {
   imageThumbnail: string[];
 
   price: number;
+  path: string;
+  slug: string;
+  roomType: [];
 }
 
 const SelectRoom = () => {
+  const navigate = useNavigate();
+
   const [addedRooms, setAddedRooms] = useState<{ [key: string]: RoomProps }>(
     {}
   );
@@ -25,30 +33,19 @@ const SelectRoom = () => {
   }, []);
   useEffect(() => {
     localStorage.setItem("rooms", JSON.stringify(addedRooms));
-    window.location.reload();
   }, [addedRooms]);
 
   const location = useLocation();
   const { data } = location.state;
 
   if (!data) return null;
-
-  const isRoomAlreadyAdded = (roomId: string) => {
-    const existingRooms = localStorage.getItem("rooms");
-    if (existingRooms) {
-      const parsedRooms = JSON.parse(existingRooms);
-      return roomId in parsedRooms;
-    }
-    return false;
-  };
-
   const handleAdd = (room: RoomProps) => {
     setAddedRooms((prevRooms) => ({
       ...prevRooms,
       [room._id]: room,
     }));
   };
-
+  console.log(data.data.items);
   return (
     <div>
       <div className=" mx-auto max-w-[1200px] p-10  flex flex-col justify-start items-start gap-10  rounded-3xl">
@@ -60,7 +57,7 @@ const SelectRoom = () => {
             className="flex mt-5   w-full bg-white justify-evenly items-center p-10 gap-5 shadow-lg "
             key={index}
           >
-            <div className="max-w-[300px] ">
+            <div className="max-w-[400px] ">
               <RoomSearchCard
                 key={index}
                 imageUrl={item.imageThumbnail}
@@ -68,14 +65,20 @@ const SelectRoom = () => {
             </div>
             <div className="flex flex-col justify-center gap-2 items-start">
               <div className="">
-                <span>{item.name}</span>
+                <span className="text-2xl font-medium">{item.name}</span>
               </div>
 
               <div className="font-body font-bold">
                 <span>{item.price}$</span>
               </div>
 
-              <a href="" className="font-medium">
+              <a
+                href=""
+                className="underline"
+                onClick={() => {
+                  navigate(`/details/${item.roomType.path}/${item.slug}`);
+                }}
+              >
                 Chi tiết phòng :
               </a>
 
@@ -101,17 +104,20 @@ const SelectRoom = () => {
                 </span>
 
                 <span className="flex justify-center items-center gap-5">
-                  <button className="px-5 py-2 bg-[#404040] rounded-lg text-white">
+                  <button
+                    onClick={handleNavigation}
+                    className="px-5 py-2 bg-[#404040] rounded-lg text-white"
+                  >
                     Book now
                   </button>
                   <button
                     onClick={() => {
                       handleAdd(item);
+                      window.location.reload();
                     }}
                     className="px-5 py-2 bg-[#404040] rounded-lg text-white"
                   >
-                    {" "}
-                    {isRoomAlreadyAdded(item._id) ? (
+                    {/* {isRoomAlreadyAdded(item._id) ? (
                       <svg
                         width="20px"
                         height="20px"
@@ -129,7 +135,8 @@ const SelectRoom = () => {
                       </svg>
                     ) : (
                       "Add"
-                    )}
+                    )} */}
+                    Add
                   </button>
                 </span>
               </div>

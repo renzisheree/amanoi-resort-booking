@@ -8,14 +8,6 @@ interface cartProps {
   adult: number;
 }
 
-interface roomProps {
-  _id: string;
-  name: string;
-  range: number;
-  price: number;
-  fee: number;
-}
-
 const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
   const localStorageData = localStorage.getItem("rooms");
   const data = localStorageData
@@ -35,26 +27,31 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
   const range = dayjs(newEndDate).diff(newStartDate, "day");
 
   return (
-    <div className="flex ">
+    <div className="flex border-[1px] shadow-md border-gray-300 p-5 ">
       <div className="">
-        <div className="">
-          <h1>Thông tin lưu trú của bạn</h1>
+        <div className="flex flex-col gap-3">
+          <h1 className="text-lg">Thông tin lưu trú của bạn</h1>
 
-          <div className="">
-            <span>
-              Nhận phòng <br />
+          <div className="flex gap-10">
+            <div className="">
+              {" "}
+              <span className="font-bold">Nhận phòng </span> <br />
               Sau 15:00
-            </span>
-            <span>
-              Trả phòng <br />
+            </div>
+            <div className="">
+              {" "}
+              <span className="font-bold">Trả phòng </span>
+              <br />
               Sau 12:00
-            </span>
+            </div>
           </div>
           <hr />
         </div>
-        {data.map((item: roomProps, index: number) => (
+        {data.map((item, index: number) => (
           <div key={index} className="shadow-lg mt-3">
             <CardRoom
+              path={item.path}
+              slug={item.slug}
               key={index}
               startDate={startDate}
               endDate={endDate}

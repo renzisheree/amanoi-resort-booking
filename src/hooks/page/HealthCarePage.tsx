@@ -1,8 +1,8 @@
 import React from "react";
-import HealthCareCard from "../components/HealthCareCard";
+import HealthCareCard from "../../components/HealthCareCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import healthData from "../data/healthCareData.json";
+import healthData from "../../data/healthCareData.json";
 
 const HealthCarePage = () => {
   return (

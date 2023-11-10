@@ -1,9 +1,9 @@
-import { useLocation } from "react-router-dom";
-import BookingBar from "../components/BookingBar";
+import { useLocation, useNavigate } from "react-router-dom";
+import BookingBar from "../../components/BookingBar";
 import dayjs from "dayjs";
 import { useState, useEffect } from "react";
-import RoomSearchCard from "../components/RoomSearchCard";
-import CardRoom from "../components/CardRoom";
+import RoomSearchCard from "../../components/RoomSearchCard";
+import CardRoom from "../../components/CardRoom";
 
 const BookingStep2 = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ const BookingStep2 = () => {
       <section className=" w-[100%]  relative flex flex-col h-[350px] bg-[url('https://be-cms-api.synxis.com/assets/chain/16840/hotel/62469/fileStorage/image/BE_Amanoi.png')] bg-cover bg-no-repeat bg-center">
         <div className="flex-grow"></div>
         <div className="w-[40%] flex flex-col gap-3 h-[200px]  bottom-0 left-0 overflow-hidden opacity-70 bg-[#DEDFDB] p-5">
-          <span className="text-2xl ">Amanoi</span>
+          <span className="text-xl ">Amanoi</span>
           <span className="flex gap-1">
             <svg
               width="20px"
@@ -174,9 +174,15 @@ interface RoomProps {
   imageThumbnail: string[];
 
   price: number;
+  path: string;
+  slug: string;
+  roomType: [];
 }
 
 const SelectRoom = () => {
+  const handleNavigation = () => {
+    navigate("/reservations", { replace: true });
+  };
   const [addedRooms, setAddedRooms] = useState<{ [key: string]: RoomProps }>(
     {}
   );
@@ -192,6 +198,7 @@ const SelectRoom = () => {
 
   const location = useLocation();
   const { data } = location.state;
+  const navigate = useNavigate();
 
   if (!data) return null;
   const handleAdd = (room: RoomProps) => {
@@ -200,7 +207,7 @@ const SelectRoom = () => {
       [room._id]: room,
     }));
   };
-
+  console.log(data.data.items);
   return (
     <div>
       <div className=" mx-auto max-w-[1200px] p-10  flex flex-col justify-start items-start gap-10  rounded-3xl">
@@ -212,7 +219,7 @@ const SelectRoom = () => {
             className="flex mt-5   w-full bg-white justify-evenly items-center p-10 gap-5 shadow-lg "
             key={index}
           >
-            <div className="max-w-[300px] ">
+            <div className="max-w-[400px] ">
               <RoomSearchCard
                 key={index}
                 imageUrl={item.imageThumbnail}
@@ -220,14 +227,20 @@ const SelectRoom = () => {
             </div>
             <div className="flex flex-col justify-center gap-2 items-start">
               <div className="">
-                <span>{item.name}</span>
+                <span className="text-2xl font-medium">{item.name}</span>
               </div>
 
               <div className="font-body font-bold">
                 <span>{item.price}$</span>
               </div>
 
-              <a href="" className="font-medium">
+              <a
+                href=""
+                className="underline"
+                onClick={() => {
+                  navigate(`/details/${item.roomType.path}/${item.slug}`);
+                }}
+              >
                 Chi tiết phòng :
               </a>
 
@@ -253,37 +266,20 @@ const SelectRoom = () => {
                 </span>
 
                 <span className="flex justify-center items-center gap-5">
-                  <button className="px-5 py-2 bg-[#404040] rounded-lg text-white">
+                  <button
+                    onClick={handleNavigation}
+                    className="px-5 py-2 bg-[#404040] rounded-lg text-white"
+                  >
                     Book now
                   </button>
                   <button
                     onClick={() => {
                       handleAdd(item);
-                      setTimeout(() => {
-                        window.location.reload();
-                      }, [1000]);
+                      window.location.reload();
                     }}
                     className="px-5 py-2 bg-[#404040] rounded-lg text-white"
                   >
-                    {/* {isRoomAlreadyAdded(item._id) ? (
-                      <svg
-                        width="20px"
-                        height="20px"
-                        viewBox="0 -0.5 25 25"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5.5 12.5L10.167 17L19.5 8"
-                          stroke="#000000"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    ) : (
-                      "Add"
-                    )} */}
+                    {" "}
                     Add
                   </button>
                 </span>

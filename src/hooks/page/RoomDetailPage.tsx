@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import listImage from "../data/listImage.json";
+import listImage from "../../data/listImage.json";
 import { useNavigate } from "react-router-dom";
-import ViewCard from "../components/ViewCard";
+import ViewCard from "../../components/ViewCard";
 import { useParams } from "react-router-dom";
-import useAxios from "../hooks/useAxios";
-import LoadingSkeleton from "../components/loading/LoadingSkeleton";
+import useAxios from "../useAxios";
+import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
 
 interface amenProps {
   name: string;

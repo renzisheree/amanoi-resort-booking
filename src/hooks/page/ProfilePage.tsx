@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileProps {
   firstname: string;
@@ -17,10 +18,12 @@ const ProfilePage = () => {
     email: "",
     country: "",
   });
+  const navigate = useNavigate();
   const cookieValue = Cookies.get("token");
 
   const handleDeleteCookies = () => {
     Cookies.remove("token");
+    navigate("/register");
   };
   if (cookieValue) {
     axios
@@ -49,7 +52,14 @@ const ProfilePage = () => {
         <span>{profileData.phone}</span>
         <span>{profileData.email}</span>
         <span>{profileData.country}</span>
-        <button onClick={handleDeleteCookies}>Clear</button>
+        <button
+          onClick={handleDeleteCookies}
+          className="px-5 py-2 border bg-[#E6E2DB] {
+          
+        }] "
+        >
+          Đăng xuất
+        </button>
       </div>
     </div>
   ) : (

@@ -1,4 +1,4 @@
-import ViewCard from "../components/ViewCard";
+import ViewCard from "../../components/ViewCard";
 import { useNavigate } from "react-router-dom";
 // import { amanoiAPI } from "../apiConfig/apiConfig";
 

@@ -105,9 +105,20 @@ const LoginForm = () => {
                 {formik.isSubmitting ? (
                   <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
                 ) : (
-                  "Submit"
+                  "Login"
                 )}
               </button>
+              <h1>
+                Bạn chưa có tài khoản?{" "}
+                <span
+                  onClick={() => {
+                    navigate("/register");
+                  }}
+                  className="underline text-lg"
+                >
+                  Đăng ký
+                </span>
+              </h1>
             </form>
           );
         }}

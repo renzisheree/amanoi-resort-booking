@@ -1,7 +1,7 @@
-import ViewCard from "../components/ViewCard";
-import eventData from "../data/eventData.json";
+import ViewCard from "../../components/ViewCard";
+import eventData from "../../data/eventData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
-import eventSwiperData from "../data/eventSwiperData.json";
+import eventSwiperData from "../../data/eventSwiperData.json";
 
 interface eventSwiperDataProps {
   id: number;

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React from "react";
 interface CardRoomProps {
   startDate: string;
   endDate: string;
@@ -23,19 +22,13 @@ const CardRoom: React.FC<CardRoomProps> = ({
   fee,
   _id,
 }) => {
-  useEffect(() => {
-    // Save the scroll position before reloading
-    const scrollPosition = window.scrollY;
-
-    // Scroll back to the saved position after reloading
-    window.scrollTo(0, scrollPosition);
-  }, []);
   const handleDelete = (_id: string) => {
     const localStorageData = localStorage.getItem("rooms");
     const data = localStorageData
       ? Object.values(JSON.parse(localStorageData))
       : [];
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const updatedData = data.filter((item: any) => item._id !== _id);
 
     localStorage.setItem("rooms", JSON.stringify(updatedData));
@@ -55,7 +48,7 @@ const CardRoom: React.FC<CardRoomProps> = ({
       <div className=" flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center">
           {" "}
-          <span>{roomName}</span>
+          <span className="text-2xl font-medium">{roomName}</span>
           <span>Standard Daily Rate</span>
         </div>
         <div className="">{price}$ - day</div>

@@ -22,7 +22,7 @@ interface DateRange {
 export default function Calendar() {
   const navigate = useNavigate();
 
-  const [data, setData] = useState({});
+  const [data, setData1] = useState({});
   const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
 
@@ -30,8 +30,6 @@ export default function Calendar() {
     startDate: null,
     endDate: null,
   });
-
-  // console.log(currentDate);
 
   const [today, setToday] = useState(currentDate);
   const selectDateHandler = (date: Dayjs) => {
@@ -206,18 +204,14 @@ export default function Calendar() {
                 ? dayjs(range.endDate).format("DD-MM-YYYY")
                 : "";
 
-              // const { data } = axios.post(
-              //   `http://localhost:3000/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values?.adult}&children=${values?.children}`
-              // )
+              localStorage.setItem("bookingData", JSON.stringify(values));
 
               axios
                 .post(
                   `http://localhost:3000/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
                 )
                 .then((response) => {
-                  setData(response.data);
-
-                  // pass state to navigate
+                  setData1(response.data);
 
                   navigate("/booking/step-2", {
                     state: { data: response.data, values: values },
@@ -231,7 +225,7 @@ export default function Calendar() {
               resetForm();
 
               <Link to="/booking/step-2" state={{ data, values }}></Link>;
-            }, 5000);
+            }, 3000);
           }}
         >
           {(formik) => {
@@ -263,17 +257,19 @@ export default function Calendar() {
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>
                 <div className=" flex w-full"></div>
-                <button
-                  type="submit"
-                  disabled={formik.isSubmitting}
-                  className="w-full p-5 mt-5 font-semibold text-white bg-[#54524F] rounded-lg"
-                >
-                  {formik.isSubmitting ? (
-                    <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
+                <div className="bg-[#54524F] rounded-lg">
+                  <button
+                    type="submit"
+                    disabled={formik.isSubmitting}
+                    className="smtbtn w-full p-5 font-semibold text-white bg-[#54524F] rounded-lg"
+                  >
+                    {formik.isSubmitting ? (
+                      <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparentanimate-spin"></div>
+                    ) : (
+                      "Submit"
+                    )}
+                  </button>
+                </div>
               </form>
             );
           }}

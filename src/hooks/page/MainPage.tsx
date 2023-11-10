@@ -1,8 +1,8 @@
-import VideoAutoplay from "../components/VideoAutoplay";
-import ResortList from "../components/ResortList";
-import ViewCard from "../components/ViewCard";
+import VideoAutoplay from "../../components/VideoAutoplay";
+import ResortList from "../../components/ResortList";
+import ViewCard from "../../components/ViewCard";
 import { useState } from "react";
-import NearbyResortList from "../components/NearbyResortList";
+import NearbyResortList from "../../components/NearbyResortList";
 
 const MainPage = () => {
   const [isShow, setShow] = useState(false);

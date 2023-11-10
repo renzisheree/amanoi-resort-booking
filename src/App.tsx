@@ -2,22 +2,22 @@ import "./index.scss";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Route, Routes } from "react-router-dom";
 
-import MainPage from "./page/MainPage";
-import RegisterPage from "./page/RegisterPage";
-import LoginPage from "./page/LoginPage";
-import ImagePage from "./page/ImagePage";
-import BookingPage from "./page/BookingPage";
+import MainPage from "./hooks/page/MainPage";
+import RegisterPage from "./hooks/page/RegisterPage";
+import LoginPage from "./hooks/page/LoginPage";
+import ImagePage from "./hooks/page/ImagePage";
+import BookingPage from "./hooks/page/BookingPage";
 import Main from "./layout/Main";
-import FoodPage from "./page/FoodPage";
-import RoomDetailPage from "./page/RoomDetailPage";
-import RoomListPage from "./page/RoomListPage";
-import HealthCarePage from "./page/HealthCarePage";
-import EventPage from "./page/EventPage";
-import AdvanturePage from "./page/AdvanturePage";
-import ReservationPage from "./page/ReservationPage";
-import ProfilePage from "./page/ProfilePage";
-import BookingStep2 from "./page/BookingStep2";
-import Cart from "./components/Cart";
+import FoodPage from "./hooks/page/FoodPage";
+import RoomDetailPage from "./hooks/page/RoomDetailPage";
+import RoomListPage from "./hooks/page/RoomListPage";
+import HealthCarePage from "./hooks/page/HealthCarePage";
+import EventPage from "./hooks/page/EventPage";
+import AdvanturePage from "./hooks/page/AdvanturePage";
+import ReservationPage from "./hooks/page/ReservationPage";
+import ProfilePage from "./hooks/page/ProfilePage";
+import BookingStep2 from "./hooks/page/BookingStep2";
+import ReservationRoomCard from "./components/ReservationRoomCard";
 
 function App() {
   return (
@@ -77,6 +77,14 @@ function App() {
             element={
               <>
                 <EventPage></EventPage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/test"
+            element={
+              <>
+                <ReservationRoomCard></ReservationRoomCard>
               </>
             }
           ></Route>

@@ -1,37 +1,34 @@
 import { useField } from "formik";
 
-interface InputFormikProps {
+interface TextAreaFormikProps {
   label: string;
   id: string;
   name: string;
-  type: string;
   placeholder: string;
   required?: boolean;
 }
 
-const InputForm = ({
+const TextAreaFormik = ({
   label,
   id,
   name,
-  type,
   placeholder,
   required,
-}: InputFormikProps) => {
-  const [field, meta] = useField({ name, id, type, placeholder, required });
+}: TextAreaFormikProps) => {
+  const [field, meta] = useField({ name, id, placeholder, required });
 
   return (
-    <div className="flex flex-col text-l  gap-1 mb-5">
+    <div className="flex flex-col text-l gap-3 mb-5">
       <label htmlFor={id}>{label}</label>
 
-      <input
+      <textarea
         id={id}
         {...field}
         aria-required={required}
         aria-invalid={meta.error && meta.touched ? true : false}
         placeholder={placeholder}
-        type={type}
         aria-describedby={`${name}-error`}
-        className="p-4 transition-all w-full   bg-white border border-gray-500 rounded-sm outline-none focus:border-blue-500"
+        className="p-4 transition-all  bg-white border border-gray-500 rounded-sm outline-none focus:border-blue-500"
       />
 
       {meta.touched && meta.error && (
@@ -48,4 +45,4 @@ const InputForm = ({
   );
 };
 
-export default InputForm;
+export default TextAreaFormik;
