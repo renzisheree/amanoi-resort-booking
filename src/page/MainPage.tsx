@@ -1,15 +1,52 @@
-import VideoAutoplay from "../../components/VideoAutoplay";
-import ResortList from "../../components/ResortList";
-import ViewCard from "../../components/ViewCard";
+import VideoAutoplay from "../components/VideoAutoplay";
+import ResortList from "../components/ResortList";
+import ViewCard from "../components/ViewCard";
 import { useState } from "react";
-import NearbyResortList from "../../components/NearbyResortList";
+import NearbyResortList from "../components/NearbyResortList";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const [isShow, setShow] = useState(false);
-
+  const localBooking = localStorage.getItem("bookingData");
+  const bookingData = localBooking ? JSON.parse(localBooking) : "";
+  const room = localStorage.getItem("rooms");
+  const rooms = localBooking ? JSON.parse(room) : "";
+  console.log(rooms);
   return (
     <>
       <section className="text-center z-50 ">
+        {rooms.length != 0 && bookingData != null && (
+          <div className="fixed bottom-0  r w-[96%] z-10  flex justify-between  items-center bg-white px-20 py-2  border-gray-300 border-2 rounded-lg m-5 font-mono ">
+            <div className="">
+              <h1>DESTINATION</h1>
+
+              <span>Aman, Ninh Thuan, Vietnam</span>
+            </div>
+
+            <div className="flex flex-col">
+              <span>Check in / Check out</span>
+              <span>
+                {bookingData.startDate} / {bookingData.endDate}
+              </span>
+            </div>
+            <div className="">
+              <h1>ROOMS & GUESTS</h1>
+              <span>
+                Adult : {bookingData.adult} / Children : {bookingData.children}{" "}
+                / Rooms : {bookingData.room}
+              </span>
+            </div>
+            <div
+              onClick={() => {
+                navigate("/reservations");
+              }}
+              className="bg-[#3B504C] rounded-full p-3 text-white"
+            >
+              <button>Check</button>
+            </div>
+          </div>
+        )}
         <VideoAutoplay></VideoAutoplay>
 
         <div className=" mx-auto w-[80vw] my-10 flex flex-col justify-center items-center gap-y-4">
@@ -28,7 +65,7 @@ const MainPage = () => {
         </div>
       </section>
       <hr className=" border-gray-400 border-b-5 py-5 w-[80vw] mx-auto" />
-      <section className="page-container bg-primary">
+      <section className="page-container bg-[#]">
         <ResortList></ResortList>
       </section>
       <hr className=" border-gray-400 border-b-5 my-16 w-[80vw] mx-auto" />
@@ -55,7 +92,13 @@ const MainPage = () => {
           href="#"
           className="all:unset flex flex-col items-center w-[12vw] justify-center text-gray-500  hover:text-black  "
         >
-          <p>Xem tất cả phòng ở</p>
+          <p
+            onClick={() => {
+              navigate("/roomlists");
+            }}
+          >
+            Xem tất cả phòng ở
+          </p>
           <hr className="border-gray-400 border-b-5 py-4 w-full  mx-auto" />
         </a>
       </section>
@@ -113,10 +156,10 @@ const MainPage = () => {
             src={`${
               isShow
                 ? "https://www.aman.com/sites/default/files/styles/property_map_extra_large/public/2021-09/aman-map-south-east-asia1.jpg?itok=78dZVhlQ"
-                : "https://cdn.discordapp.com/attachments/941739362222211072/1154097101526016000/1.png"
+                : "https://www.aman.com/sites/default/files/styles/property_map_extra_large/public/2021-09/aman-map-south-east-asia1.jpg?itok=78dZVhlQ"
             }`}
             alt=""
-            className=" object-cover rounded-lg mb-5 w-[750px] h-[550px] "
+            className=" object-cover rounded-lg mb-5 w-[1100px] h-[650px] "
           />
           <div className="">
             {!isShow ? (
@@ -157,7 +200,7 @@ const MainPage = () => {
             )}
           </div>
 
-          <div className="mt-5 ">
+          <div className="mt-5 italic font-mono ">
             <span className="flex  justify-center gap-2">
               <svg
                 width="30px"

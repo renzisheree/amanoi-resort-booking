@@ -3,6 +3,7 @@ import * as yup from "yup";
 import InputForm from "./InputForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // import CheckboxForm from "./CheckboxForm";
 
@@ -33,16 +34,8 @@ const LoginForm = () => {
       .catch(function () {});
   };
 
-  // const cookieValue = Cookies.get("token");
-
-  // useEffect(() => {
-  //   if (cookieValue) {
-  //     navigate("/");
-  //   }
-  // }, [cookieValue]);
-
   return (
-    <div className=" flex flex-col items-center justify-center">
+    <div className=" flex flex-col w-full items-center justify-center">
       <Formik
         initialValues={{
           email: "",
@@ -67,18 +60,20 @@ const LoginForm = () => {
             .required("Please enter your password"),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          handleSubmit(values);
           setTimeout(() => {
             setSubmitting(false);
+
+            toast.success("Login success");
             resetForm();
-          }, 5000);
+            handleSubmit(values);
+          }, 1000);
         }}
       >
         {(formik) => {
           return (
             <form
               onSubmit={formik.handleSubmit}
-              className=" my-10"
+              className=" my-10 w-[60%]"
               autoComplete="off"
             >
               <InputForm
@@ -97,17 +92,19 @@ const LoginForm = () => {
               ></InputForm>
 
               {/* <CheckboxForm name="remember">Remember password</CheckboxForm> */}
-              <button
-                type="submit"
-                disabled={formik.isSubmitting}
-                className="w-full p-5 mt-5 font-semibold text-white bg-blue-500 rounded-lg"
-              >
-                {formik.isSubmitting ? (
-                  <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-                ) : (
-                  "Login"
-                )}
-              </button>
+              <div className="bg-[#3B504C] rounded-full">
+                <button
+                  type="submit"
+                  disabled={formik.isSubmitting}
+                  className="w-full p-5  font-semibold text-white bg-[#54524F] rounded-lg"
+                >
+                  {formik.isSubmitting ? (
+                    <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                  ) : (
+                    "Login"
+                  )}
+                </button>
+              </div>
               <h1>
                 Bạn chưa có tài khoản?{" "}
                 <span

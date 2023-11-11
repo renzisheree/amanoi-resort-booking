@@ -178,17 +178,19 @@ const RegisterForm = () => {
                 {/* <CheckboxForm name="term">
                   I accept the terms and conditions
                 </CheckboxForm> */}
-                <button
-                  type="submit"
-                  disabled={formik.isSubmitting}
-                  className="w-full p-5 mt-5 font-semibold text-white bg-blue-500 rounded-lg"
-                >
-                  {formik.isSubmitting ? (
-                    <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
+                <div className="bg-[#3B504C] rounded-full">
+                  <button
+                    type="submit"
+                    disabled={formik.isSubmitting}
+                    className="w-full p-5  font-semibold text-white bg-[#293A37] rounded-lg"
+                  >
+                    {formik.isSubmitting ? (
+                      <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                    ) : (
+                      "Đăng Ký"
+                    )}
+                  </button>
+                </div>
               </form>
             );
           }}

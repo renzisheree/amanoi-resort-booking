@@ -1,7 +1,7 @@
-import ViewCard from "../../components/ViewCard";
-import eventData from "../../data/eventData.json";
+import ViewCard from "../components/ViewCard";
+import eventData from "../data/eventData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
-import eventSwiperData from "../../data/eventSwiperData.json";
+import eventSwiperData from "../data/eventSwiperData.json";
 
 interface eventSwiperDataProps {
   id: number;
@@ -11,16 +11,16 @@ interface eventSwiperDataProps {
 }
 const EventPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center gap-10">
-      <div className="flex justify-center items-center flex-col">
-        <h1 className="">Tiệc cưới và sự kiện tại Amanoi</h1>
+    <div className="">
+      <div className="flex flex-col justify-center items-center gap-10">
+        <h1 className="text-3xl italic">Tiệc cưới và sự kiện tại Amanoi</h1>
 
-        <div className=" mx-auto flex flex-col items-center justify-center">
+        <div className="mx-auto">
           <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
             {eventData.length > 0 &&
               eventData.map((item) => (
                 <SwiperSlide key={item.id}>
-                  <img src={item.src} alt="img" />
+                  <img src={item.src} alt="img" className="w-full" />
                 </SwiperSlide>
               ))}
           </Swiper>

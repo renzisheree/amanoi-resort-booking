@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import useAxios from "../useAxios";
-import useAxiosSecond from "../useAxiosSecond";
-import RoomCard from "../../components/RoomCard";
-import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
+import useAxios from "../hooks/useAxios";
+import useAxiosSecond from "../hooks/useAxiosSecond";
+import RoomCard from "../components/RoomCard";
+import LoadingSkeleton from "../components/loading/LoadingSkeleton";
 
 interface Item {
   id: string;

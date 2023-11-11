@@ -1,4 +1,4 @@
-import ViewCard from "../../components/ViewCard";
+import ViewCard from "../components/ViewCard";
 
 const FoodPage = () => {
   return (

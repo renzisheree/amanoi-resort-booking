@@ -7,6 +7,7 @@ import countryList from "../data/countryList.json";
 import { useEffect } from "react";
 import dayjs from "dayjs";
 import axios from "axios";
+import { toast } from "react-toastify";
 interface bookingProps {
   firstname: string;
   lastname: string;
@@ -35,8 +36,11 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   const getObjectById = (id: string) => {
     const localStorageData = localStorage.getItem("rooms");
     const data = localStorageData ? JSON.parse(localStorageData) : [];
+    console.log(data);
 
-    const foundObject = data.find((item: any) => item._id === id);
+    const foundObject = Object.values(data)?.find(
+      (item: any) => item._id === id
+    );
     return foundObject;
   };
   const desiredId = _id;
@@ -76,16 +80,8 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   const newEndDate = `${month1}-${day1}-${year1}`;
 
   const range = dayjs(newEndDate).diff(newStartDate, "day");
+  const rooms: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
 
-  // const handleSubmit = (values: bookingProps) => {
-  //   values.startDate = foundObject.startDate;
-  //   values.endDate = foundObject.endDate;
-  //   values.adult = foundObject.adult;
-  //   values.children = foundObject.children;
-
-  //   const data = JSON.stringify(values);
-  //   console.log(data);
-  // };
   return (
     <div className="mx-auto py-5 ">
       <div className="text-2xl">Thông tin liên hệ</div>
@@ -174,14 +170,18 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
 
           postRawData(rawData1);
 
-          const data = JSON.stringify(values);
-          console.log(data);
           setTimeout(() => {
+            const updatedRooms = Object.values(rooms).filter(
+              (r) => r._id !== values.rooms
+            );
+            localStorage.setItem("rooms", JSON.stringify(updatedRooms));
             console.log(JSON.stringify(values));
-
+            toast.success("Booking successful");
             setSubmitting(false);
+
+            window.location.reload();
             resetForm();
-          }, 5000);
+          }, 3000);
         }}
       >
         {(formik) => {
@@ -258,17 +258,20 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
                     label="Additional"
                   ></TextAreaFormik>
                 </div>
-                <button
-                  type="submit"
-                  disabled={formik.isSubmitting}
-                  className="w-full p-5 mt-5 font-semibold text-white bg-blue-500 rounded-lg"
-                >
-                  {formik.isSubmitting ? (
-                    <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
+                <div className="bg-[#3B504C] rounded-full ">
+                  {" "}
+                  <button
+                    type="submit"
+                    disabled={formik.isSubmitting}
+                    className="w-full p-5  font-semibold text-white bg-gray-500] rounded-lg"
+                  >
+                    {formik.isSubmitting ? (
+                      <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
+                    ) : (
+                      "Book"
+                    )}
+                  </button>
+                </div>
               </div>
             </form>
           );

@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import BookingBar from "../../components/BookingBar";
+import BookingBar from "../components/BookingBar";
 import dayjs from "dayjs";
 import { useState, useEffect } from "react";
-import RoomSearchCard from "../../components/RoomSearchCard";
-import CardRoom from "../../components/CardRoom";
+import RoomSearchCard from "../components/RoomSearchCard";
+import CardRoom from "../components/CardRoom";
 
 const BookingStep2 = () => {
   const location = useLocation();
@@ -131,9 +131,9 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
     <div className=" ">
       <div className="">
         <div className="">
-          <h1>Thông tin lưu trú của bạn</h1>
+          <h1 className="text-xl ">Thông tin lưu trú của bạn</h1>
 
-          <div className="">
+          <div className="flex justify-start gap-10">
             <span>
               Nhận phòng <br />
               Sau 15:00
@@ -268,7 +268,7 @@ const SelectRoom = () => {
                 <span className="flex justify-center items-center gap-5">
                   <button
                     onClick={handleNavigation}
-                    className="px-5 py-2 bg-[#404040] rounded-lg text-white"
+                    className="px-5 py-2 bg-[#3B504C] rounded-full text-white"
                   >
                     Book now
                   </button>
@@ -277,7 +277,7 @@ const SelectRoom = () => {
                       handleAdd(item);
                       window.location.reload();
                     }}
-                    className="px-5 py-2 bg-[#404040] rounded-lg text-white"
+                    className="px-5 py-2 bg-[#3B504C] rounded-full text-white"
                   >
                     {" "}
                     Add

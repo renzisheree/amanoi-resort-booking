@@ -1,4 +1,4 @@
-import List from "../../data/listImage.json";
+import List from "../data/listImage.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
 

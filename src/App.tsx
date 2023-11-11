@@ -2,22 +2,26 @@ import "./index.scss";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Route, Routes } from "react-router-dom";
 
-import MainPage from "./hooks/page/MainPage";
-import RegisterPage from "./hooks/page/RegisterPage";
-import LoginPage from "./hooks/page/LoginPage";
-import ImagePage from "./hooks/page/ImagePage";
-import BookingPage from "./hooks/page/BookingPage";
+import MainPage from "./page/MainPage";
+import RegisterPage from "./page/RegisterPage";
+import LoginPage from "./page/LoginPage";
+import ImagePage from "./page/ImagePage";
+import BookingPage from "./page/BookingPage";
 import Main from "./layout/Main";
-import FoodPage from "./hooks/page/FoodPage";
-import RoomDetailPage from "./hooks/page/RoomDetailPage";
-import RoomListPage from "./hooks/page/RoomListPage";
-import HealthCarePage from "./hooks/page/HealthCarePage";
-import EventPage from "./hooks/page/EventPage";
-import AdvanturePage from "./hooks/page/AdvanturePage";
-import ReservationPage from "./hooks/page/ReservationPage";
-import ProfilePage from "./hooks/page/ProfilePage";
-import BookingStep2 from "./hooks/page/BookingStep2";
+import FoodPage from "./page/FoodPage";
+import RoomDetailPage from "./page/RoomDetailPage";
+import RoomListPage from "./page/RoomListPage";
+import HealthCarePage from "./page/HealthCarePage";
+import EventPage from "./page/EventPage";
+import AdvanturePage from "./page/AdvanturePage";
+import ReservationPage from "./page/ReservationPage";
+import ProfilePage from "./page/ProfilePage";
+import BookingStep2 from "./page/BookingStep2";
 import ReservationRoomCard from "./components/ReservationRoomCard";
+import { ToastContainer } from "react-toastify";
+import ExclusiveOffer from "./page/ExclusiveOfferPage";
+import "react-toastify/dist/ReactToastify.css";
+import GettingThere from "./page/GettingThere";
 
 function App() {
   return (
@@ -152,8 +156,35 @@ function App() {
               </>
             }
           ></Route>
+          <Route
+            path="/exclusive-offers-amanoi"
+            element={
+              <>
+                <ExclusiveOffer></ExclusiveOffer>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/getting-there"
+            element={
+              <>
+                <GettingThere></GettingThere>
+              </>
+            }
+          ></Route>
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        theme="light"
+      />
+      <ToastContainer />
     </>
   );
 }

@@ -27,7 +27,7 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
   const range = dayjs(newEndDate).diff(newStartDate, "day");
 
   return (
-    <div className="flex border-[1px] shadow-md border-gray-300 p-5 ">
+    <div className="flex flex-col border-[1px] shadow-md border-gray-300 p-5 ">
       <div className="">
         <div className="flex flex-col gap-3">
           <h1 className="text-lg">Thông tin lưu trú của bạn</h1>
@@ -66,7 +66,9 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
           </div>
         ))}
       </div>{" "}
-      <button>Thanh toán</button>
+      <button className="bg-[#3B504C] rounded-full p-2 text-white mt-2">
+        Thanh toán
+      </button>
     </div>
   );
 };

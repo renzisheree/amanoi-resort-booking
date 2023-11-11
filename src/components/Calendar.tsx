@@ -12,6 +12,7 @@ import DropdownFormik from "./DropdownFormik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import dropdownChil from "../data/dropdownChild.json";
 useField;
 dayjs.extend(isBetween);
 
@@ -251,22 +252,22 @@ export default function Calendar() {
                 ></DropdownFormik>{" "}
                 <DropdownFormik
                   labelText="Number of children"
-                  data={countData}
+                  data={dropdownChil}
                   dropdownLabel="Number of childrens"
                   name="children"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>
                 <div className=" flex w-full"></div>
-                <div className="bg-[#54524F] rounded-lg">
+                <div className="bg-[#3B504C] rounded-full">
                   <button
                     type="submit"
                     disabled={formik.isSubmitting}
                     className="smtbtn w-full p-5 font-semibold text-white bg-[#54524F] rounded-lg"
                   >
                     {formik.isSubmitting ? (
-                      <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparentanimate-spin"></div>
+                      <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
                     ) : (
-                      "Submit"
+                      "Search"
                     )}
                   </button>
                 </div>

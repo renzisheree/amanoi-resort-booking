@@ -55,7 +55,7 @@ const LangChooser = () => {
       </button>
 
       <button
-        className="px-6 py-2  border-black border-[0.5px] rounded-sm bg-[#E6E2DB] hover:opacity-80"
+        className="px-6 py-2  border-black border-[0.5px] text-white bg-[#3B504C] rounded-full  hover:opacity-80"
         onClick={() => {
           navigate("/booking");
         }}

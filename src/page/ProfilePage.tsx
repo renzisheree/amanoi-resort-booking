@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface ProfileProps {
   firstname: string;
@@ -23,7 +24,8 @@ const ProfilePage = () => {
 
   const handleDeleteCookies = () => {
     Cookies.remove("token");
-    navigate("/register");
+    navigate("/login");
+    toast.success("Logout successful");
   };
   if (cookieValue) {
     axios

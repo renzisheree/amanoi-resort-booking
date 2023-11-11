@@ -1,6 +1,6 @@
 import React from "react";
-import HealthCareCard from "../../components/HealthCareCard";
-import advantureData from "../../data/advantureData.json";
+import HealthCareCard from "../components/HealthCareCard";
+import advantureData from "../data/advantureData.json";
 import { SwiperSlide, Swiper } from "swiper/react";
 
 const AdvanturePage = () => {

@@ -1,4 +1,4 @@
-import BookingCalendar from "../../components/BookingCalendar";
+import BookingCalendar from "../components/BookingCalendar";
 
 // import { DateRangePicker } from "../components/ReactDateRange";
 

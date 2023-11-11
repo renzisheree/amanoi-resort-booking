@@ -24,14 +24,14 @@ const ViewCard: React.FC<ViewCardProps> = ({
     <div
       className={`${center ? "text-center items-center" : ""} flex ${
         flexCol ? "flex-col " : ""
-      } justify-between gap-y-3 w-full italic  ${
+      } justify-between gap-y-3 p-10 w-full italic  ${
         bgWhite ? "bg-white" : ""
-      } my-10 w-[${100 / slide - 5}vw] pb-5`}
+      } my-10  pb-5`}
     >
-      <img src={cardImg} alt="" className={` w-full `} />
+      <img src={cardImg} alt="" className={`w-[${100 / slide - 5}%] `} />
       <h3 className="font-light">{cardType}</h3>
-      <h1 className="text-[30px]">{cardTitle}</h1>
-      <p className="font-extralight">{cardParagraph}</p>
+      <h1 className="text-[25px]">{cardTitle}</h1>
+      <p className="font-extralight italic">{cardParagraph}</p>
       {button && (
         <a className={`text-gray-600 hover:text-black underline`}>
           {" "}

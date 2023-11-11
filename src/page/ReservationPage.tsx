@@ -1,5 +1,5 @@
-import Cart from "../../components/Cart";
-import ReservationRoomCard from "../../components/ReservationRoomCard";
+import Cart from "../components/Cart";
+import ReservationRoomCard from "../components/ReservationRoomCard";
 import { TEInput } from "tw-elements-react";
 
 const ReservationPage = () => {
