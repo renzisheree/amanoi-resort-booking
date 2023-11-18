@@ -3,7 +3,7 @@ import MiddleLogo from "../components/MiddleLogo";
 import LangChooser from "../components/LangChooser";
 const Header = () => {
   return (
-    <div className={`pt-5 w-full`}>
+    <div className={`pt-5 w-full `}>
       <div
         className="flex items-center justify-around
         align-middle"

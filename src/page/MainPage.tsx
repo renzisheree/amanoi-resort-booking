@@ -1,12 +1,16 @@
 import VideoAutoplay from "../components/VideoAutoplay";
 import ResortList from "../components/ResortList";
 import ViewCard from "../components/ViewCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NearbyResortList from "../components/NearbyResortList";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
 
 const MainPage = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    AOS.init();
+  });
   const [isShow, setShow] = useState(false);
   const localBooking = localStorage.getItem("bookingData");
   const bookingData = localBooking ? JSON.parse(localBooking) : "";
@@ -47,9 +51,13 @@ const MainPage = () => {
             </div>
           </div>
         )}
-        <VideoAutoplay></VideoAutoplay>
-
-        <div className=" mx-auto w-[80vw] my-10 flex flex-col justify-center items-center gap-y-4">
+        <div data-aos="fade-up" className="">
+          <VideoAutoplay></VideoAutoplay>
+        </div>
+        <div
+          data-aos="fade-up"
+          className=" mx-auto w-[80vw] my-10 flex flex-col justify-center items-center gap-y-4"
+        >
           <h3 className="font-medium text-[25px] italic">
             TỈNH NINH THUẬN, VIỆT NAM
           </h3>
@@ -65,12 +73,15 @@ const MainPage = () => {
         </div>
       </section>
       <hr className=" border-gray-400 border-b-5 py-5 w-[80vw] mx-auto" />
-      <section className="page-container bg-[#]">
+      <section data-aos="fade-up" className="page-container bg-[#]">
         <ResortList></ResortList>
       </section>
       <hr className=" border-gray-400 border-b-5 my-16 w-[80vw] mx-auto" />
 
-      <section className=" p-10 flex flex-col items-center justify-center">
+      <section
+        data-aos="fade-up"
+        className=" p-10 flex flex-col items-center justify-center"
+      >
         <div className="flex items-center justify-center my-20 gap-x-20  mt-20">
           {" "}
           <ViewCard
@@ -103,9 +114,10 @@ const MainPage = () => {
         </a>
       </section>
 
-      <section className="p-20 bg-white">
+      <section data-aos="fade-up" className="p-20 bg-white">
         <div className="flex items-center justify-center gap-10">
           <ViewCard
+            data-aos="fade-right"
             cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
@@ -113,6 +125,7 @@ const MainPage = () => {
             center={false}
           ></ViewCard>
           <ViewCard
+            data-aos="fade-up"
             cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
             cardType="HomeStay"
             cardTitle="The season's essentials"
@@ -120,6 +133,7 @@ const MainPage = () => {
             cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
           ></ViewCard>
           <ViewCard
+            data-aos="fade-left"
             cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
@@ -127,8 +141,12 @@ const MainPage = () => {
             cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa, magni. Commodi saepe necessitatibus quaerat corporis, sequi facilis alias magnam natus. Fugit alias nam natus commodi.    products for the season ahead."
           ></ViewCard>
         </div>
-        <div className="mt-10 flex justify-center items-center gap-10">
+        <div
+          data-aos="fade-up"
+          className="mt-10 flex justify-center items-center gap-10"
+        >
           <ViewCard
+            data-aos="fade-right"
             cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
             cardType="HomeStay"
             cardTitle="The season's essentials"
@@ -137,6 +155,7 @@ const MainPage = () => {
             slide={2}
           ></ViewCard>
           <ViewCard
+            data-aos="fade-left"
             cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
@@ -148,7 +167,7 @@ const MainPage = () => {
       </section>
       <hr className=" py-4 w-[80vw]   mx-auto" />
 
-      <section className="p-10">
+      <section data-aos="fade-up" className="p-10">
         <div
           className={`bg-white flex flex-col justify-center items-center h-full pb-[20vh] pt-20 `}
         >
@@ -267,9 +286,14 @@ const MainPage = () => {
           </div>
         </div>
       </section>
-      <section className="page-container">
-        <h1 className="text-center pb-5 text-3xl font-bold">Nearby Resorts</h1>
-        <NearbyResortList></NearbyResortList>
+      <section data-aos="fade-up" className="page-container">
+        <h1 className="text-center pb-5 text-3xl z-10 font-bold">
+          Nearby Resorts
+        </h1>
+        <div className="">
+          {" "}
+          <NearbyResortList></NearbyResortList>
+        </div>
       </section>
     </>
   );

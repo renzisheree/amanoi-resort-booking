@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import dayjs from "dayjs";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 interface bookingProps {
   firstname: string;
   lastname: string;
@@ -31,7 +33,11 @@ interface reserProps {
   _id: string;
 }
 const ReservationForm: React.FC<reserProps> = ({ _id }) => {
+  const navigate = useNavigate();
   const localBooking = localStorage.getItem("bookingData");
+  const cookieProfile = Cookies.get("token"); // get cookie
+  console.log(cookieProfile);
+
   const bookingData = localBooking ? JSON.parse(localBooking) : "";
   const getObjectById = (id: string) => {
     const localStorageData = localStorage.getItem("rooms");
@@ -51,22 +57,35 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   } else {
     console.log("Object not found in localStorage");
   }
+  const postRawData = (rawData1, values) => {
+    axios
+      .post("http://localhost:3000/bookings/", rawData1, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${cookieProfile}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data); // Handle the response data
+        const rooms: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
 
-  const postRawData = async (rawData1: bookingProps) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/bookings/",
-        rawData1,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const updatedRooms = Object.values(rooms).filter(
+          (r) => r._id !== values.rooms
+        );
+        localStorage.setItem("rooms", JSON.stringify(updatedRooms));
+
+        const rooms1: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
+        console.log(rooms1);
+        if (rooms1.length == 0) {
+          navigate("/thanks");
         }
-      );
-      console.log(response.data); // Handle the response data
-    } catch (error) {
-      console.error(error); // Handle any error that occurred during the request
-    }
+
+        toast.success("Booking successful");
+      })
+      .catch((error) => {
+        console.error(error); // Handle any error that occurred during the
+        toast.error(error);
+      });
   };
 
   const dateStr = bookingData.startDate;
@@ -80,7 +99,6 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   const newEndDate = `${month1}-${day1}-${year1}`;
 
   const range = dayjs(newEndDate).diff(newStartDate, "day");
-  const rooms: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
 
   return (
     <div className="mx-auto py-5 ">
@@ -168,15 +186,10 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
             firstName: values.firstname,
           };
 
-          postRawData(rawData1);
+          postRawData(rawData1, values);
 
           setTimeout(() => {
-            const updatedRooms = Object.values(rooms).filter(
-              (r) => r._id !== values.rooms
-            );
-            localStorage.setItem("rooms", JSON.stringify(updatedRooms));
             console.log(JSON.stringify(values));
-            toast.success("Booking successful");
             setSubmitting(false);
 
             window.location.reload();

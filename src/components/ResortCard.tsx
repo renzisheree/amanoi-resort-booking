@@ -12,7 +12,7 @@ interface ResortCardProps {
 
 const ResortCard: React.FC<ResortCardProps> = ({ resortItem }) => {
   return (
-    <div className="resort-card flex flex-col flex-1 ">
+    <div className="resort-card flex flex-col flex-1  z-0">
       <h2>{resortItem.name}</h2>
       <img src={resortItem.path} alt="" />
     </div>

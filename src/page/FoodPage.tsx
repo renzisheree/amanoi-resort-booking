@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import ViewCard from "../components/ViewCard";
+import AOS from "aos";
 
 const FoodPage = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <div className="flex flex-col justify-center items-center p-20">
-      <h1 className="text-3xl  italic p-10 ">Các bữa ăn tại Amanoi</h1>
+      <h1 data-aos="fade-up" className="text-3xl  italic p-10 ">
+        Các bữa ăn tại Amanoi
+      </h1>
 
-      <div className="">
+      <div data-aos="fade-up" className="">
         <img
           src="https://www.aman.com/sites/default/files/styles/full_size_extra_large/public/2021-03/Amanoi_Dining-Hero-1.jpg?itok=e3LKDbNf"
           alt="cover"
@@ -21,7 +28,10 @@ const FoodPage = () => {
         </p>
       </div>
 
-      <div className=" flex items-start gap-10 justify-center w-full italic pb-10">
+      <div
+        data-aos="fade-up"
+        className=" flex items-start gap-10 justify-center w-full italic pb-10"
+      >
         <img
           src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2021-03/Amanoi_Gallery_18.jpg?itok=3vbmL2Xp"
           alt=""
@@ -65,7 +75,7 @@ const FoodPage = () => {
         flexCol={false}
       ></ViewCard>
 
-      <div className=" ">
+      <div data-aos="fade-up" className=" ">
         <h1 className="text-3xl italic text-center">
           Trải nghiệm ẩm thực nổi bật
         </h1>

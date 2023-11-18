@@ -1,10 +1,15 @@
 import offerData from "../data/offerData.json";
 import ViewCard from "../components/ViewCard";
+import AOS from "aos";
+import { useEffect } from "react";
 
 const ExclusiveOfferPage = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <div className="flex flex-col gap-10 items-center">
-      <div className="flex flex-col gap-3 items-center">
+      <div data-aos="fade-up" className="flex flex-col gap-3 items-center">
         <h1 className="text-3xl italic">Ưu đãi độc quyền tại Amanoi</h1>
         <span className="font-mono text-center w-[60%]">
           Sở hữu dải bờ biển trải dài tuyệt đẹp của Việt Nam, Amanoi mang đến
@@ -16,7 +21,7 @@ const ExclusiveOfferPage = () => {
           Gửi yêu cầu
         </a>
       </div>
-      <div className="grid grid-cols-3 gap-10 p-20 bg">
+      <div data-aos="fade-up" className="grid grid-cols-3 gap-10 p-20 bg">
         {offerData &&
           offerData.map((item) => (
             <ViewCard

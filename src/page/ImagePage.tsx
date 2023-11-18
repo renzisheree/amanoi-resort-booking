@@ -1,14 +1,23 @@
 import List from "../data/listImage.json";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AOS from "aos";
 
 const ImagePage = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   const [slide, setSlide] = useState(false);
   return (
     <>
-      <h1 className="text-center text-4xl p-5 italic">Khám phá Amanoi</h1>
+      <h1 data-aos="fade-up" className="text-center text-4xl p-5 italic">
+        Khám phá Amanoi
+      </h1>
 
-      <div className="flex items-center justify-center gap-10 p-10">
+      <div
+        data-aos="fade-up"
+        className="flex items-center justify-center gap-10 p-10"
+      >
         <span
           onClick={() => {
             setSlide(true);
@@ -87,12 +96,12 @@ const ImagePage = () => {
       <hr className="mb-10 " />
 
       {slide ? (
-        <div className=" grid grid-cols-3	gap-20">
+        <div data-aos="fade-up" className=" grid grid-cols-3	gap-20">
           {List.length > 0 &&
             List.map((item) => <img key={item.id} src={item.src} alt="" />)}
         </div>
       ) : (
-        <div className="swiper-list">
+        <div data-aos="fade-up" className="swiper-list">
           <Swiper grabCursor={true} spaceBetween={40} slidesPerView={1}>
             {List.length > 0 &&
               List.map((item) => (

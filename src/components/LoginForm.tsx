@@ -13,6 +13,8 @@ interface loginProps {
 }
 
 const LoginForm = () => {
+  const customId = "custom-id-yes";
+
   const navigate = useNavigate();
 
   const handleSubmit = (values: loginProps) => {
@@ -24,14 +26,23 @@ const LoginForm = () => {
     })
       .then(function (res) {
         const { data } = res;
+        console.log(res);
 
-        if (!data) return null;
+        if (!data.access_token) {
+          toast.error(res.data.error);
+          return;
+        }
         document.cookie = `token=${data.access_token};expires=${new Date(
           Date.now() + 86400
         ).toUTCString()}`;
         navigate("/");
+        toast.success("Login successfull", {
+          toastId: "success1",
+        });
       })
-      .catch(function () {});
+      .catch(function (e) {
+        console.log(e);
+      });
   };
 
   return (
@@ -63,7 +74,6 @@ const LoginForm = () => {
           setTimeout(() => {
             setSubmitting(false);
 
-            toast.success("Login success");
             resetForm();
             handleSubmit(values);
           }, 1000);

@@ -1,14 +1,18 @@
+import { useEffect } from "react";
 import MiddleLogo from "../components/MiddleLogo";
+import AOS from "aos";
 
 const Footer = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
-    <div className=" py-10 ">
+    <div data-aos="fade-up" className="py-10 ">
       <div className="flex justify-start gap-20 ml-10 items-center py-10">
         <h1 className="text-2xl font-semibold">AMANOI</h1>
 
         <div className="flex justify-center items-center gap-10">
           <p>
-            Thôn Vĩnh Hy <br /> xã Vĩnh Hải <br />
             Ninh Thuận <br />
             Việt Nam
           </p>

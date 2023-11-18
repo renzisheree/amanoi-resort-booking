@@ -2,6 +2,8 @@ import ViewCard from "../components/ViewCard";
 import eventData from "../data/eventData.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import eventSwiperData from "../data/eventSwiperData.json";
+import AOS from "aos";
+import { useEffect } from "react";
 
 interface eventSwiperDataProps {
   id: number;
@@ -10,12 +12,17 @@ interface eventSwiperDataProps {
   paragraph: string;
 }
 const EventPage = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <div className="">
       <div className="flex flex-col justify-center items-center gap-10">
-        <h1 className="text-3xl italic">Tiệc cưới và sự kiện tại Amanoi</h1>
+        <h1 data-aos="fade-up" className="text-3xl italic">
+          Tiệc cưới và sự kiện tại Amanoi
+        </h1>
 
-        <div className="mx-auto">
+        <div data-aos="fade-up" className="mx-auto">
           <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
             {eventData.length > 0 &&
               eventData.map((item) => (
@@ -26,7 +33,7 @@ const EventPage = () => {
           </Swiper>
         </div>
 
-        <div className="w-[40%] text-center">
+        <div data-aos="fade-up" className="w-[40%] text-center">
           <h1 className="text-3xl italic">
             Lựa chọn tuyệt vời cho sự kiện của bạn
           </h1>
@@ -52,7 +59,10 @@ const EventPage = () => {
           <a href="">Gửi yêu cầu</a>
         </div>
 
-        <div className=" flex items-start gap-10 justify-center w-full italic pb-10">
+        <div
+          data-aos="fade-up"
+          className=" flex items-start gap-10 justify-center w-full italic pb-10"
+        >
           <img
             src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2021-03/Amanoi_Gallery_18.jpg?itok=3vbmL2Xp"
             alt=""
@@ -92,14 +102,17 @@ const EventPage = () => {
           </span>
         </div>
 
-        <h1 className="text-3xl font-medium italic my-5">
+        <h1 data-aos="fade-up" className="text-3xl font-medium italic my-5">
           Các địa điểm tổ chức
         </h1>
-        <h1 className="text-3xl font-medium italic">
+        <h1 data-aos="fade-up" className="text-3xl font-medium italic">
           Cá nhân hoá trải nghiệm và chú trọng tới chi tiết
         </h1>
 
-        <div className="swiper-list2 flex items-center justify-center rounded-lg">
+        <div
+          data-aos="fade-up"
+          className="swiper-list2 flex items-center justify-center rounded-lg"
+        >
           <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
             {eventSwiperData &&
               eventSwiperData.map((item: eventSwiperDataProps) => (

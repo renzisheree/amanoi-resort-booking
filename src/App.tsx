@@ -17,15 +17,16 @@ import AdvanturePage from "./page/AdvanturePage";
 import ReservationPage from "./page/ReservationPage";
 import ProfilePage from "./page/ProfilePage";
 import BookingStep2 from "./page/BookingStep2";
-import ReservationRoomCard from "./components/ReservationRoomCard";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import ExclusiveOffer from "./page/ExclusiveOfferPage";
 import "react-toastify/dist/ReactToastify.css";
 import GettingThere from "./page/GettingThere";
+import ThanksPage from "./page/ThanksPage";
+import "aos/dist/aos.css";
 
 function App() {
   return (
-    <>
+    <div>
       <Routes>
         <Route element={<Main></Main>}>
           <Route
@@ -85,10 +86,10 @@ function App() {
             }
           ></Route>
           <Route
-            path="/test"
+            path="/thanks"
             element={
               <>
-                <ReservationRoomCard></ReservationRoomCard>
+                <ThanksPage></ThanksPage>
               </>
             }
           ></Route>
@@ -176,16 +177,16 @@ function App() {
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        theme="light"
+        draggable
+        pauseOnHover
       />
-      <ToastContainer />
-    </>
+    </div>
   );
 }
 

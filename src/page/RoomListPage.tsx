@@ -1,55 +1,76 @@
 import { useState, useEffect } from "react";
 
-import useAxios from "../hooks/useAxios";
-import useAxiosSecond from "../hooks/useAxiosSecond";
+// import useAxios from "../hooks/useAxios";
+// import useAxiosSecond from "../hooks/useAxiosSecond";
 import RoomCard from "../components/RoomCard";
 import LoadingSkeleton from "../components/loading/LoadingSkeleton";
+import useDebounce from "../hooks/useDebound";
+import axios from "axios";
+import useAxios from "../hooks/useAxios";
 
-interface Item {
-  id: string;
-  name: string;
-  path: string;
-}
-interface DataSecond {
-  id: string;
-  name: string;
-  path: string;
-  description: string;
-  slug: string;
+// interface Item {
+//   id: string;
+//   name: string;
+//   path: string;
+// }
 
-  imageThumbnail: string[];
-}
 const RoomListPage = () => {
-  // const navigate = useNavigate();
-
+  const [filter, setFilter] = useState("");
+  const filterDebound = useDebounce(filter, 700);
+  const [data1, setData1] = useState();
   const [pathURL, setPath] = useState("residencies");
 
-  const [url, setUrl] = useState(`http://localhost:3000/rooms/${pathURL}`);
-  const { data, loading, error } = useAxios(
-    "http://localhost:3000/room-types/all"
-  );
-  const { dataSecond, loadingSecond } = useAxiosSecond(url);
+  const { data } = useAxios("http://localhost:3000/room-types/all");
   useEffect(() => {
-    setUrl(`http://localhost:3000/rooms/${pathURL}`);
-  }, [pathURL]);
-  if (!dataSecond) return null;
-  const { rooms } = dataSecond;
+    axios
+      .post(`http://localhost:3000/rooms/search?name=${filterDebound}`)
+      .then((response) => {
+        setData1(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [filterDebound]);
 
-  const { path } = dataSecond;
+  const loading = !data1;
+  if (!data) return;
 
-  console.log(data);
+  const { items: item1 } = data;
+  if (!data1) return;
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error!</p>;
-  if (!data) return null;
-  const { items } = data;
+  const { items: rooms } = data1;
 
+  const handleSearchChange = (e) => {
+    setFilter(e.target.value);
+  };
+  // const [url, setUrl] = useState(`http://localhost:3000/rooms/${pathURL}`);
+  // useEffect(() => {
+  //   if (filterDebound) {
+  //     setUrl(`http://localhost:3000/rooms/search?name=${filterDebound}`);
+  //   }
+  // }, [filterDebound]);
+
+  // if (!dataSecond) return null;
+  // const { rooms } = dataSecond;
+
+  // const { path } = dataSecond;
+  // const roomsByType = {};
+
+  // rooms.forEach((room) => {
+  //   const { path } = room.roomType;
+
+  //   if (!roomsByType[path]) {
+  //     roomsByType[path] = [];
+  //   }
+
+  //   roomsByType[path].push(room);
+  // });
   return (
     <div className="p-10">
-      {loadingSecond && (
+      {loading && (
         <div className="w-10 h-10 rounded-full border-4 border-red-500 border-t-transparent border-t-4 mx-auto animate-spin mb-10 mt-20"></div>
       )}
-      {loadingSecond && (
+      {loading && (
         <div className="flex flex-col justify-center items-center gap-5">
           <div className="flex items-center justify-center gap-10">
             {" "}
@@ -82,15 +103,33 @@ const RoomListPage = () => {
       )}
       <div className="flex flex-col gap-10 items-center justify-center">
         <h1 className="text-3xl text-center italic">Phòng ở Amanoi</h1>
+        {/* <div>
+          {Object.entries(roomsByType).map(([type, rooms]) => (
+            <div key={type}>
+              <h2>{type}</h2>
 
+              <div className="grid grid-cols-2 gap-20">
+                {rooms.map((room) => (
+                  <RoomCard
+                    cardImg={room.imageThumbnail[0]}
+                    cardTitle={room.name}
+                    button={false}
+                    cardParagraph={room.description}
+                    slug={room.slug}
+                    path={room.roomType.path}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div> */}
         <div className="">
           <ul className="roomlist flex items-center justify-center gap-10 cursor-pointer">
-            {items.map((item: Item) => (
+            {item1.map((item: Item) => (
               <li
                 key={item.id}
                 onClick={() => {
                   setPath(item.path);
-                  console.log(item.path);
                 }}
                 style={{
                   fontWeight: pathURL === item.path ? "bold" : "normal",
@@ -113,17 +152,49 @@ const RoomListPage = () => {
         </p>
       </div>
 
+      <div className="flex my-10 bg-white">
+        <div className="flex-1 ">
+          <input
+            type="text"
+            className="w-full p-4 bg-transparent outline-none border-2"
+            placeholder="Type here to search.."
+            onChange={handleSearchChange}
+          />
+        </div>
+        <button className="p-4 bg-primary text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+      </div>
+
       <div className="grid grid-cols-2 gap-20">
-        {rooms.map((dataSecond: DataSecond) => (
-          <RoomCard
-            cardImg={dataSecond.imageThumbnail[0]}
-            cardTitle={dataSecond.name}
-            button={false}
-            cardParagraph={dataSecond.description}
-            slug={dataSecond.slug}
-            path={path}
-          ></RoomCard>
-        ))}
+        {rooms.map((dataSecond) => {
+          if (pathURL === dataSecond.roomType.path) {
+            return (
+              <RoomCard
+                cardImg={dataSecond.imageThumbnail[0]}
+                cardTitle={dataSecond.name}
+                button={false}
+                cardParagraph={dataSecond.description}
+                slug={dataSecond.slug}
+                path={dataSecond.roomType.path}
+              ></RoomCard>
+            );
+          }
+        })}
       </div>
     </div>
   );

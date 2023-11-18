@@ -24,9 +24,11 @@ const NavigationBar = () => {
     };
   });
   return (
-    <div className={`${isSticky ? "sticky" : ""}  bg-[#F3EEE7] top-0   z-50`}>
+    <div
+      className={` z-1000 ${isSticky ? "sticky " : ""}  bg-[#F3EEE7] top-0   `}
+    >
       <div
-        className={`navigation-bar-wrapper flex items-center text-center align-middle  justify-center  gap-x-10 my-10 border-gray-400 border-b-[1px] h-[60px] w-[80vw] mx-auto text-[13px]`}
+        className={`navigation-bar-wrapper flex  z-9999 items-center text-center align-middle  justify-center  gap-x-10 my-10 border-gray-400 border-b-[1px] h-[60px] w-[80vw] mx-auto text-[13px]`}
       >
         <NavigationItem path="">Amanoi</NavigationItem>
         <NavigationItem path="images">Thư viện ảnh</NavigationItem>

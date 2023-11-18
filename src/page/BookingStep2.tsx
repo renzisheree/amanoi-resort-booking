@@ -202,6 +202,7 @@ const SelectRoom = () => {
 
   if (!data) return null;
   const handleAdd = (room: RoomProps) => {
+    console.log(1);
     setAddedRooms((prevRooms) => ({
       ...prevRooms,
       [room._id]: room,
@@ -267,7 +268,10 @@ const SelectRoom = () => {
 
                 <span className="flex justify-center items-center gap-5">
                   <button
-                    onClick={handleNavigation}
+                    onClick={() => {
+                      // handleAdd(item);
+                      handleNavigation();
+                    }}
                     className="px-5 py-2 bg-[#3B504C] rounded-full text-white"
                   >
                     Book now

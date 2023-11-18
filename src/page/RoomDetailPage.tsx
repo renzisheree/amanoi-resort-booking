@@ -5,12 +5,17 @@ import ViewCard from "../components/ViewCard";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import LoadingSkeleton from "../components/loading/LoadingSkeleton";
+import AOS from "aos";
+import { useEffect } from "react";
 
 interface amenProps {
   name: string;
   path: string;
 }
 const RoomDetailPage = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   const { path, slug } = useParams();
   const navigate = useNavigate();
 
@@ -25,7 +30,10 @@ const RoomDetailPage = () => {
   return (
     <div className="p-10">
       {loading && (
-        <div className=" flex flex-col justify-center items-center gap-10">
+        <div
+          data-aos="fade-up"
+          className=" flex flex-col justify-center items-center gap-10"
+        >
           <div className="w-10 h-10 rounded-full border-4 border-red-500 border-t-transparent border-t-4 mx-auto animate-spin mb-10 mt-20"></div>
 
           <LoadingSkeleton
@@ -40,16 +48,26 @@ const RoomDetailPage = () => {
           ></LoadingSkeleton>
         </div>
       )}
-      <h1 className="text-3xl italic text-center py-10">{data.name}</h1>
+      <h1 data-aos="fade-up" className="text-3xl italic text-center py-10">
+        {data.name}
+      </h1>
       <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
         {imageThumbnail.length > 0 &&
           imageThumbnail.map((item: string, index: number) => (
             <SwiperSlide key={index}>
-              <img className="w-[90vw] mx-auto" src={item} alt="" />
+              <img
+                data-aos="fade-up"
+                className="w-[90vw] mx-auto"
+                src={item}
+                alt=""
+              />
             </SwiperSlide>
           ))}
       </Swiper>
-      <div className=" flex justify-start items-center gap-10 p-10">
+      <div
+        data-aos="fade-up"
+        className=" flex justify-start items-center gap-10 p-10"
+      >
         <img src={imageCover[0]} alt="" />
         <img src={imageCover[1]} alt="" />
 
@@ -68,7 +86,7 @@ const RoomDetailPage = () => {
         </span>
       </div>
 
-      <div className="">
+      <div data-aos="fade-up" className="">
         <h1 className="text-3xl text-center italic">
           {" "}
           Gói lưu chú của bạn bao gồm
@@ -81,7 +99,7 @@ const RoomDetailPage = () => {
           ))}
         </ul>
       </div>
-      <div className=" mt-10">
+      <div data-aos="fade-up" className=" mt-10">
         <h1 className="text-3xl text-center italic"> Tiện nghi</h1>
 
         <ul className="grid grid-cols-3 gap-10 list-disc	p-20  mt-10 bg-white ">
@@ -90,7 +108,7 @@ const RoomDetailPage = () => {
           ))}
         </ul>
       </div>
-      <div className="">
+      <div data-aos="fade-up" className="">
         {" "}
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
           {listImage.length > 0 &&

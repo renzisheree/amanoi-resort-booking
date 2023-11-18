@@ -1,11 +1,17 @@
+import AOS from "aos";
+import { useEffect } from "react";
+
 const GettingThere = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <div className="flex flex-col justify-center items-center p-20">
-      <h1 className="text-3xl  italic p-1 font-body mb-10 ">
+      <h1 data-aos="fade-up" className="text-3xl  italic p-1 font-body mb-10 ">
         Getting to Amanoi
       </h1>
 
-      <div className="">
+      <div data-aos="fade-up" className="">
         <img
           src="https://www.aman.com/sites/default/files/styles/full_size_extra_large/public/2021-03/Amanoi_Dining-Hero-1.jpg?itok=e3LKDbNf"
           alt="cover"
@@ -20,7 +26,10 @@ const GettingThere = () => {
         </p>
       </div>
 
-      <div className=" flex items-start gap-10 justify-center w-full italic pb-10">
+      <div
+        data-aos="fade-up"
+        className=" flex items-start gap-10 justify-center w-full italic pb-10"
+      >
         <img
           src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2023-07/amanoi-vietnam-pool-pavilion.jpg?itok=XFVR4_3B"
           alt=""
@@ -60,7 +69,7 @@ const GettingThere = () => {
       </div>
       <hr className="p-[0.5px] bg-gray-300 w-full m-20" />
 
-      <div className="m-10">
+      <div data-aos="fade-up" className="m-10">
         <div className="text-center m-5">
           <h1 className="text-3xl italic font-mono">Airport transfers </h1>
           <p className="font-body ">
@@ -85,7 +94,10 @@ const GettingThere = () => {
         </div>
       </div>
       <hr className="p-[0.5px] bg-gray-300 w-full m-20" />
-      <div className="flex justify- gap-[400px]  items-start">
+      <div
+        data-aos="fade-up"
+        className="flex justify- gap-[400px]  items-start"
+      >
         <div className="">
           <h1 className="text-3xl font-body">Flight duration to Vietnam </h1>
           <span className="font-body text-m">

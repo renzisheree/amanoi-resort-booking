@@ -11,6 +11,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
   background-color: #f3eee7;
 }
@@ -21,10 +22,12 @@ body {
 }
 .swiper-list .swiper-slide {
   width: 300px;
+  z-index: -99;
 }
 
 .swiper-list2 .swiper-slide {
   width: 450px;
+  z-index: -99;
 }
 .navigation ul li {
   color: black;
