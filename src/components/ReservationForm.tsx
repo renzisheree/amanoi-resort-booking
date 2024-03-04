@@ -4,7 +4,6 @@ import InputForm from "../components/InputForm";
 import TextAreaFormik from "../components/TextAreaFormik";
 import DropdownFormik from "./DropdownFormik";
 import countryList from "../data/countryList.json";
-import { useEffect } from "react";
 import dayjs from "dayjs";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -59,7 +58,7 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   }
   const postRawData = (rawData1, values) => {
     axios
-      .post("http://localhost:3000/bookings/", rawData1, {
+      .post("https://api.badenn.me/bookings/", rawData1, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${cookieProfile}`,

@@ -209,7 +209,7 @@ export default function Calendar() {
 
               axios
                 .post(
-                  `http://localhost:3000/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
+                  `https://api.badenn.me/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
                 )
                 .then((response) => {
                   setData1(response.data);

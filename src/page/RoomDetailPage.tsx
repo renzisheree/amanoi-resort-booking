@@ -20,7 +20,7 @@ const RoomDetailPage = () => {
   const navigate = useNavigate();
 
   const { data, loading } = useAxios(
-    `http://localhost:3000/rooms/${path}/${slug}`
+    `https://api.badenn.me/rooms/${path}/${slug}`
   );
   if (!data) return null;
   console.log(data);
