@@ -4,7 +4,6 @@ import InputForm from "../components/InputForm";
 import TextAreaFormik from "../components/TextAreaFormik";
 import DropdownFormik from "./DropdownFormik";
 import countryList from "../data/countryList.json";
-import { useEffect } from "react";
 import dayjs from "dayjs";
 import axios from "axios";
 import { toast } from "react-toastify";
