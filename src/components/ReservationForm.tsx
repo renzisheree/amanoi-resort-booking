@@ -59,7 +59,7 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   }
   const postRawData = (rawData1, values) => {
     axios
-      .post("http://localhost:3000/bookings/", rawData1, {
+      .post("https://api.badenn.me/bookings/", rawData1, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${cookieProfile}`,

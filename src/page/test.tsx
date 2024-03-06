@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import useSWR, { Fetcher } from "swr";
 // import { useEffect, useState } from "react";
 // import axios from "axios";
-// axios({ method: "get", url: "http://localhost:3000/rooms" }).then((res) => {
+// axios({ method: "get", url: "https://api.badenn.me/rooms" }).then((res) => {
 //   console.log(res.data.items);
 // });
 
@@ -14,7 +14,7 @@ const RoomListPage = async () => {
 
   // useEffect(() => {
   //   function fetchUsers() {
-  //     const response = await fetch("http://localhost:3000/rooms");
+  //     const response = await fetch("https://api.badenn.me/rooms");
   //     const data = await response.json();
   //     console.log(data);
   //   }
