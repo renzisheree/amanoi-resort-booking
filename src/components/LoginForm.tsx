@@ -16,7 +16,7 @@ const LoginForm = () => {
   const handleSubmit = (values: loginProps) => {
     axios({
       method: "POST",
-      url: "http://api.badenn.me/auth/login",
+      url: "https://api.badenn.me/auth/login",
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
