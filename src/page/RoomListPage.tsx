@@ -23,7 +23,7 @@ const RoomListPage = () => {
   const { data } = useAxios("http://api.badenn.me/room-types/all");
   useEffect(() => {
     axios
-      .post(`http://api.badenn.me/search?name=${filterDebound}`)
+      .post(`http://api.badenn.me/rooms/search?name=${filterDebound}`)
       .then((response) => {
         setData1(response.data);
       })
