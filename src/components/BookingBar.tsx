@@ -12,7 +12,7 @@ const BookingBar = () => {
     "
     >
       <div
-        className="flex flex-col border px-10"
+        className="flex flex-col px-10 border"
         onClick={() => {
           navigate("/booking");
         }}
@@ -33,9 +33,9 @@ const BookingBar = () => {
         <span>EDIT</span>
       </div>
 
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center">
         <span className="font-mediumP">AMAN</span>
-        <div className="flex justify-center items-center gap-5">
+        <div className="flex items-center justify-center gap-5">
           <span>ARRIVE : {values.startDate}</span>
           <span>DEPART : {values.endDate}</span>
           <span>Adult : {values.adult}</span>
@@ -43,7 +43,7 @@ const BookingBar = () => {
         </div>
       </div>
 
-      <div className="px-10">Hello {`123456`}</div>
+      <div className="px-10">Hello customer</div>
     </div>
   );
 };

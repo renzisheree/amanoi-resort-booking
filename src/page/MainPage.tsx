@@ -19,9 +19,9 @@ const MainPage = () => {
   console.log(rooms);
   return (
     <>
-      <section className="text-center z-50 ">
+      <section className="z-50 text-center ">
         {rooms.length != 0 && bookingData != null && (
-          <div className="fixed bottom-0  r w-[96%] z-10  flex justify-between  items-center bg-white px-20 py-2  border-gray-300 border-2 rounded-lg m-5 font-mono ">
+          <div className="fixed bottom-0  r w-[96%] z-10  flex justify-between  items-center bg-white px-20 py-2  border-gray-300 border-2 rounded-lg m-5 italic ">
             <div className="">
               <h1>DESTINATION</h1>
 
@@ -80,9 +80,9 @@ const MainPage = () => {
 
       <section
         data-aos="fade-up"
-        className=" p-10 flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center p-10 "
       >
-        <div className="flex items-center justify-center my-20 gap-x-20  mt-20">
+        <div className="flex items-center justify-center my-20 mt-20 gap-x-20">
           {" "}
           <ViewCard
             cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
@@ -110,7 +110,7 @@ const MainPage = () => {
           >
             Xem tất cả phòng ở
           </p>
-          <hr className="border-gray-400 border-b-5 py-4 w-full  mx-auto" />
+          <hr className="w-full py-4 mx-auto border-gray-400 border-b-5" />
         </a>
       </section>
 
@@ -143,7 +143,7 @@ const MainPage = () => {
         </div>
         <div
           data-aos="fade-up"
-          className="mt-10 flex justify-center items-center gap-10"
+          className="flex items-center justify-center gap-10 mt-10"
         >
           <ViewCard
             data-aos="fade-right"
@@ -219,8 +219,8 @@ const MainPage = () => {
             )}
           </div>
 
-          <div className="mt-5 italic font-mono ">
-            <span className="flex  justify-center gap-2">
+          <div className="mt-5 font-mono italic ">
+            <span className="flex justify-center gap-2">
               <svg
                 width="30px"
                 height="30px"
@@ -250,7 +250,7 @@ const MainPage = () => {
                 <span>Việt Nam</span>
               </span>
               <span className="ml-[10vw]">
-                <span className="flex gap-y-2 justify-center items-center gap-3 mb-5">
+                <span className="flex items-center justify-center gap-3 mb-5 gap-y-2">
                   <svg
                     className="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -287,7 +287,7 @@ const MainPage = () => {
         </div>
       </section>
       <section data-aos="fade-up" className="page-container">
-        <h1 className="text-center pb-5 text-3xl z-10 font-bold">
+        <h1 className="z-10 pb-5 text-3xl font-bold text-center">
           Nearby Resorts
         </h1>
         <div className="">

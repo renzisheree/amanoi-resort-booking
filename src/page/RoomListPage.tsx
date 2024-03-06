@@ -20,10 +20,10 @@ const RoomListPage = () => {
   const [data1, setData1] = useState();
   const [pathURL, setPath] = useState("residencies");
 
-  const { data } = useAxios("https://api.badenn.me/room-types/all");
+  const { data } = useAxios("http://api.badenn.me/room-types/all");
   useEffect(() => {
     axios
-      .post(`https://api.badenn.me/rooms/search?name=${filterDebound}`)
+      .post(`http://api.badenn.me/search?name=${filterDebound}`)
       .then((response) => {
         setData1(response.data);
       })
@@ -68,10 +68,10 @@ const RoomListPage = () => {
   return (
     <div className="p-10">
       {loading && (
-        <div className="w-10 h-10 rounded-full border-4 border-red-500 border-t-transparent border-t-4 mx-auto animate-spin mb-10 mt-20"></div>
+        <div className="w-10 h-10 mx-auto mt-20 mb-10 border-4 border-t-4 border-red-500 rounded-full border-t-transparent animate-spin"></div>
       )}
       {loading && (
-        <div className="flex flex-col justify-center items-center gap-5">
+        <div className="flex flex-col items-center justify-center gap-5">
           <div className="flex items-center justify-center gap-10">
             {" "}
             <LoadingSkeleton
@@ -101,8 +101,8 @@ const RoomListPage = () => {
           </div>
         </div>
       )}
-      <div className="flex flex-col gap-10 items-center justify-center">
-        <h1 className="text-3xl text-center italic">Phòng ở Amanoi</h1>
+      <div className="flex flex-col items-center justify-center gap-10">
+        <h1 className="text-3xl italic text-center">Phòng ở Amanoi</h1>
         {/* <div>
           {Object.entries(roomsByType).map(([type, rooms]) => (
             <div key={type}>
@@ -124,7 +124,7 @@ const RoomListPage = () => {
           ))}
         </div> */}
         <div className="">
-          <ul className="roomlist flex items-center justify-center gap-10 cursor-pointer">
+          <ul className="flex items-center justify-center gap-10 cursor-pointer roomlist">
             {item1.map((item: Item) => (
               <li
                 key={item.id}
@@ -156,12 +156,12 @@ const RoomListPage = () => {
         <div className="flex-1 ">
           <input
             type="text"
-            className="w-full p-4 bg-transparent outline-none border-2"
+            className="w-full p-4 bg-transparent border-2 outline-none"
             placeholder="Type here to search.."
             onChange={handleSearchChange}
           />
         </div>
-        <button className="p-4 bg-primary text-white">
+        <button className="p-4 text-white bg-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

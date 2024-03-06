@@ -7,6 +7,8 @@ import axios from "axios";
 import MiddleLogo from "./MiddleLogo";
 import contryData from "../data/countryList.json";
 import DropdownFormik from "./DropdownFormik";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterProps {
   firstname: string;
@@ -19,22 +21,25 @@ interface RegisterProps {
 }
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const handleSubmit = (values: RegisterProps) => {
     console.log(values);
     const data = JSON.stringify(values);
     console.log(data);
     axios({
       method: "POST",
-      url: "https://api.badenn.me/auth/register",
+      url: "http://api.badenn.me/auth/register",
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
       .then(function (res) {
-        console.log(res);
-        alert("Successfully signed up!");
+        if (res.data.code == 200) {
+          toast.success("Register successful");
+          navigate("/login");
+        }
       })
       .catch(function (res) {
-        console.log(res);
+        toast.error(res.data.message);
       });
   };
   return (
