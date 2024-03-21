@@ -7,7 +7,7 @@ interface WithClickOutsideProps {
   nodeRef: React.RefObject<HTMLDivElement>;
 }
 
-function withClickOutside<T extends WithClickOutsideProps>(
+function withClicgkOutside<T extends WithClickOutsideProps>(
   WrappedComponent: React.ComponentType<T>
 ) {
   const WithClickOutside: React.FC<Omit<T, keyof WithClickOutsideProps>> = (
