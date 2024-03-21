@@ -70,7 +70,7 @@ export default function Calendar() {
       }
     }
   };
-
+  console.log(123);
   function isDateInRange(date: Dayjs) {
     if (!range.startDate || !range.endDate) return false;
 
@@ -84,19 +84,19 @@ export default function Calendar() {
   return (
     <div className="flex gap-[10vw] sm:divide-x justify-center   mx-auto w-screen  h-screen items-center sm:flex-row flex-col">
       <div className="">
-        <div className="flex justify-between items-center w-full">
-          <h1 className="select-none font-semibold">
+        <div className="flex items-center justify-between w-full">
+          <h1 className="font-semibold select-none">
             {months[today.month()]}, {today.year()}
           </h1>
-          <div className="flex gap-10 items-center ">
+          <div className="flex items-center gap-10 ">
             <GrFormPrevious
-              className="w-5 h-5 cursor-pointer hover:scale-105 transition-all"
+              className="w-5 h-5 transition-all cursor-pointer hover:scale-105"
               onClick={() => {
                 setToday(today.month(today.month() - 1));
               }}
             />
             <h1
-              className=" cursor-pointer hover:scale-105 transition-all"
+              className="transition-all cursor-pointer hover:scale-105"
               onClick={() => {
                 setToday(currentDate);
               }}
@@ -104,7 +104,7 @@ export default function Calendar() {
               Today
             </h1>
             <GrFormNext
-              className="w-5 h-5 cursor-pointer hover:scale-105 transition-all"
+              className="w-5 h-5 transition-all cursor-pointer hover:scale-105"
               onClick={() => {
                 setToday(today.month(today.month() + 1));
               }}
@@ -116,7 +116,7 @@ export default function Calendar() {
             return (
               <h1
                 key={index}
-                className="text-sm font-bold text-center h-14 w-14 grid place-content-center text-gray-500 select-none"
+                className="grid text-sm font-bold text-center text-gray-500 select-none h-14 w-14 place-content-center"
               >
                 {day}
               </h1>
@@ -124,13 +124,13 @@ export default function Calendar() {
           })}
         </div>
 
-        <div className=" grid grid-cols-7 ">
+        <div className="grid grid-cols-7 ">
           {generateDate(today.month(), today.year()).map(
             ({ date, currentMonth, today }, index) => {
               return (
                 <div
                   key={index}
-                  className="p-2 text-center h-14 grid place-content-center text-sm border-t"
+                  className="grid p-2 text-sm text-center border-t h-14 place-content-center"
                 >
                   <h1
                     className={cn(
@@ -165,8 +165,8 @@ export default function Calendar() {
       </div>
 
       <div className="form w-[30vw]">
-        <div className="flex justify-center items-center border-2 border-black p-5">
-          <div className="w-full border-black p-5 border-r-4">
+        <div className="flex items-center justify-center p-5 border-2 border-black">
+          <div className="w-full p-5 border-r-4 border-black">
             <b>Checkin:</b> <br />
             {range.startDate?.toDate().toDateString()}
           </div>
@@ -233,7 +233,7 @@ export default function Calendar() {
             return (
               <form
                 onSubmit={formik.handleSubmit}
-                className=" my-10 ml-10"
+                className="my-10 ml-10 "
                 autoComplete="off"
               >
                 <DropdownFormik
@@ -257,7 +257,7 @@ export default function Calendar() {
                   name="children"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>
-                <div className=" flex w-full"></div>
+                <div className="flex w-full "></div>
                 <div className="bg-[#3B504C] rounded-full">
                   <button
                     type="submit"

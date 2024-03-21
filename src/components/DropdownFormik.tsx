@@ -1,6 +1,8 @@
-import { useField } from "formik";
 import React, { useEffect, useState } from "react";
-import useClickOutSide from "../hooks/useClickOutside";
+import { useField } from "formik";
+import withClickOutside, {
+  WithClickOutsideProps,
+} from "../utils/withClickOutside";
 
 interface DropdownItem {
   id: string | number;
@@ -8,7 +10,7 @@ interface DropdownItem {
   value: string | number;
 }
 
-interface Props {
+interface Props extends WithClickOutsideProps {
   labelText: string;
   name: string;
   data: DropdownItem[];
@@ -16,15 +18,18 @@ interface Props {
   setValue: (field: string, value: unknown) => void;
 }
 
-const DropdownFormik = ({
+const DropdownFormik: React.FC<Props> = ({
   labelText,
   name,
   data,
   dropdownLabel = "Select your job",
   setValue,
-}: Props) => {
-  const { show, setShow, nodeRef } = useClickOutSide();
+  show,
+  setShow,
+  nodeRef,
+}) => {
   const [label, setLabel] = useState(dropdownLabel);
+  const [field, meta] = useField<string>({ name });
 
   const handleClickDropdownItem = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLDivElement;
@@ -32,8 +37,6 @@ const DropdownFormik = ({
     setShow(false);
     setLabel(target.textContent as string);
   };
-
-  const [field, meta] = useField<string>({ name });
 
   useEffect(() => {
     if (field.value === "") setLabel(dropdownLabel);
@@ -45,13 +48,13 @@ const DropdownFormik = ({
 
       <div className="relative" ref={nodeRef}>
         <div
-          className="flex items-center justify-between z-20 p-5 bg-white border  cursor-pointer border-gray100"
+          className="z-20 flex items-center justify-between p-5 bg-white border cursor-pointer border-gray100"
           onClick={() => setShow(!show)}
         >
           <span className="w-full">
             {label}
             <svg
-              className=" float-right w-4 h-4 text-gray-800 dark:text-white"
+              className="float-right w-4 h-4 text-gray-800 dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -95,4 +98,4 @@ const DropdownFormik = ({
   );
 };
 
-export default DropdownFormik;
+export default withClickOutside<Props>(DropdownFormik);

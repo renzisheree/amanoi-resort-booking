@@ -17,7 +17,7 @@ import AdvanturePage from "./page/AdvanturePage";
 import ReservationPage from "./page/ReservationPage";
 import ProfilePage from "./page/ProfilePage";
 import BookingStep2 from "./page/BookingStep2";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ExclusiveOffer from "./page/ExclusiveOfferPage";
 import "react-toastify/dist/ReactToastify.css";
 import GettingThere from "./page/GettingThere";
