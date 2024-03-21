@@ -7,6 +7,7 @@ import useAxios from "../hooks/useAxios";
 import LoadingSkeleton from "../components/loading/LoadingSkeleton";
 import AOS from "aos";
 import { useEffect } from "react";
+import { ENDPOINT } from "../config/constant.ts";
 
 interface amenProps {
   name: string;
@@ -19,9 +20,7 @@ const RoomDetailPage = () => {
   const { path, slug } = useParams();
   const navigate = useNavigate();
 
-  const { data, loading } = useAxios(
-    `https://api.badenn.me/rooms/${path}/${slug}`
-  );
+  const { data, loading } = useAxios(`${ENDPOINT}/rooms/${path}/${slug}`);
   if (!data) return null;
   console.log(data);
   const { imageThumbnail, imageCover, description, amenities, roomType } = data;

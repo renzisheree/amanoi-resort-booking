@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MiddleLogo from "../components/MiddleLogo";
+import { ENDPOINT } from "../config/constant.ts";
 
 interface ProfileProps {
   firstname: string;
@@ -40,7 +41,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (cookieValue) {
       axios
-        .get(`https://api.badenn.me/auth/me`, {
+        .get(`${ENDPOINT}/auth/me`, {
           headers: {
             Authorization: `Bearer ${cookieValue}`,
           },
@@ -72,7 +73,7 @@ const ProfilePage = () => {
         password: passwordData.newPassword,
       };
       axios
-        .patch("https://api.badenn.me/auth/me", updatedProfileData, {
+        .patch(`${ENDPOINT}/auth/me`, updatedProfileData, {
           headers: { Authorization: `Bearer ${cookieValue}` },
         })
         .then((response) => {
@@ -238,7 +239,7 @@ const ProfilePage = () => {
           <button
             onClick={handleDeleteCookies}
             className="px-5 py-2 border font-thin bg-[#E6E2DB] {
-            
+
           }] "
           >
             Đăng xuất

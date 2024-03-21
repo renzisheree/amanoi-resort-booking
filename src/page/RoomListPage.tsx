@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-
-// import useAxios from "../hooks/useAxios";
-// import useAxiosSecond from "../hooks/useAxiosSecond";
 import RoomCard from "../components/RoomCard";
 import LoadingSkeleton from "../components/loading/LoadingSkeleton";
 import useDebounce from "../hooks/useDebound";
 import axios from "axios";
 import useAxios from "../hooks/useAxios";
-
+import { ENDPOINT } from "../config/constant.ts";
 // interface Item {
 //   id: string;
 //   name: string;
@@ -19,11 +16,10 @@ const RoomListPage = () => {
   const filterDebound = useDebounce(filter, 700);
   const [data1, setData1] = useState();
   const [pathURL, setPath] = useState("residencies");
-
-  const { data } = useAxios("https://api.badenn.me/room-types/all");
+  const { data } = useAxios(`${ENDPOINT}/room-types/all`);
   useEffect(() => {
     axios
-      .post(`https://api.badenn.me/rooms/search?name=${filterDebound}`)
+      .post(`${ENDPOINT}/rooms/search?name=${filterDebound}`)
       .then((response) => {
         setData1(response.data);
       })

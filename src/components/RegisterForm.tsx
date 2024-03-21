@@ -9,6 +9,7 @@ import contryData from "../data/countryList.json";
 import DropdownFormik from "./DropdownFormik";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { ENDPOINT } from "../config/constant.ts";
 
 interface RegisterProps {
   firstname: string;
@@ -28,7 +29,7 @@ const RegisterForm = () => {
     console.log(data);
     axios({
       method: "POST",
-      url: "https://api.badenn.me/auth/register",
+      url: `${ENDPOINT}/auth/register`,
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })

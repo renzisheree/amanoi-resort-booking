@@ -4,6 +4,7 @@ import InputForm from "./InputForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ENDPOINT } from "../config/constant.ts";
 
 interface loginProps {
   email: string;
@@ -16,7 +17,7 @@ const LoginForm = () => {
   const handleSubmit = (values: loginProps) => {
     axios({
       method: "POST",
-      url: "https://api.badenn.me/auth/login",
+      url: `${ENDPOINT}/auth/login`,
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })

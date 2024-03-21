@@ -9,6 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { ENDPOINT } from "../config/constant.ts";
 interface bookingProps {
   firstname: string;
   lastname: string;
@@ -58,7 +59,7 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
   }
   const postRawData = (rawData1, values) => {
     axios
-      .post("https://api.badenn.me/bookings/", rawData1, {
+      .post(`${ENDPOINT}/bookings/`, rawData1, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${cookieProfile}`,

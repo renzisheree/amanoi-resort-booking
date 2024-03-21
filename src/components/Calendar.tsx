@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import dropdownChil from "../data/dropdownChild.json";
+import { ENDPOINT } from "../config/constant.ts";
 useField;
 dayjs.extend(isBetween);
 
@@ -209,7 +210,7 @@ export default function Calendar() {
 
               axios
                 .post(
-                  `https://api.badenn.me/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
+                  `${ENDPOINT}/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
                 )
                 .then((response) => {
                   setData1(response.data);
