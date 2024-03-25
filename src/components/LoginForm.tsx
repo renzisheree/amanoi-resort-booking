@@ -133,7 +133,7 @@ const LoginForm = () => {
                 </button>
               </div>
 
-              <divgit
+              <div
                 className="w-full p-5 mt-5 font-semibold text-black bg-white rounded-full"
                 onClick={() => {
                   window.location.href = "http://localhost:3000/auth/google";
@@ -152,7 +152,7 @@ const LoginForm = () => {
                   </svg>{" "}
                   Login with Google
                 </div>
-              </divgit>
+              </div>
 
               <h1>
                 Bạn chưa có tài khoản?{" "}
