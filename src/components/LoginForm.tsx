@@ -31,7 +31,7 @@ const LoginForm = () => {
             return;
           }
           document.cookie = `token=${data.access_token};expires=${new Date(
-            Date.now() + 86400
+            Date.now() + 86400 * 1000
           ).toUTCString()}`;
 
           toast.success("Login successful");
