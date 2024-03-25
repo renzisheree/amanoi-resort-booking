@@ -3,6 +3,7 @@ import * as yup from "yup";
 import InputForm from "./InputForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface loginProps {
   email: string;
@@ -21,10 +22,26 @@ const LoginForm = () => {
     })
       .then(function (res) {
         console.log(res);
-        navigate("/login-2fa");
+        if (res.data.access_token == null) {
+          navigate("/login-2fa");
+        } else {
+          const { data } = res;
+          console.log(res);
+
+          if (!data.access_token) {
+            toast.error(res.data.error);
+            return;
+          }
+          document.cookie = `token=${data.access_token};expires=${new Date(
+            Date.now() + 86400
+          ).toUTCString()}`;
+
+          toast.success("Login successful");
+          navigate("/");
+        }
       })
       .catch(function (e) {
-        console.log(e);
+        toast.error(e);
       });
   };
 

@@ -1,4 +1,3 @@
-// Create a new file: DateRangeObserver.ts
 import { Dayjs } from "dayjs";
 
 interface DateRangeObserver {
