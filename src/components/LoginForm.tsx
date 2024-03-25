@@ -21,12 +21,10 @@ const LoginForm = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
       .then(function (res) {
-        console.log(res);
         if (res.data.access_token == null) {
           navigate("/login-2fa");
         } else {
           const { data } = res;
-          console.log(res);
 
           if (!data.access_token) {
             toast.error(res.data.error);

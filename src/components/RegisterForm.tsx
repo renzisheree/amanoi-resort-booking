@@ -23,9 +23,6 @@ interface RegisterProps {
 const RegisterForm = () => {
   const navigate = useNavigate();
   const handleSubmit = (values: RegisterProps) => {
-    console.log(values);
-    const data = JSON.stringify(values);
-    console.log(data);
     axios({
       method: "POST",
       url: "http://api.badenn.me/auth/register",
@@ -97,8 +94,6 @@ const RegisterForm = () => {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             handleSubmit(values);
             setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
-
               setSubmitting(false);
               resetForm();
             }, 5000);

@@ -52,7 +52,6 @@ const Login2FA = () => {
     })
       .then(function (res) {
         const { data } = res;
-        console.log(res);
 
         if (!data.access_token) {
           toast.error(res.data.error);
@@ -144,7 +143,6 @@ const Login2FA = () => {
             className="w-full p-5 bg-[#3B4F4C] font-semibold text-white rounded-lg"
             onClick={() => {
               handleVerifyClick();
-              console.log(123);
             }}
           >
             Verify
