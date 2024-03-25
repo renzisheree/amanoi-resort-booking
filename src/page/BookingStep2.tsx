@@ -167,7 +167,6 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
       {data != null && (
         <button
           onClick={() => {
-            // handleAdd(item);
             handleNavigation();
           }}
           className="px-5 py-2 bg-[#F3EEE7] rounded-full "
@@ -182,15 +181,14 @@ interface RoomProps {
   name: string;
   _id: string;
   amenities: string[];
-
   imageCover: string[];
-
   imageThumbnail: string[];
-
   price: number;
   path: string;
   slug: string;
-  roomType: [];
+  roomType: {
+    path: string;
+  };
 }
 
 const SelectRoom = () => {
@@ -209,6 +207,7 @@ const SelectRoom = () => {
 
   const location = useLocation();
   const { data } = location.state;
+  console.log(data);
   const navigate = useNavigate();
 
   if (!data) return null;

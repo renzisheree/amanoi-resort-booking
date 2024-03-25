@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateDate, months } from "../utils/calendar/calendarF";
 import { DayJsDateFactory } from "../utils/dateFactory/DayJsDateFactory";
 import cn from "../utils/calendar/cn";
@@ -12,7 +12,6 @@ import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
 import { useNavigate } from "react-router-dom";
 import dropdownChil from "../data/dropdownChild.json";
-import BookingFacade from "../utils/facade/BookingFacade";
 useField;
 dayjs.extend(isBetween);
 
@@ -20,14 +19,48 @@ interface DateRange {
   startDate: Dayjs | null;
   endDate: Dayjs | null;
 }
-export default function Calendar() {
+
+interface RoomDetailDataPropsModal {
+  name: string;
+  _id: string;
+  amenities: string[];
+  imageCover: string[];
+  imageThumbnail: string[];
+  price: number;
+  path: string;
+  slug: string;
+  roomType: object[];
+}
+
+export default function CalendarModal({
+  roomData,
+}: {
+  roomData: RoomDetailDataPropsModal;
+}) {
   const navigate = useNavigate();
   const dateFactory = new DayJsDateFactory();
-
-  const [data, setData1] = useState({});
-  data;
-  const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
+  const days = ["S", "M", "T", "W", "T", "F", "S"];
+
+  const [addedRooms, setAddedRooms] = useState<{
+    [key: string]: RoomDetailDataPropsModal;
+  }>({});
+
+  useEffect(() => {
+    const rooms = localStorage.getItem("rooms");
+    if (rooms) {
+      setAddedRooms(JSON.parse(rooms));
+    }
+  }, []);
+  const handleAdd = (room: RoomDetailDataPropsModal) => {
+    const updatedRooms: { [key: string]: RoomDetailDataPropsModal } = {
+      ...addedRooms,
+      [room._id]: room,
+    };
+
+    setAddedRooms(updatedRooms);
+    localStorage.setItem("rooms", JSON.stringify(updatedRooms));
+  };
 
   const [range, setRange] = useState<DateRange>({
     startDate: null,
@@ -83,8 +116,6 @@ export default function Calendar() {
     return date.isBefore(dayjs(), "day");
   }
   const handleFormSubmit = (values) => {
-    const bookingFacade = BookingFacade.getInstance();
-
     values.startDate = range.startDate
       ? dayjs(range.startDate).format("DD-MM-YYYY")
       : "";
@@ -93,24 +124,9 @@ export default function Calendar() {
       : "";
 
     localStorage.setItem("bookingData", JSON.stringify(values));
+    handleAdd(roomData);
 
-    bookingFacade
-      .searchRooms(
-        values.startDate,
-        values.endDate,
-        values.adult,
-        values.children
-      )
-      .then((response) => {
-        setData1(response);
-
-        navigate("/booking/step-2", {
-          state: { data: response, values },
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    navigate("/reservations", { replace: true });
   };
   return (
     <div className="flex gap-[10vw] sm:divide-x justify-center   mx-auto w-screen  h-screen items-center sm:flex-row flex-col">

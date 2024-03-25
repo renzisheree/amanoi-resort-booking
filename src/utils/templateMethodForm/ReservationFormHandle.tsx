@@ -31,6 +31,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
   private cookieProfile: string | undefined;
   private bookingData: bookingProps;
   private _id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private foundObject: any;
   navigate = useNavigate();
 
@@ -41,6 +42,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
     this.bookingData = localStorage.getItem("bookingData")
       ? JSON.parse(localStorage.getItem("bookingData")!)
       : "";
+    console.log(this.bookingData);
     this._id = _id;
     this.foundObject = this.getObjectById(_id);
   }

@@ -1,20 +1,31 @@
 import Cart from "../components/Cart";
 import ReservationRoomCard from "../components/ReservationRoomCard";
 import { TEInput } from "tw-elements-react";
+interface RoomProps {
+  name: string;
+  _id: string;
+  amenities: string[];
+  imageCover: string[];
+  imageThumbnail: string[];
+  price: number;
+  path: string;
+  slug: string;
+  roomType: [];
+}
 
 const ReservationPage = () => {
   const localStorageData = localStorage.getItem("rooms");
   const roomData = localStorageData
     ? Object.values(JSON.parse(localStorageData))
     : [];
-
+  console.log(roomData);
   const localBooking = localStorage.getItem("bookingData");
   const bookingData = localBooking ? JSON.parse(localBooking) : "";
 
   return (
     <div className="flex items-start justify-around">
       <div className="">
-        {roomData.map((item, index) => (
+        {roomData.map((item: RoomProps, index) => (
           <ReservationRoomCard
             key={index}
             _id={item._id}

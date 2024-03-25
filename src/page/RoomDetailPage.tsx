@@ -1,31 +1,57 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import listImage from "../data/listImage.json";
-import { useNavigate } from "react-router-dom";
 import ViewCard from "../components/ViewCard";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import LoadingSkeleton from "../components/loading/LoadingSkeleton";
 import AOS from "aos";
-import { useEffect } from "react";
+import { Button, Modal } from "antd";
+
+import { ReactNode, useEffect, useState } from "react";
+import CalendarModal from "../components/CalendarModal";
 
 interface amenProps {
   name: string;
   path: string;
 }
 
+interface RoomDetailDataProps {
+  name: string;
+  _id: string;
+  amenities: string[];
+  imageCover: string[];
+  imageThumbnail: string[];
+  price: number;
+  path: string;
+  slug: string;
+  roomType: [];
+}
+
 const RoomDetailPage = () => {
   useEffect(() => {
     AOS.init();
   });
+  const [open, setOpen] = useState(false);
 
   const { path, slug } = useParams();
-  const navigate = useNavigate();
 
   const { data, loading } = useAxios(
     `https://api.badenn.me/rooms/${path}/${slug}`
   );
-  if (!data) return null;
   console.log(data);
+  if (!data) return null;
+
+  const roomDetailData: RoomDetailDataProps = {
+    name: data.name,
+    _id: data._id,
+    amenities: data.amenities,
+    imageCover: data.imageCover,
+    imageThumbnail: data.imageThumbnail,
+    price: data.price,
+    path: data.path,
+    slug: data.slug,
+    roomType: [],
+  };
   const { imageThumbnail, imageCover, description, amenities, roomType } = data;
 
   const { inclusion } = roomType;
@@ -77,15 +103,14 @@ const RoomDetailPage = () => {
         <span className="flex flex-col gap-20">
           <p className="text-sm italic">{description}</p>
 
-          <a
-            href=""
+          <Button
             onClick={() => {
-              navigate("/booking");
+              setOpen(true);
             }}
-            className="px-5 py-3 mx-auto text-sm italic bg-gray-400 rounded-xl"
+            className=" rounded-lg mx-auto w-[50%]"
           >
             Đặt phòng
-          </a>
+          </Button>
         </span>
       </div>
 
@@ -97,7 +122,7 @@ const RoomDetailPage = () => {
 
         <ul className="grid grid-cols-3 gap-10 p-20 mt-10 list-disc bg-white ">
           {" "}
-          {inclusion.map((item: amenProps, index: number) => (
+          {inclusion.map((item: ReactNode, index: number) => (
             <li key={index}> {item}</li>
           ))}
         </ul>
@@ -128,6 +153,16 @@ const RoomDetailPage = () => {
             ))}
         </Swiper>
       </div>
+      <Modal
+        title="Booking"
+        centered
+        open={open}
+        onOk={() => setOpen(false)}
+        onCancel={() => setOpen(false)}
+        width={1280}
+      >
+        <CalendarModal roomData={roomDetailData} />
+      </Modal>
     </div>
   );
 };
