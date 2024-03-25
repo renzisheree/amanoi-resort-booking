@@ -134,7 +134,7 @@ const LoginForm = () => {
               </div>
 
               <div
-                className="w-full p-5 mt-5 font-semibold text-black bg-white rounded-full"
+                className="w-full p-5 mt-5 font-semibold text-black bg-white rounded-full cursor-pointer"
                 onClick={() => {
                   window.location.href = "http://localhost:3000/auth/google";
                 }}
