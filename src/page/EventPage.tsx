@@ -17,7 +17,7 @@ const EventPage = () => {
   });
   return (
     <div className="">
-      <div className="flex flex-col justify-center items-center gap-10">
+      <div className="flex flex-col items-center justify-center gap-10">
         <h1 data-aos="fade-up" className="text-3xl italic">
           Tiệc cưới và sự kiện tại Amanoi
         </h1>
@@ -61,7 +61,7 @@ const EventPage = () => {
 
         <div
           data-aos="fade-up"
-          className=" flex items-start gap-10 justify-center w-full italic pb-10"
+          className="flex items-start justify-center w-full gap-10 pb-10 italic "
         >
           <img
             src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2021-03/Amanoi_Gallery_18.jpg?itok=3vbmL2Xp"
@@ -72,7 +72,7 @@ const EventPage = () => {
             alt=""
           />
           <span className="flex flex-col gap-1">
-            <h1 className="text-xl font-medium italic ">Nhà hàng chính</h1>
+            <h1 className="text-xl italic font-medium ">Nhà hàng chính</h1>
             <p className="text-sm ">
               Tọa lạc trên đỉnh đồi, nhà hàng chính phục vụ ba bữa ăn hàng ngày
               với cả ẩm thực Việt Nam và quốc tế. Với thực đơn tận dụng tối đa
@@ -81,7 +81,7 @@ const EventPage = () => {
               trong nhà và khu vực ngoài trời với tầm nhìn bao quát vịnh biển
               tuyệt đẹp.
             </p>{" "}
-            <h1 className="text-xl font-medium italic ">Nhà hàng Beach Club</h1>
+            <h1 className="text-xl italic font-medium ">Nhà hàng Beach Club</h1>
             <p className="text-sm ">
               Tọa lạc ngay bên bờ cát trắng và chỉ cách biển vài bước chân, nhà
               hàng Beach Club được bao quanh bởi những tảng đá granit lớn với
@@ -90,7 +90,7 @@ const EventPage = () => {
               bơi ban ngày, với các món hải sản đặc biệt tươi ngon rất đáng để
               thưởng thức.
             </p>{" "}
-            <h1 className="text-xl font-medium italic ">Quầy Bar</h1>
+            <h1 className="text-xl italic font-medium ">Quầy Bar</h1>
             <p className="text-sm ">
               Nhìn ra Vườn Quốc gia Núi Chúa và thuộc khu sảnh chính Central
               Pavilion, quầy bar tại Amanoi là không gian thư giãn lấy cảm hứng
@@ -102,22 +102,23 @@ const EventPage = () => {
           </span>
         </div>
 
-        <h1 data-aos="fade-up" className="text-3xl font-medium italic my-5">
+        <h1 data-aos="fade-up" className="my-5 text-3xl italic font-medium">
           Các địa điểm tổ chức
         </h1>
-        <h1 data-aos="fade-up" className="text-3xl font-medium italic">
+        <h1 data-aos="fade-up" className="text-3xl italic font-medium">
           Cá nhân hoá trải nghiệm và chú trọng tới chi tiết
         </h1>
 
         <div
           data-aos="fade-up"
-          className="swiper-list2 flex items-center justify-center rounded-lg"
+          className="flex items-center justify-center rounded-lg swiper-list2"
         >
           <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
             {eventSwiperData &&
               eventSwiperData.map((item: eventSwiperDataProps) => (
-                <SwiperSlide>
+                <SwiperSlide key={item.id}>
                   <ViewCard
+                    key={item.id}
                     cardImg={item.img}
                     cardTitle={item.title}
                     cardParagraph={item.paragraph}

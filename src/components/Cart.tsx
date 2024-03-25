@@ -7,6 +7,18 @@ interface cartProps {
   children: number;
   adult: number;
 }
+interface RoomProps {
+  name: string;
+  _id: string;
+  amenities: string[];
+  imageCover: string[];
+  imageThumbnail: string[];
+  price: number;
+  path: string;
+  slug: string;
+  roomType: [];
+  fee: number;
+}
 
 const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
   const localStorageData = localStorage.getItem("rooms");
@@ -47,11 +59,9 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
           </div>
           <hr />
         </div>
-        {data.map((item, index: number) => (
-          <div key={index} className="shadow-lg mt-3">
+        {data.map((item: RoomProps, index: number) => (
+          <div key={index} className="mt-3 shadow-lg">
             <CardRoom
-              path={item.path}
-              slug={item.slug}
               key={index}
               startDate={startDate}
               endDate={endDate}

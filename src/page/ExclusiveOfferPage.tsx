@@ -25,6 +25,7 @@ const ExclusiveOfferPage = () => {
         {offerData &&
           offerData.map((item) => (
             <ViewCard
+              key={item.id}
               cardImg={item.img}
               cardTitle={item.title}
               cardParagraph={item.paragraph}

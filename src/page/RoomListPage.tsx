@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 
 // import useAxios from "../hooks/useAxios";
@@ -43,28 +44,7 @@ const RoomListPage = () => {
   const handleSearchChange = (e) => {
     setFilter(e.target.value);
   };
-  // const [url, setUrl] = useState(`http://localhost:3000/rooms/${pathURL}`);
-  // useEffect(() => {
-  //   if (filterDebound) {
-  //     setUrl(`http://localhost:3000/rooms/search?name=${filterDebound}`);
-  //   }
-  // }, [filterDebound]);
 
-  // if (!dataSecond) return null;
-  // const { rooms } = dataSecond;
-
-  // const { path } = dataSecond;
-  // const roomsByType = {};
-
-  // rooms.forEach((room) => {
-  //   const { path } = room.roomType;
-
-  //   if (!roomsByType[path]) {
-  //     roomsByType[path] = [];
-  //   }
-
-  //   roomsByType[path].push(room);
-  // });
   return (
     <div className="p-10">
       {loading && (
@@ -103,40 +83,24 @@ const RoomListPage = () => {
       )}
       <div className="flex flex-col items-center justify-center gap-10">
         <h1 className="text-3xl italic text-center">Phòng ở Amanoi</h1>
-        {/* <div>
-          {Object.entries(roomsByType).map(([type, rooms]) => (
-            <div key={type}>
-              <h2>{type}</h2>
 
-              <div className="grid grid-cols-2 gap-20">
-                {rooms.map((room) => (
-                  <RoomCard
-                    cardImg={room.imageThumbnail[0]}
-                    cardTitle={room.name}
-                    button={false}
-                    cardParagraph={room.description}
-                    slug={room.slug}
-                    path={room.roomType.path}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div> */}
         <div className="">
           <ul className="flex items-center justify-center gap-10 cursor-pointer roomlist">
-            {item1.map((item: Item) => (
-              <li
-                key={item.id}
-                onClick={() => {
-                  setPath(item.path);
-                }}
-                style={{
-                  fontWeight: pathURL === item.path ? "bold" : "normal",
-                }}
-              >
-                {item.name}
-              </li>
+            {item1.map((item: any) => (
+              <div className="" key={item.id}>
+                {" "}
+                <li
+                  key={item.id}
+                  onClick={() => {
+                    setPath(item.path);
+                  }}
+                  style={{
+                    fontWeight: pathURL === item.path ? "bold" : "normal",
+                  }}
+                >
+                  {item.name}
+                </li>
+              </div>
             ))}
           </ul>
         </div>
@@ -181,10 +145,11 @@ const RoomListPage = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-20">
-        {rooms.map((dataSecond) => {
+        {(rooms as Array<any>).map((dataSecond) => {
           if (pathURL === dataSecond.roomType.path) {
             return (
               <RoomCard
+                key={dataSecond.id}
                 cardImg={dataSecond.imageThumbnail[0]}
                 cardTitle={dataSecond.name}
                 button={false}

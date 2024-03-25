@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
@@ -115,7 +116,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
 
         // Remove the booked room from localStorage
         const updatedRooms = Object.values(rooms).filter(
-          (r) => r._id !== values.rooms
+          (r: any) => r._id !== values.rooms
         );
         localStorage.setItem("rooms", JSON.stringify(updatedRooms));
         const rooms1: [] = JSON.parse(localStorage.getItem("rooms") || "[]");

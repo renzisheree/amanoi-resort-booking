@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import RoomSearchCard from "./RoomSearchCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useRouter } from "next/router";
 
 interface RoomProps {
   name: string;
@@ -16,7 +15,9 @@ interface RoomProps {
   price: number;
   path: string;
   slug: string;
-  roomType: [];
+  roomType: {
+    path: string;
+  };
 }
 
 const SelectRoom = () => {
@@ -49,12 +50,12 @@ const SelectRoom = () => {
   return (
     <div>
       <div className=" mx-auto max-w-[1200px] p-10  flex flex-col justify-start items-start gap-10  rounded-3xl">
-        <h1 className="text-3xl   text-center p-5 italic">
+        <h1 className="p-5 text-3xl italic text-center">
           Here's your best option{" "}
         </h1>
         {data.data.items.map((item: RoomProps, index: number) => (
           <div
-            className="flex mt-5   w-full bg-white justify-evenly items-center p-10 gap-5 shadow-lg "
+            className="flex items-center w-full gap-5 p-10 mt-5 bg-white shadow-lg justify-evenly "
             key={index}
           >
             <div className="max-w-[400px] ">
@@ -63,12 +64,12 @@ const SelectRoom = () => {
                 imageUrl={item.imageThumbnail}
               ></RoomSearchCard>
             </div>
-            <div className="flex flex-col justify-center gap-2 items-start">
+            <div className="flex flex-col items-start justify-center gap-2">
               <div className="">
                 <span className="text-2xl font-medium">{item.name}</span>
               </div>
 
-              <div className="font-body font-bold">
+              <div className="font-bold font-body">
                 <span>{item.price}$</span>
               </div>
 
@@ -100,16 +101,10 @@ const SelectRoom = () => {
                     />
                     <path d="m4.4.8-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 3.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8Zm3 0-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 6.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8Zm3 0-.003.004-.014.019a4.077 4.077 0 0 0-.204.31 2.337 2.337 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.198 3.198 0 0 1-.202.388 5.385 5.385 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 9.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8Z" />
                   </svg>
-                  <h1 className="font-medium italic">Bao gồm bữa sáng</h1>
+                  <h1 className="italic font-medium">Bao gồm bữa sáng</h1>
                 </span>
 
-                <span className="flex justify-center items-center gap-5">
-                  <button
-                    onClick={handleNavigation}
-                    className="px-5 py-2 bg-[#404040] rounded-lg text-white"
-                  >
-                    Book now
-                  </button>
+                <span className="flex items-center justify-center gap-5">
                   <button
                     onClick={() => {
                       handleAdd(item);

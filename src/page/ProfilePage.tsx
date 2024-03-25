@@ -33,10 +33,6 @@ const ProfilePage = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const toggleEdit = () => {
-    setIsEditing((prev) => !prev);
-  };
-
   useEffect(() => {
     if (cookieValue) {
       axios
@@ -47,7 +43,6 @@ const ProfilePage = () => {
         })
         .then((res) => {
           const { data } = res;
-          console.log(data);
           setProfileData(data);
         });
     }
@@ -89,7 +84,7 @@ const ProfilePage = () => {
   // Collect profile data
 
   return cookieValue ? (
-    <div className="flex justify-center items-center gap-20">
+    <div className="flex items-center justify-center gap-20">
       <MiddleLogo
         srcImg="https://www.aman.com/themes/custom/aman/logo.svg
             "
@@ -183,7 +178,7 @@ const ProfilePage = () => {
         </div>
         {isEditing && (
           <div className="flex flex-col gap-10">
-            <div className="text-red-400 text-sm  ">*NOT REQUIRED</div>
+            <div className="text-sm text-red-400 ">*NOT REQUIRED</div>
 
             <div className="flex ">
               {" "}
@@ -233,7 +228,7 @@ const ProfilePage = () => {
             </div>
           </div>
         )}
-        <div className="flex gap-10 justify-center items-center">
+        <div className="flex items-center justify-center gap-10">
           {" "}
           <button
             onClick={handleDeleteCookies}

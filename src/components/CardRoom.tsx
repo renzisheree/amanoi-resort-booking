@@ -35,7 +35,7 @@ const CardRoom: React.FC<CardRoomProps> = ({
     window.location.reload();
   };
   return (
-    <div className="shadow-md p-5">
+    <div className="p-5 shadow-md">
       <h1>YOUR ROOM</h1>
       <div className="flex flex-col items-center justify-center">
         <span>
@@ -45,8 +45,8 @@ const CardRoom: React.FC<CardRoomProps> = ({
           {adult} adult - {children} children
         </span>
       </div>
-      <div className=" flex flex-col justify-center items-center">
-        <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center ">
+        <div className="flex flex-col items-center justify-center">
           {" "}
           <span className="text-2xl font-medium">{roomName}</span>
           <span>Standard Daily Rate</span>
