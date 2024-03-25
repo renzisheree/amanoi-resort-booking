@@ -21,11 +21,12 @@ const LoginForm = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
       .then(function (res) {
-        if (res.data.access_token == null) {
+        if (res.data.error != null) {
+          toast.error(res.data.error);
+        } else if (res.data.access_token == null) {
           navigate("/login-2fa");
         } else {
           const { data } = res;
-
           if (!data.access_token) {
             toast.error(res.data.error);
             return;
@@ -33,10 +34,28 @@ const LoginForm = () => {
           document.cookie = `token=${data.access_token};expires=${new Date(
             Date.now() + 86400 * 1000
           ).toUTCString()}`;
-
           toast.success("Login successful");
           navigate("/");
         }
+        // console.log(res);
+        // if (res.data.access_token == null) {
+        //   navigate("/login-2fa");
+        // } else if (res.data.error != null) {
+        //   const { data } = res;
+
+        //   if (!data.access_token) {
+        //     toast.error(res.data.error);
+        //     return;
+        //   }
+        //   document.cookie = `token=${data.access_token};expires=${new Date(
+        //     Date.now() + 86400 * 1000
+        //   ).toUTCString()}`;
+
+        //   toast.success("Login successful");
+        //   navigate("/");
+        // } else {
+        //   toast.error(res.data.error);
+        // }
       })
       .catch(function (e) {
         toast.error(e);
