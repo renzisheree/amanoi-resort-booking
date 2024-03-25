@@ -4,11 +4,11 @@ import InputForm from "../components/InputForm";
 import TextAreaFormik from "../components/TextAreaFormik";
 import DropdownFormik from "./DropdownFormik";
 import countryList from "../data/countryList.json";
-import dayjs from "dayjs";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import ReservationFormHandler from "../utils/templateMethodForm/ReservationFormHandle";
+
+interface reserProps {
+  _id: string;
+}
 interface bookingProps {
   firstname: string;
   lastname: string;
@@ -25,82 +25,12 @@ interface bookingProps {
   fee: number;
   totalPrice: number;
   children: string;
-  rooms: string[];
-}
-
-interface reserProps {
-  _id: string;
+  rooms: string;
 }
 const ReservationForm: React.FC<reserProps> = ({ _id }) => {
-  const navigate = useNavigate();
-  const localBooking = localStorage.getItem("bookingData");
-  const cookieProfile = Cookies.get("token"); // get cookie
-  console.log(cookieProfile);
-
-  const bookingData = localBooking ? JSON.parse(localBooking) : "";
-  const getObjectById = (id: string) => {
-    const localStorageData = localStorage.getItem("rooms");
-    const data = localStorageData ? JSON.parse(localStorageData) : [];
-    console.log(data);
-
-    const foundObject = Object.values(data)?.find(
-      (item: any) => item._id === id
-    );
-    return foundObject;
-  };
-  const desiredId = _id;
-  const foundObject = getObjectById(desiredId);
-
-  if (foundObject) {
-    console.log(foundObject);
-  } else {
-    console.log("Object not found in localStorage");
-  }
-  const postRawData = (rawData1, values) => {
-    axios
-      .post("https://api.badenn.me/bookings/", rawData1, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${cookieProfile}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data); // Handle the response data
-        const rooms: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
-
-        const updatedRooms = Object.values(rooms).filter(
-          (r) => r._id !== values.rooms
-        );
-        localStorage.setItem("rooms", JSON.stringify(updatedRooms));
-
-        const rooms1: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
-        console.log(rooms1);
-        if (rooms1.length == 0) {
-          navigate("/thanks");
-        }
-
-        toast.success("Booking successful");
-      })
-      .catch((error) => {
-        console.error(error); // Handle any error that occurred during the
-        toast.error(error);
-      });
-  };
-
-  const dateStr = bookingData.startDate;
-  const [day, month, year] = dateStr.split("-");
-
-  const newStartDate = `${month}-${day}-${year}`;
-
-  const dateStr1 = bookingData.endDate;
-  const [day1, month1, year1] = dateStr1.split("-");
-
-  const newEndDate = `${month1}-${day1}-${year1}`;
-
-  const range = dayjs(newEndDate).diff(newStartDate, "day");
-
+  const formHandler = new ReservationFormHandler(_id);
   return (
-    <div className="mx-auto py-5 ">
+    <div className="py-5 mx-auto ">
       <div className="text-2xl">Thông tin liên hệ</div>
       <Formik
         initialValues={{
@@ -137,63 +67,15 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
 
           phone: yup.number().required("Please enter your phone number"),
         })}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          values.rooms = _id;
-          values.startDate = bookingData.startDate;
-          values.endDate = bookingData.endDate;
-          values.adult = bookingData.adult;
-          values.children = bookingData.children;
-          values.fee = foundObject.price * range * 0.08;
-          values.totalPrice = foundObject.price * range;
-
-          // const rawData = {
-          //   rooms: values.rooms,
-          //   totalPrice: values.totalPrice,
-          //   fee: values.fee,
-          //   children: values.children,
-          //   adults: values.adult,
-          //   start: values.startDate,
-          //   end: values.endDate,
-          //   note: values.note,
-          //   zipCode: values.zipcode,
-          //   city: values.city,
-          //   address: values.address,
-          //   country: values.country,
-          //   email: values.email,
-          //   phone: values.phone,
-          //   lastName: values.lastname,
-          //   firstName: values.firstname,
-          // };
-          const changeRoom = [values.rooms];
-
-          const rawData1 = {
-            rooms: changeRoom,
-            totalPrice: values.totalPrice,
-            fee: values.fee,
-            children: bookingData.children,
-            adults: bookingData.adult,
-            start: bookingData.startDate,
-            end: bookingData.endDate,
-            note: values.note,
-            zipCode: values.zipcode,
-            city: values.city,
-            address: values.address,
-            country: values.country,
-            email: values.email,
-            phone: values.phone,
-            lastName: values.lastname,
-            firstName: values.firstname,
-          };
-
-          postRawData(rawData1, values);
-
-          setTimeout(() => {
-            console.log(JSON.stringify(values));
-            setSubmitting(false);
-
-            window.location.reload();
-            resetForm();
-          }, 3000);
+        onSubmit={(values: bookingProps, { setSubmitting, resetForm }) => {
+          formHandler.processForm(values, () => {
+            setTimeout(() => {
+              console.log(JSON.stringify(values));
+              setSubmitting(false);
+              window.location.reload();
+              resetForm();
+            }, 3000);
+          });
         }}
       >
         {(formik) => {

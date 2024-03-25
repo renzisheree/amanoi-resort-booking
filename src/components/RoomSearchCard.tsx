@@ -8,7 +8,7 @@ const RoomSearchCard: React.FC<RoomSearchCardProps> = ({
   imageUrl,
 }: RoomSearchCardProps) => {
   return (
-    <div className="shadow-xl rounded-3xl z-0">
+    <div className="z-0 shadow-xl rounded-3xl">
       <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
         {imageUrl.map((thumbnailUrl, i) => (
           <SwiperSlide key={`img-${i}`}>

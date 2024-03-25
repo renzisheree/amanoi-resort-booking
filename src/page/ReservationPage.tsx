@@ -7,10 +7,10 @@ const ReservationPage = () => {
   const roomData = localStorageData
     ? Object.values(JSON.parse(localStorageData))
     : [];
-  console.log(roomData);
+
   const localBooking = localStorage.getItem("bookingData");
   const bookingData = localBooking ? JSON.parse(localBooking) : "";
-  console.log(bookingData);
+
   return (
     <div className="flex items-start justify-around">
       <div className="">
@@ -42,7 +42,7 @@ export default ReservationPage;
 
 function Payment() {
   return (
-    <div className=" flex flex-col gap-5 mt-5 bg-white p-5 shadow-xl rounded-lg">
+    <div className="flex flex-col gap-5 p-5 mt-5 bg-white rounded-lg shadow-xl ">
       <h1>THÔNG TIN THANH TOÁN</h1>
 
       <div className="flex justify-start gap-10">
@@ -82,7 +82,7 @@ function Payment() {
 
 function Policy() {
   return (
-    <div className="flex flex-col justify-start bg-white p-5 mt-5 shadow-xl rounded-lg gap-2">
+    <div className="flex flex-col justify-start gap-2 p-5 mt-5 bg-white rounded-lg shadow-xl">
       <h1 className="text-2xl">Chính sách:</h1>
       <div className="flex gap-10">
         <div className="">

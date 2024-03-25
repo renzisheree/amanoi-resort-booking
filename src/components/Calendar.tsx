@@ -1,6 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
-import { generateDate, months } from "../utils/calendar/calendar";
+import { generateDate, months } from "../utils/calendar/calendarF";
+import { DayJsDateFactory } from "../utils/dateFactory/DayJsDateFactory";
 import cn from "../utils/calendar/cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import isBetween from "dayjs/plugin/isBetween";
@@ -10,9 +11,8 @@ import countData from "../data/countData.json";
 import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import dropdownChil from "../data/dropdownChild.json";
+import BookingFacade from "../utils/facade/BookingFacade";
 useField;
 dayjs.extend(isBetween);
 
@@ -22,6 +22,7 @@ interface DateRange {
 }
 export default function Calendar() {
   const navigate = useNavigate();
+  const dateFactory = new DayJsDateFactory();
 
   const [data, setData1] = useState({});
   const days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -70,7 +71,7 @@ export default function Calendar() {
       }
     }
   };
-  console.log(123);
+
   function isDateInRange(date: Dayjs) {
     if (!range.startDate || !range.endDate) return false;
 
@@ -80,7 +81,35 @@ export default function Calendar() {
   function isPastDate(date: Dayjs) {
     return date.isBefore(dayjs(), "day");
   }
+  const handleFormSubmit = (values) => {
+    const bookingFacade = BookingFacade.getInstance();
 
+    values.startDate = range.startDate
+      ? dayjs(range.startDate).format("DD-MM-YYYY")
+      : "";
+    values.endDate = range.endDate
+      ? dayjs(range.endDate).format("DD-MM-YYYY")
+      : "";
+
+    localStorage.setItem("bookingData", JSON.stringify(values));
+
+    bookingFacade
+      .searchRooms(
+        values.startDate,
+        values.endDate,
+        values.adult,
+        values.children
+      )
+      .then((response) => {
+        setData1(response);
+        navigate("/booking/step-2", {
+          state: { data: response, values },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="flex gap-[10vw] sm:divide-x justify-center   mx-auto w-screen  h-screen items-center sm:flex-row flex-col">
       <div className="">
@@ -125,7 +154,7 @@ export default function Calendar() {
         </div>
 
         <div className="grid grid-cols-7 ">
-          {generateDate(today.month(), today.year()).map(
+          {generateDate(today.month(), today.year(), dateFactory).map(
             ({ date, currentMonth, today }, index) => {
               return (
                 <div
@@ -196,38 +225,7 @@ export default function Calendar() {
 
               .required("Please enter number of adult(s)"),
           })}
-          onSubmit={(values, { setSubmitting, resetForm }) => {
-            setTimeout(() => {
-              values.startDate = range.startDate
-                ? dayjs(range.startDate).format("DD-MM-YYYY")
-                : "";
-              values.endDate = range.endDate
-                ? dayjs(range.endDate).format("DD-MM-YYYY")
-                : "";
-
-              localStorage.setItem("bookingData", JSON.stringify(values));
-
-              axios
-                .post(
-                  `https://api.badenn.me/rooms/booking/search?start=${values.startDate}&end=${values.endDate}&adults=${values.adult}&children=${values.children}`
-                )
-                .then((response) => {
-                  setData1(response.data);
-
-                  navigate("/booking/step-2", {
-                    state: { data: response.data, values: values },
-                  });
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-
-              setSubmitting(false);
-              resetForm();
-
-              <Link to="/booking/step-2" state={{ data, values }}></Link>;
-            }, 3000);
-          }}
+          onSubmit={handleFormSubmit}
         >
           {(formik) => {
             return (

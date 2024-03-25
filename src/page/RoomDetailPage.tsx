@@ -12,10 +12,12 @@ interface amenProps {
   name: string;
   path: string;
 }
+
 const RoomDetailPage = () => {
   useEffect(() => {
     AOS.init();
   });
+
   const { path, slug } = useParams();
   const navigate = useNavigate();
 
@@ -27,14 +29,15 @@ const RoomDetailPage = () => {
   const { imageThumbnail, imageCover, description, amenities, roomType } = data;
 
   const { inclusion } = roomType;
+
   return (
     <div className="p-10">
       {loading && (
         <div
           data-aos="fade-up"
-          className=" flex flex-col justify-center items-center gap-10"
+          className="flex flex-col items-center justify-center gap-10 "
         >
-          <div className="w-10 h-10 rounded-full border-4 border-red-500 border-t-transparent border-t-4 mx-auto animate-spin mb-10 mt-20"></div>
+          <div className="w-10 h-10 mx-auto mt-20 mb-10 border-4 border-t-4 border-red-500 rounded-full border-t-transparent animate-spin"></div>
 
           <LoadingSkeleton
             height="5vh"
@@ -48,7 +51,7 @@ const RoomDetailPage = () => {
           ></LoadingSkeleton>
         </div>
       )}
-      <h1 data-aos="fade-up" className="text-3xl italic text-center py-10">
+      <h1 data-aos="fade-up" className="py-10 text-3xl italic text-center">
         {data.name}
       </h1>
       <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
@@ -66,7 +69,7 @@ const RoomDetailPage = () => {
       </Swiper>
       <div
         data-aos="fade-up"
-        className=" flex justify-start items-center gap-10 p-10"
+        className="flex items-center justify-start gap-10 p-10 "
       >
         <img src={imageCover[0]} alt="" />
         <img src={imageCover[1]} alt="" />
@@ -79,7 +82,7 @@ const RoomDetailPage = () => {
             onClick={() => {
               navigate("/booking");
             }}
-            className="italic text-sm underline"
+            className="px-5 py-3 mx-auto text-sm italic bg-gray-400 rounded-xl"
           >
             Đặt phòng
           </a>
@@ -87,22 +90,22 @@ const RoomDetailPage = () => {
       </div>
 
       <div data-aos="fade-up" className="">
-        <h1 className="text-3xl text-center italic">
+        <h1 className="text-3xl italic text-center">
           {" "}
           Gói lưu chú của bạn bao gồm
         </h1>
 
-        <ul className="grid grid-cols-3 gap-10 list-disc	p-20  mt-10 bg-white ">
+        <ul className="grid grid-cols-3 gap-10 p-20 mt-10 list-disc bg-white ">
           {" "}
           {inclusion.map((item: amenProps, index: number) => (
             <li key={index}> {item}</li>
           ))}
         </ul>
       </div>
-      <div data-aos="fade-up" className=" mt-10">
-        <h1 className="text-3xl text-center italic"> Tiện nghi</h1>
+      <div data-aos="fade-up" className="mt-10 ">
+        <h1 className="text-3xl italic text-center"> Tiện nghi</h1>
 
-        <ul className="grid grid-cols-3 gap-10 list-disc	p-20  mt-10 bg-white ">
+        <ul className="grid grid-cols-3 gap-10 p-20 mt-10 list-disc bg-white ">
           {amenities.map((item: amenProps, index: number) => (
             <li key={index}> {item.name}</li>
           ))}

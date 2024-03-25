@@ -23,6 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 import GettingThere from "./page/GettingThere";
 import ThanksPage from "./page/ThanksPage";
 import "aos/dist/aos.css";
+import Login2FA from "./page/Login2FA";
 
 function App() {
   return (
@@ -50,6 +51,14 @@ function App() {
             element={
               <>
                 <FoodPage></FoodPage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/login-2fa"
+            element={
+              <>
+                <Login2FA></Login2FA>
               </>
             }
           ></Route>

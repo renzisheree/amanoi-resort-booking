@@ -21,7 +21,7 @@ const ReservationRoomCard: React.FC<RRProps> = ({
 
   return (
     <div className="flex border-b-4 shadow-xl p-5 min-w-[700px] bg-white rounded-md   flex-col gap-10 justify-center items-center">
-      <div className="w-full flex items-center gap-5 shadow-md  p-5 ">
+      <div className="flex items-center w-full gap-5 p-5 shadow-md ">
         {" "}
         <img src={imageCover} alt="" className="w-[120px] h-[100px]" />
         <div className="w-[60%]">
@@ -30,7 +30,7 @@ const ReservationRoomCard: React.FC<RRProps> = ({
             onClick={() => {
               setIsFormVisible(!isFormVisible);
             }}
-            className="cursor-pointer float-right"
+            className="float-right cursor-pointer"
           >
             <svg
               width="25px"
@@ -40,8 +40,8 @@ const ReservationRoomCard: React.FC<RRProps> = ({
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
                 fill="#000000"
               />

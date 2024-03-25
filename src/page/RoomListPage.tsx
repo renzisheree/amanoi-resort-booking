@@ -23,7 +23,7 @@ const RoomListPage = () => {
   const { data } = useAxios("http://api.badenn.me/room-types/all");
   useEffect(() => {
     axios
-      .post(`http://api.badenn.me/search?name=${filterDebound}`)
+      .post(`http://api.badenn.me/rooms/search?name=${filterDebound}`)
       .then((response) => {
         setData1(response.data);
       })
@@ -43,10 +43,10 @@ const RoomListPage = () => {
   const handleSearchChange = (e) => {
     setFilter(e.target.value);
   };
-  // const [url, setUrl] = useState(`https://api.badenn.me/rooms/${pathURL}`);
+  // const [url, setUrl] = useState(`http://localhost:3000/rooms/${pathURL}`);
   // useEffect(() => {
   //   if (filterDebound) {
-  //     setUrl(`https://api.badenn.me/rooms/search?name=${filterDebound}`);
+  //     setUrl(`http://localhost:3000/rooms/search?name=${filterDebound}`);
   //   }
   // }, [filterDebound]);
 

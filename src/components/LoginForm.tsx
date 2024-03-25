@@ -3,7 +3,6 @@ import * as yup from "yup";
 import InputForm from "./InputForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 interface loginProps {
   email: string;
@@ -16,25 +15,13 @@ const LoginForm = () => {
   const handleSubmit = (values: loginProps) => {
     axios({
       method: "POST",
-      url: "http://api.badenn.me/auth/login",
+      url: "http://localhost:3000/auth/login/v2",
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
       .then(function (res) {
-        const { data } = res;
         console.log(res);
-
-        if (!data.access_token) {
-          toast.error(res.data.error);
-          return;
-        }
-        document.cookie = `token=${data.access_token};expires=${new Date(
-          Date.now() + 86400
-        ).toUTCString()}`;
-        navigate("/");
-        toast.success("Login successfull", {
-          toastId: "success1",
-        });
+        navigate("/login-2fa");
       })
       .catch(function (e) {
         console.log(e);
@@ -70,8 +57,8 @@ const LoginForm = () => {
           setTimeout(() => {
             setSubmitting(false);
 
-            resetForm();
             handleSubmit(values);
+            resetForm();
           }, 1000);
         }}
       >

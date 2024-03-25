@@ -1,5 +1,5 @@
 import React from "react";
-import useClickOutSide from "../hooks/useClickOutside";
+import useClickOutSide from "../../hooks/useClickOutside";
 
 interface WithClickOutsideProps {
   show: boolean;
@@ -7,7 +7,7 @@ interface WithClickOutsideProps {
   nodeRef: React.RefObject<HTMLDivElement>;
 }
 
-function withClicgkOutside<T extends WithClickOutsideProps>(
+function withClickOutside<T extends WithClickOutsideProps>(
   WrappedComponent: React.ComponentType<T>
 ) {
   const WithClickOutside: React.FC<Omit<T, keyof WithClickOutsideProps>> = (
@@ -27,6 +27,5 @@ function withClicgkOutside<T extends WithClickOutsideProps>(
 
   return WithClickOutside;
 }
-
 export default withClickOutside;
 export type { WithClickOutsideProps };

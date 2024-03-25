@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useField } from "formik";
 import withClickOutside, {
   WithClickOutsideProps,
-} from "../utils/withClickOutside";
+} from "../utils/HOC/withClickOutside";
 
 interface DropdownItem {
   id: string | number;
