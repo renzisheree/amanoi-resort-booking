@@ -25,7 +25,6 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
   const data = localStorageData
     ? Object.values(JSON.parse(localStorageData))
     : [];
-  console.log(data);
   const dateStr = startDate;
   const [day, month, year] = dateStr.split("-");
 

@@ -70,7 +70,6 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
         onSubmit={(values: bookingProps, { setSubmitting, resetForm }) => {
           formHandler.processForm(values, () => {
             setTimeout(() => {
-              console.log(JSON.stringify(values));
               setSubmitting(false);
               window.location.reload();
               resetForm();

@@ -109,7 +109,7 @@ export default function Calendar() {
         });
       })
       .catch((error) => {
-        console.log(error);
+        error;
       });
   };
   return (

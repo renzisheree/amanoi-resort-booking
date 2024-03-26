@@ -8,7 +8,6 @@ import CardRoom from "../components/CardRoom";
 const BookingStep2 = () => {
   const location = useLocation();
   const { values } = location.state;
-  console.log(values);
 
   return (
     <div>
@@ -207,7 +206,6 @@ const SelectRoom = () => {
 
   const location = useLocation();
   const { data } = location.state;
-  console.log(data);
   const navigate = useNavigate();
 
   if (!data) return null;

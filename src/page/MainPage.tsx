@@ -16,7 +16,6 @@ const MainPage = () => {
   const bookingData = localBooking ? JSON.parse(localBooking) : "";
   const room = localStorage.getItem("rooms");
   const rooms = localBooking ? JSON.parse(room) : "";
-  console.log(rooms);
   return (
     <>
       <section className="z-50 text-center ">

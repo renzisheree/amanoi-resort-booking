@@ -38,7 +38,6 @@ const RoomDetailPage = () => {
   const { data, loading } = useAxios(
     `https://api.badenn.me/rooms/${path}/${slug}`
   );
-  console.log(data);
   if (!data) return null;
 
   const roomDetailData: RoomDetailDataProps = {

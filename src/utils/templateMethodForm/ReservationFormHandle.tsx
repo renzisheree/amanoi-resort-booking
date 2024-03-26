@@ -43,7 +43,6 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
     this.bookingData = localStorage.getItem("bookingData")
       ? JSON.parse(localStorage.getItem("bookingData")!)
       : "";
-    console.log(this.bookingData);
     this._id = _id;
     this.foundObject = this.getObjectById(_id);
   }
@@ -111,7 +110,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        response;
         const rooms: [] = JSON.parse(localStorage.getItem("rooms") || "[]");
 
         // Remove the booked room from localStorage

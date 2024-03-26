@@ -10,7 +10,7 @@ const ImagePage = () => {
   const [slide, setSlide] = useState(false);
   return (
     <>
-      <h1 data-aos="fade-up" className="text-center text-4xl p-5 italic">
+      <h1 data-aos="fade-up" className="p-5 text-4xl italic text-center">
         Khám phá Amanoi
       </h1>
 
@@ -21,8 +21,6 @@ const ImagePage = () => {
         <span
           onClick={() => {
             setSlide(true);
-
-            console.log("cheecked");
           }}
           className="cursor-pointer"
         >
@@ -76,7 +74,6 @@ const ImagePage = () => {
           className="cursor-pointer"
           onClick={() => {
             setSlide(false);
-            console.log("false");
           }}
         >
           <svg
@@ -96,7 +93,7 @@ const ImagePage = () => {
       <hr className="mb-10 " />
 
       {slide ? (
-        <div data-aos="fade-up" className=" grid grid-cols-3	gap-20">
+        <div data-aos="fade-up" className="grid grid-cols-3 gap-20 ">
           {List.length > 0 &&
             List.map((item) => <img key={item.id} src={item.src} alt="" />)}
         </div>

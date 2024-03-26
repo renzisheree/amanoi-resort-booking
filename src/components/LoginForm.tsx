@@ -37,7 +37,6 @@ const LoginForm = () => {
           toast.success("Login successful");
           navigate("/");
         }
-        // console.log(res);
         // if (res.data.access_token == null) {
         //   navigate("/login-2fa");
         // } else if (res.data.error != null) {

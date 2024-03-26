@@ -18,7 +18,6 @@ const ReservationPage = () => {
   const roomData = localStorageData
     ? Object.values(JSON.parse(localStorageData))
     : [];
-  console.log(roomData);
   const localBooking = localStorage.getItem("bookingData");
   const bookingData = localBooking ? JSON.parse(localBooking) : "";
 

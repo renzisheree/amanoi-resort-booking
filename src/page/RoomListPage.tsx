@@ -29,7 +29,7 @@ const RoomListPage = () => {
         setData1(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        error;
       });
   }, [filterDebound]);
 

@@ -10,7 +10,6 @@ const LangChooser = () => {
     <div className=" flex w-[350px]   items-center justify-between  align-middle   rounded-sm ">
       <button
         onClick={() => {
-          console.log(list);
           setOpen(!isOpen);
         }}
         className=" relative flex items-center justify-around px-5 py-2  border-b-2  border-gray-500 "

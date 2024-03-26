@@ -46,7 +46,6 @@ const SelectRoom = () => {
       [room._id]: room,
     }));
   };
-  console.log(data.data.items);
   return (
     <div>
       <div className=" mx-auto max-w-[1200px] p-10  flex flex-col justify-start items-start gap-10  rounded-3xl">
