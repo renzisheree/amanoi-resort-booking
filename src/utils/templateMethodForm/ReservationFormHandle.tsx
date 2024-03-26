@@ -38,7 +38,6 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
 
   constructor(_id: string) {
     super();
-
     this.cookieProfile = Cookies.get("token");
     this.bookingData = localStorage.getItem("bookingData")
       ? JSON.parse(localStorage.getItem("bookingData")!)

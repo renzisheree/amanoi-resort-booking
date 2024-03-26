@@ -1,15 +1,15 @@
 import axios from "axios";
 
-class BookingFacade {
-  private static instance: BookingFacade;
+class BookingSingleton {
+  private static instance: BookingSingleton;
 
   private constructor() {}
-
-  public static getInstance(): BookingFacade {
-    if (!BookingFacade.instance) {
-      BookingFacade.instance = new BookingFacade();
+  //single ton
+  public static getInstance(): BookingSingleton {
+    if (!BookingSingleton.instance) {
+      BookingSingleton.instance = new BookingSingleton();
     }
-    return BookingFacade.instance;
+    return BookingSingleton.instance;
   }
 
   public async searchRooms(
@@ -30,4 +30,4 @@ class BookingFacade {
   }
 }
 
-export default BookingFacade;
+export default BookingSingleton;

@@ -12,7 +12,7 @@ import { Formik, useField } from "formik";
 import DropdownFormik from "./DropdownFormik";
 import { useNavigate } from "react-router-dom";
 import dropdownChil from "../data/dropdownChild.json";
-import BookingFacade from "../utils/facade/BookingFacade";
+import BookingSingleton from "../utils/singleton/BookingSingleton";
 useField;
 dayjs.extend(isBetween);
 
@@ -83,7 +83,7 @@ export default function Calendar() {
     return date.isBefore(dayjs(), "day");
   }
   const handleFormSubmit = (values) => {
-    const bookingFacade = BookingFacade.getInstance();
+    const bookingFacade = BookingSingleton.getInstance();
 
     values.startDate = range.startDate
       ? dayjs(range.startDate).format("DD-MM-YYYY")

@@ -1,73 +1,17 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import InputForm from "./InputForm";
-import axios from "axios";
+import LoginFormHandler from "../utils/templateMethodForm/LoginFormHandle";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
-interface loginProps {
-  email: string;
-  password: string;
-}
-
 const LoginForm = () => {
   const navigate = useNavigate();
-
-  const handleSubmit = (values: loginProps) => {
-    axios({
-      method: "POST",
-      url: "http://localhost:3000/auth/login/v2",
-      data: values,
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    })
-      .then(function (res) {
-        if (res.data.error != null) {
-          toast.error(res.data.error);
-        } else if (res.data.access_token == null) {
-          navigate("/login-2fa");
-        } else {
-          const { data } = res;
-          if (!data.access_token) {
-            toast.error(res.data.error);
-            return;
-          }
-          document.cookie = `token=${data.access_token};expires=${new Date(
-            Date.now() + 86400 * 1000
-          ).toUTCString()}`;
-          toast.success("Login successful");
-          navigate("/");
-        }
-        // if (res.data.access_token == null) {
-        //   navigate("/login-2fa");
-        // } else if (res.data.error != null) {
-        //   const { data } = res;
-
-        //   if (!data.access_token) {
-        //     toast.error(res.data.error);
-        //     return;
-        //   }
-        //   document.cookie = `token=${data.access_token};expires=${new Date(
-        //     Date.now() + 86400 * 1000
-        //   ).toUTCString()}`;
-
-        //   toast.success("Login successful");
-        //   navigate("/");
-        // } else {
-        //   toast.error(res.data.error);
-        // }
-      })
-      .catch(function (e) {
-        toast.error(e);
-      });
-  };
-
+  const formHandler = new LoginFormHandler(navigate);
   return (
     <div className="flex flex-col items-center justify-center w-full ">
       <Formik
         initialValues={{
           email: "",
           password: "",
-          // remember: false,
         }}
         validationSchema={yup.object({
           email: yup
@@ -90,8 +34,7 @@ const LoginForm = () => {
           setTimeout(() => {
             setSubmitting(false);
 
-            handleSubmit(values);
-            resetForm();
+            formHandler.processForm(values, resetForm);
           }, 1000);
         }}
       >
@@ -117,7 +60,6 @@ const LoginForm = () => {
                 type="password"
               ></InputForm>
 
-              {/* <CheckboxForm name="remember">Remember password</CheckboxForm> */}
               <div className="bg-[#3B504C] rounded-full">
                 <button
                   type="submit"
