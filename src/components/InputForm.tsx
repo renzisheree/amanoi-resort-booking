@@ -20,7 +20,7 @@ const InputForm = ({
   const [field, meta] = useField({ name, id, type, placeholder, required });
 
   return (
-    <div className="flex flex-col text-l  gap-1 mb-5">
+    <div className="flex flex-col gap-1 mb-5 text-l">
       <label htmlFor={id}>{label}</label>
 
       <input
@@ -31,7 +31,7 @@ const InputForm = ({
         placeholder={placeholder}
         type={type}
         aria-describedby={`${name}-error`}
-        className="p-4 transition-all w-full   bg-white border border-gray-500 rounded-sm outline-none focus:border-blue-500"
+        className="w-full p-4 transition-all bg-white border border-gray-500 rounded-sm outline-none focus:border-blue-500"
       />
 
       {meta.touched && meta.error && (

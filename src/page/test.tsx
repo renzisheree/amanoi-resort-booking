@@ -1,117 +1,206 @@
-import ViewCard from "../components/ViewCard";
-import { useNavigate } from "react-router-dom";
-// import { amanoiAPI } from "../apiConfig/apiConfig";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { Field, Formik, useFormik } from "formik";
+import * as Yup from "yup";
+import { Form, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import MiddleLogo from "../components/MiddleLogo";
 
-// import useSWR, { Fetcher } from "swr";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// axios({ method: "get", url: "https://api.badenn.me/rooms" }).then((res) => {
-//   console.log(res.data.items);
-// });
+const validationSchema = Yup.object({
+  firstname: Yup.string().required("First name is required"),
+  lastname: Yup.string().required("Last name is required"),
+  phone: Yup.string()
+    .matches(/^\d{10,}$/, "Invalid phone number format")
+    .required("Phone number is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  country: Yup.string().required("Country is required"),
+  oldPassword: Yup.string(),
+  newPassword: Yup.string().when("oldPassword", {
+    is: (oldPassword: string) => !!oldPassword,
+    then: Yup.string().required("New password is required"),
+    otherwise: Yup.string().notRequired(),
+  } as any),
+  confirmNewPassword: Yup.string().when("newPassword", {
+    is: (newPassword: string) => !!newPassword,
+    then: Yup.string()
+      .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+      .required("Confirm new password is required"),
+    otherwise: Yup.string().notRequired(),
+  } as any),
+});
 
-const RoomListPage = async () => {
-  // const fetcher: Fetcher<aman, string> = (id) => getUserById(id);
-
-  // useEffect(() => {
-  //   function fetchUsers() {
-  //     const response = await fetch("https://api.badenn.me/rooms");
-  //     const data = await response.json();
-  //     console.log(data);
-  //   }
-  //   fetchUsers();
-  //   console.log(1123);
-  // }, []);
-
+const ProfilePage = () => {
   const navigate = useNavigate();
-  return (
-    <div className="p-10">
-      <div className="flex flex-col gap-10 items-center justify-center">
-        <h1 className="text-3xl text-center italic">Phòng ở Amanoi</h1>
+  const cookieValue = Cookies.get("token");
 
-        <div className="">
-          <ul className="roomlist flex items-center justify-center gap-10 cursor-pointer">
-            <li>Khu biệt thự</li>
-            <li>Pavilion Villa</li>
-            <li>Tổng quan</li>
-            <li>Wellness pool villa</li>
-          </ul>
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    phone: "",
+    email: "",
+    country: "",
+    oldPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  };
+
+  const handleSubmit = (values) => {
+    const updatedProfileData = {
+      firstname: values.firstname,
+      lastname: values.lastname,
+      phone: values.phone,
+      country: values.country,
+      email: values.email,
+      currentPassword: values.oldPassword,
+      password: values.newPassword,
+    };
+
+    axios
+      .patch("https://api.badenn.me/auth/me", updatedProfileData, {
+        headers: { Authorization: `Bearer ${cookieValue}` },
+      })
+      .then((response) => {
+        toast.success(response.data.message);
+      })
+      .catch((response) => {
+        toast.error(response.data.message);
+      });
+  };
+
+  const handleDeleteCookies = () => {
+    Cookies.remove("token");
+    navigate("/login");
+    toast.success("Logout successful");
+  };
+
+  return cookieValue ? (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      {(formik) => (
+        <div className="flex items-center justify-center gap-20">
+          <MiddleLogo
+            srcImg="https://www.aman.com/themes/custom/aman/logo.svg"
+            width={300}
+          />
+          <Form className="flex font-body flex-col w-[500px] items-start justify-start gap-10 text-xl font-light">
+            <div className="flex">
+              <div className="w-[200px]">First Name :</div>
+              <Field
+                className={`p-2 border-[1px] ${
+                  formik.errors.firstname && formik.touched.firstname
+                    ? "border-red-500"
+                    : "border-gray-400"
+                }`}
+                name="firstname"
+                value={formik.values.firstname}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.firstname && formik.touched.firstname && (
+                <span className="text-red-500">
+                  {formik.errors.firstname.toString()}
+                </span>
+              )}
+            </div>
+            <div className="flex">
+              <div className="w-[200px]">LastName:</div>
+              <Field
+                className={`p-2 border-[1px] ${
+                  formik.errors.lastname && formik.touched.lastname
+                    ? "border-red-500"
+                    : "border-gray-400"
+                }`}
+                name="lastname"
+                value={formik.values.lastname}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.lastname && formik.touched.lastname && (
+                <div className="text-red-500">
+                  {formik.errors.lastname.toString()}
+                </div>
+              )}
+            </div>
+            <div className="flex">
+              <div className="w-[200px]">Phone :</div>
+              <Field
+                className={`p-2 border-[1px] ${
+                  formik.errors.phone && formik.touched.phone
+                    ? "border-red-500"
+                    : "border-gray-400"
+                }`}
+                name="phone"
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.phone && formik.touched.phone && (
+                <div className="text-red-500">
+                  {formik.errors.phone.toString()}
+                </div>
+              )}
+            </div>
+            <div className="flex">
+              <div className="w-[200px]">Country:</div>
+              <Field
+                className={`p-2 border-[1px] ${
+                  formik.errors.country && formik.touched.country
+                    ? "border-red-500"
+                    : "border-gray-400"
+                }`}
+                name="country"
+                value={formik.values.country}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.country && formik.touched.country && (
+                <div className="text-red-500">
+                  {formik.errors.country.toString()}
+                </div>
+              )}
+            </div>
+            <div className="flex">
+              <div className="w-[200px]">First Name :</div>
+              <Field
+                className={`p-2 border-[1px] ${
+                  formik.errors.email && formik.touched.email
+                    ? "border-red-500"
+                    : "border-gray-400"
+                }`}
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.email && formik.touched.email && (
+                <div className="text-red-500">{formik.errors.email.}</div>
+              )}
+            </div>
+
+            <div className="flex items-center justify-center gap-10">
+              <button
+                type="button"
+                onClick={handleDeleteCookies}
+                className="px-5 py-2 border font-thin bg-[#E6E2DB]"
+              >
+                Đăng xuất
+              </button>
+              <button
+                type="submit"
+                className="px-5 py-2 border font-thin bg-[#E6E2DB]"
+              >
+                Xác nhận
+              </button>
+            </div>
+          </Form>
         </div>
-
-        <p className="text-sm italic text-center w-[60vw]">
-          Được thiết kế từ những mái nhà uốn lượn ẩn hiện trong rừng cây và
-          những chất liệu thân thiện với tự nhiên, các Pavilion và Villa của
-          Amanoi hòa mình giữa khung cảnh thiên nhiên tuyệt đẹp. Với việc tiếp
-          cận các liệu trình trị liệu toàn diện của Việt Nam, tất cả tạo nên nét
-          duyên dáng và giản đơn đầy nghệ thuật của phong cách thiết kế Việt
-          Nam, bao quanh bởi rừng rậm nguyên sơ và làn nước trong vắt của Vịnh
-          Vĩnh Hy, chỉ chờ bạn khám phá.
-        </p>
-      </div>
-      <div
-        className="grid grid-cols-2 gap-20"
-        onClick={() => {
-          navigate("/details");
-        }}
-      >
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-06/5-bedroom_bay_villa_e.jpg?itok=7XAJUNCy"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Residence%20pool%20area_1.jpg?itok=4DGVojA1"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-06/5-bedroom_bay_villa_e.jpg?itok=7XAJUNCy"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Residence%20pool%20area_1.jpg?itok=4DGVojA1"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-06/5-bedroom_bay_villa_e.jpg?itok=7XAJUNCy"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Residence%20pool%20area_1.jpg?itok=4DGVojA1"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2023-04/Amanoi%2C%20Vietnam%20-%20Accommodation%2C%20Ocean%20Pool%20Villa%2C%20Terrace_4667%20%281%29.jpg?itok=xSihImzE"
-          cardType="Resort"
-          cardTitle="The season's essentials"
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-          button={false}
-        ></ViewCard>
-        <ViewCard
-          cardImg="https://www.aman.com/sites/default/files/styles/listing_teaser_extra_large/public/2022-06/Amanoi%2C%20Vietnam%20-%20Lounge%20in%20Residence_3.jpg?itok=AbJCF68Q"
-          cardType="HomeStay"
-          cardTitle="The season's essentials"
-          button={false}
-          cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
-        ></ViewCard>
-      </div>
-    </div>
+      )}
+    </Formik>
+  ) : (
+    <div className="">fail</div>
   );
 };
 
-export default RoomListPage;
+export default ProfilePage;
