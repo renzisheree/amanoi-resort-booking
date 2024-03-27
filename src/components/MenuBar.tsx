@@ -64,10 +64,10 @@ const MenuBar = () => {
               </li>
               <li
                 onClick={() => {
-                  navigate("/profile");
+                  navigate("/my-order");
                 }}
               >
-                <a href="">Profile</a>
+                <a href="">ORDER</a>
               </li>
               <li
                 onClick={() => {

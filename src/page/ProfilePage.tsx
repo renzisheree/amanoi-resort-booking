@@ -42,6 +42,7 @@ const ProfilePage = () => {
           },
         })
         .then((res) => {
+          console.log(res);
           const { data } = res;
           setProfileData(data);
         });

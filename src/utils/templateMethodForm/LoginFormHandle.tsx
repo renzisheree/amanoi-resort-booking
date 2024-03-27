@@ -44,6 +44,7 @@ class LoginFormHandler extends AbstractFormHandler<LoginValues> {
       })
       .catch((e) => {
         toast.error(e);
+        console.log(e);
       });
   }
 }

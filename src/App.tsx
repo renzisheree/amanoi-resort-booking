@@ -24,6 +24,8 @@ import GettingThere from "./page/GettingThere";
 import ThanksPage from "./page/ThanksPage";
 import "aos/dist/aos.css";
 import Login2FA from "./page/Login2FA";
+import MyBookingPage from "./page/MyBookingPage";
+import PaymentSuccessPage from "./page/PaymentSuccesPage";
 
 function App() {
   return (
@@ -51,6 +53,22 @@ function App() {
             element={
               <>
                 <FoodPage></FoodPage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/my-order"
+            element={
+              <>
+                <MyBookingPage></MyBookingPage>
+              </>
+            }
+          ></Route>
+          <Route
+            path="/payment/success"
+            element={
+              <>
+                <PaymentSuccessPage></PaymentSuccessPage>
               </>
             }
           ></Route>
