@@ -51,7 +51,7 @@ export default function CalendarModal({
     if (rooms) {
       setAddedRooms(JSON.parse(rooms));
     }
-  }, []);
+  }, [addedRooms]);
   const handleAdd = (room: RoomDetailDataPropsModal) => {
     const updatedRooms: { [key: string]: RoomDetailDataPropsModal } = {
       ...addedRooms,

@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const MyBookingPage = () => {
   const cookieValue = Cookies.get("token");
   const [BookingData, setBookingData] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (cookieValue) {
@@ -43,7 +41,6 @@ const MyBookingPage = () => {
           const newWindow = window.open(response.data.url.toString(), "_blank");
           if (newWindow) {
             newWindow.focus();
-            navigate("/payment/success");
           }
         }
       })
@@ -99,7 +96,7 @@ const MyBookingPage = () => {
                     `${items.firstName} ${items.lastName}`
                   );
                 }}
-                className="px-6 py-4 whitespace-nowrap"
+                className="px-6 py-4 cursor-pointer whitespace-nowrap"
               >
                 {items.payment_status}
               </td>
