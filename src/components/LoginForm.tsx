@@ -4,8 +4,7 @@ import InputForm from "./InputForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-// import CheckboxForm from "./CheckboxForm";
+import { ENDPOINT } from "../config/constant.ts";
 
 interface loginProps {
   email: string;
@@ -13,14 +12,12 @@ interface loginProps {
 }
 
 const LoginForm = () => {
-  const customId = "custom-id-yes";
-
   const navigate = useNavigate();
 
   const handleSubmit = (values: loginProps) => {
     axios({
       method: "POST",
-      url: "http://localhost:3000/auth/login",
+      url: `${ENDPOINT}/auth/login`,
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
@@ -46,7 +43,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className=" flex flex-col w-full items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-full ">
       <Formik
         initialValues={{
           email: "",
@@ -121,7 +118,7 @@ const LoginForm = () => {
                   onClick={() => {
                     navigate("/register");
                   }}
-                  className="underline text-lg"
+                  className="text-lg underline"
                 >
                   Đăng ký
                 </span>
