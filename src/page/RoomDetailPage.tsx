@@ -36,7 +36,7 @@ const RoomDetailPage = () => {
   const { path, slug } = useParams();
 
   const { data, loading } = useAxios(
-    `https://api.badenn.me/rooms/${path}/${slug}`
+    `http://localhost:3000/rooms/${path}/${slug}`
   );
   if (!data) return null;
 

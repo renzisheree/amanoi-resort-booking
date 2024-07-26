@@ -12,7 +12,7 @@ const LangChooser = () => {
         onClick={() => {
           setOpen(!isOpen);
         }}
-        className=" relative flex items-center justify-around px-5 py-2  border-b-2  border-gray-500 "
+        className="relative flex items-center justify-around px-5 py-2 border-b-2 border-gray-500 "
       >
         <p className="mr-5 text-sm">Choose Language</p>
         <div className="">
@@ -41,7 +41,7 @@ const LangChooser = () => {
           )}
 
           {isOpen ? (
-            <div className="bg-white absolute top-10  mt-1 left-3 w-full p-3  rounded-lg ">
+            <div className="absolute w-full p-3 mt-1 bg-white rounded-lg top-10 left-3 ">
               {" "}
               {list.map((item) => (
                 <div className="flex w-full text-[15px] font-normal justify-between p-2 hover:bg-blue-300 cursor-pointer rounded-r-lg border-l-transparent">
@@ -59,7 +59,7 @@ const LangChooser = () => {
           navigate("/booking");
         }}
       >
-        Reserve
+        Đặt phòng
       </button>
     </div>
   );

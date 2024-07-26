@@ -21,10 +21,10 @@ const RoomListPage = () => {
   const [data1, setData1] = useState();
   const [pathURL, setPath] = useState("residencies");
 
-  const { data } = useAxios("http://api.badenn.me/room-types/all");
+  const { data } = useAxios("http://localhost:3000/room-types/all");
   useEffect(() => {
     axios
-      .post(`http://api.badenn.me/rooms/search?name=${filterDebound}`)
+      .post(`http://localhost:3000/rooms/search?name=${filterDebound}`)
       .then((response) => {
         setData1(response.data);
       })

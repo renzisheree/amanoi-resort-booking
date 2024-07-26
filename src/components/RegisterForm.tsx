@@ -25,7 +25,7 @@ const RegisterForm = () => {
   const handleSubmit = (values: RegisterProps) => {
     axios({
       method: "POST",
-      url: "http://api.badenn.me/auth/register",
+      url: "http://localhost:3000/auth/register",
       data: values,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })

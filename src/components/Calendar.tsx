@@ -198,11 +198,11 @@ export default function Calendar() {
       <div className="form w-[30vw]">
         <div className="flex items-center justify-center p-5 border-2 border-black">
           <div className="w-full p-5 border-r-4 border-black">
-            <b>Checkin:</b> <br />
+            <b>Ngày vào:</b> <br />
             {range.startDate?.toDate().toDateString()}
           </div>
           <div className="w-full p-5 ">
-            <b>Checkout</b> <br />
+            <b>Ngày ra</b> <br />
             {range.endDate?.toDate().toDateString()}
           </div>
         </div>
@@ -237,23 +237,23 @@ export default function Calendar() {
                 autoComplete="off"
               >
                 <DropdownFormik
-                  labelText="Select room "
+                  labelText="Chọn số phòng "
                   data={DropDownData}
-                  dropdownLabel="Select room"
+                  dropdownLabel="Số phòng"
                   name="room"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>{" "}
                 <DropdownFormik
-                  labelText="Number of adults"
+                  labelText="Số người lớn"
                   data={countData}
-                  dropdownLabel="Number of adults"
+                  dropdownLabel="Người lớn"
                   name="adult"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>{" "}
                 <DropdownFormik
-                  labelText="Number of children"
+                  labelText="Số trẻ em"
                   data={dropdownChil}
-                  dropdownLabel="Number of childrens"
+                  dropdownLabel="Trẻ em"
                   name="children"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>

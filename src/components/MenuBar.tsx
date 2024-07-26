@@ -53,28 +53,28 @@ const MenuBar = () => {
                   navigate("/");
                 }}
               >
-                <a href="">Home</a>
+                <a href="">Trang chủ</a>
               </li>
               <li
                 onClick={() => {
                   navigate("/booking");
                 }}
               >
-                <a href="">Booking</a>
+                <a href="">Đặt phòng</a>
               </li>
               <li
                 onClick={() => {
                   navigate("/my-order");
                 }}
               >
-                <a href="">ORDER</a>
+                <a href="">Đơn hàng</a>
               </li>
               <li
                 onClick={() => {
                   navigate("/getting-there");
                 }}
               >
-                <a href="">Contact</a>
+                <a href="">Liên hệ</a>
               </li>
             </ul>
           </nav>

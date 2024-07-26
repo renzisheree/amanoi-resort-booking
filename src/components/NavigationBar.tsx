@@ -12,7 +12,7 @@ const NavigationBar = () => {
     setTokenCookie(cookies.token);
   }, [cookies]);
   const token_cookie = Cookies.get("token");
-
+  console.log(tokenCookie);
   useEffect(() => {
     const handleScroll = () => {
       setSticky(window.scrollY > 200);
@@ -30,7 +30,7 @@ const NavigationBar = () => {
       <div
         className={`navigation-bar-wrapper flex  z-9999 items-center text-center align-middle  justify-center  gap-x-10 my-10 border-gray-400 border-b-[1px] h-[80px] w-[80vw] mx-auto text-[13px]`}
       >
-        <NavigationItem path="">Amanoi</NavigationItem>
+        <NavigationItem path="">Placeney</NavigationItem>
         <NavigationItem path="images">Thư viện ảnh</NavigationItem>
         <NavigationItem path="roomlists">Phòng ở</NavigationItem>
         <NavigationItem path="adventure">Các trải nghiệm</NavigationItem>
@@ -40,11 +40,13 @@ const NavigationBar = () => {
         <NavigationItem path="exclusive-offers-amanoi">
           Ưu đãi độc quyền
         </NavigationItem>
-        <NavigationItem path="getting-there">Getting here</NavigationItem>
+        <NavigationItem path="getting-there">
+          Liên hệ với chúng tôi
+        </NavigationItem>
         {token_cookie == null ? (
-          <NavigationItem path="login">Sign In</NavigationItem>
+          <NavigationItem path="login">Đăng nhập</NavigationItem>
         ) : (
-          <NavigationItem path="profile">Hello Customer</NavigationItem>
+          <NavigationItem path="profile">Chào quý khách</NavigationItem>
         )}
       </div>
     </div>

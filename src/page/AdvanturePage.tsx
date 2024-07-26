@@ -9,21 +9,21 @@ const AdvanturePage = () => {
     AOS.init();
   });
   return (
-    <div className="p-20 flex flex-col gap-10">
-      <h1 data-aos="fade-up" className=" text-center text-3xl italic ">
+    <div className="flex flex-col gap-10 p-20">
+      <h1 data-aos="fade-up" className="text-3xl italic text-center ">
         Chăm sóc sức khỏe & Tập luyện thể hình tại Amanoi
       </h1>
       <ul
         data-aos="fade-up"
-        className="flex items-center justify-center gap-10 underline pointer  mb-5 "
+        className="flex items-center justify-center gap-10 mb-5 underline pointer "
       >
         <li>Tổng quan</li>
-        <li>What's on</li>
+        <li>Hoạt động mới</li>
         <li>Các hoạt động gia đình</li>
       </ul>
       <div
         data-aos="fade-up"
-        className="flex flex-col gap-10 justify-center items-center"
+        className="flex flex-col items-center justify-center gap-10"
       >
         <Swiper grabCursor={true} spaceBetween={40} slidesPerView={"auto"}>
           {advantureData.length > 0 &&
@@ -44,7 +44,7 @@ const AdvanturePage = () => {
       </div>
       <div
         data-aos="fade-up"
-        className="flex justify-center items-start text-sm italic gap-10"
+        className="flex items-start justify-center gap-10 text-sm italic"
       >
         <img
           src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_x_wide/public/2021-02/Forest%20Wellness%20Pool%20Villa%2C%20Amanoi%2C%20Vietnam_3.jpg?itok=SpOK15QR"
@@ -115,11 +115,11 @@ const AdvanturePage = () => {
       </div>
       <div
         data-aos="fade-up"
-        className="flex flex-col justify-center items-center"
+        className="flex flex-col items-center justify-center"
       >
-        <h1 className="text-3xl italic p-20 ">Các cơ sở khác</h1>
+        <h1 className="p-20 text-3xl italic ">Các cơ sở khác</h1>
 
-        <ul className="grid grid-cols-3 gap-20  list-disc	 bg-white p-20">
+        <ul className="grid grid-cols-3 gap-20 p-20 list-disc bg-white">
           <li>
             Hai phòng thủy liệu pháp được trang bị bàn trị liệu đá nóng, phòng
             xông hơi, bể sục jacuzzi, hồ ngâm lạnh và sân hiên
@@ -171,9 +171,9 @@ const AdvanturePage = () => {
         data-aos="fade-up"
         title="Aman Advanced Facial
 "
-        paragraph="Made in Japan, Aman’s new functional skincare line, Essential Skin, is infused with powerful rice bran and indigo extracts, to achieve noticeably lifted, more radiant skin. Combining products from the Essentials Skin line with exfoliation and manual lifting techniques, the Aman Advanced Facial stimulates face muscles to improve the skin’s overall texture.
+        paragraph="Được sản xuất tại Nhật Bản, dòng sản phẩm chăm sóc da chức năng mới của Aman, Essential Skin, được bổ sung chiết xuất cám gạo và chàm mạnh mẽ, để mang lại làn da rạng rỡ hơn, được nâng lên rõ rệt. Kết hợp các sản phẩm từ dòng Essentials Skin với kỹ thuật tẩy da chết và nâng cơ bằng tay, Aman Advanced Facial kích thích cơ mặt để cải thiện kết cấu tổng thể của da.
 
-The treatment begins with ultrasonic scrubbing to loosen and remove oil and debris from the pores. Supported by electric muscle stimulation and massage to firm, and cryo bulbs to eliminate puffiness, the complexion appears brighter and tighter. The treatment continues with the application of a marine mineral mask to deeply hydrate, followed by Aman x 111Skin Nourishing Gold Algae hydrogel face and eye masks to achieve an exceptional glow. For a wholly rejuvenation process, the facial can be extended to incorporate a 15-minute scalp massage.
+Quá trình điều trị bắt đầu bằng việc chà siêu âm để nới lỏng và loại bỏ dầu và cặn bẩn khỏi lỗ chân lông. Được hỗ trợ bằng cách kích thích điện cơ và massage để làm săn chắc, và sử dụng bóng đèn cryo để loại bỏ bọng mắt, làn da trông sáng hơn và săn chắc hơn. Quá trình điều trị tiếp tục với việc áp dụng mặt nạ khoáng biển để dưỡng ẩm sâu, tiếp theo là mặt nạ hydrogel Aman x 111Skin Nourishing Gold Algae để đạt được làn da sáng đặc biệt. Để có một quá trình trẻ hóa hoàn toàn, liệu pháp chăm sóc da mặt có thể được mở rộng bằng cách kết hợp massage da đầu trong 15 phút.
 "
         link="Make an enquiry"
         // style={true}
@@ -184,11 +184,11 @@ The treatment begins with ultrasonic scrubbing to loosen and remove oil and debr
         title="AMAN SHOP
 
 "
-        paragraph="In recent years, Aman has grown to offer its coveted lifestyle beyond the parameters of its havens. Aman Skincare and Sva supplements harness powerful natural ingredients to provide balance and optimal wellbeing within and without, while Aman Fine Fragrance products bring the spirit of Aman into the comfort of home.
+        paragraph="Trong những năm gần đây, Aman đã phát triển để mang đến lối sống đáng mơ ước vượt ra ngoài những giới hạn của thiên đường. Aman Skincare và Sva bổ sung khai thác các thành phần tự nhiên mạnh mẽ để mang lại sự cân bằng và sức khỏe tối ưu bên trong và bên ngoài, trong khi các sản phẩm Aman Fine Fragrance mang tinh thần Aman vào sự thoải mái như ở nhà.
 
 
 "
-        link="Discover more..."
+        link="Tìm hiểu thêm..."
         style={true}
         bgWhite={true}
       ></HealthCareCard>

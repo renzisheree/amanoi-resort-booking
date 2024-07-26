@@ -102,7 +102,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
 
   private postRawData(rawData1, values: bookingProps) {
     axios
-      .post("https://api.badenn.me/bookings/", rawData1, {
+      .post("http://localhost:3000/bookings/", rawData1, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${this.cookieProfile}`,

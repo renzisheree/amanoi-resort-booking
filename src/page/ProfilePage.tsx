@@ -36,7 +36,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (cookieValue) {
       axios
-        .get(`https://api.badenn.me/auth/me`, {
+        .get(`http://localhost:3000/auth/me`, {
           headers: {
             Authorization: `Bearer ${cookieValue}`,
           },
@@ -68,7 +68,7 @@ const ProfilePage = () => {
         password: passwordData.newPassword,
       };
       axios
-        .patch("https://api.badenn.me/auth/me", updatedProfileData, {
+        .patch("http://localhost:3000/auth/me", updatedProfileData, {
           headers: { Authorization: `Bearer ${cookieValue}` },
         })
         .then((response) => {

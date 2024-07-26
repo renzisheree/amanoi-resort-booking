@@ -6,8 +6,8 @@ const GettingThere = () => {
     AOS.init();
   });
   return (
-    <div className="flex flex-col justify-center items-center p-20">
-      <h1 data-aos="fade-up" className="text-3xl  italic p-1 font-body mb-10 ">
+    <div className="flex flex-col items-center justify-center p-20">
+      <h1 data-aos="fade-up" className="p-1 mb-10 text-3xl italic font-body ">
         Getting to Amanoi
       </h1>
 
@@ -18,17 +18,16 @@ const GettingThere = () => {
           className="w-[80vw] mx-auto"
         />
         <p className="text-center w-[60vw] p-10 text-sm italic mx-auto">
-          Located a 75-minute drive from Cam Ranh Airport (CXR), Amanoi is
-          tucked away within the secluded folds of Unesco’s Núi Chúa National
-          Park. Ensuring the most effortless of arrivals, Amanoi’s dedicated
-          concierge team is on hand to assist with all travel planning,
-          transfers and arrangements.
+          Nằm cách Sân bay Cam Ranh (CXR) 75 phút lái xe, Amanoi nằm ẩn mình
+          trong khu vực hẻo lánh của Vườn Quốc gia Núi Chúa của UNESCO. Để đảm
+          bảo việc đến nơi dễ dàng nhất, đội ngũ hướng dẫn viên tận tâm của
+          Amanoi luôn sẵn sàng hỗ trợ mọi kế hoạch du lịch, đưa đón và sắp xếp
         </p>
       </div>
 
       <div
         data-aos="fade-up"
-        className=" flex items-start gap-10 justify-center w-full italic pb-10"
+        className="flex items-start justify-center w-full gap-10 pb-10 italic "
       >
         <img
           src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2023-07/amanoi-vietnam-pool-pavilion.jpg?itok=XFVR4_3B"
@@ -39,7 +38,7 @@ const GettingThere = () => {
           alt=""
         />
         <span className="flex flex-col gap-1">
-          <h1 className="text-xl font-medium italic ">
+          <h1 className="text-xl italic font-medium ">
             International flights{" "}
           </h1>
           <p className="text-m font-body">
@@ -54,7 +53,7 @@ const GettingThere = () => {
             direct to Ho Chi Minh City can also travel by car to Amanoi, with a
             journey time of approximately five hours.
           </p>{" "}
-          <h1 className="text-xl font-medium italic ">
+          <h1 className="text-xl italic font-medium ">
             Visa and entry requirements
           </h1>
           <p className="text-m font-body ">
@@ -70,26 +69,26 @@ const GettingThere = () => {
       <hr className="p-[0.5px] bg-gray-300 w-full m-20" />
 
       <div data-aos="fade-up" className="m-10">
-        <div className="text-center m-5">
-          <h1 className="text-3xl italic font-mono">Airport transfers </h1>
+        <div className="m-5 text-center">
+          <h1 className="font-mono text-3xl italic">Airport transfers </h1>
           <p className="font-body ">
-            Amanoi is located a 75-minute drive from Cam Ranh (Nha Trang)
-            Airport - CXR. Amanoi’s concierge team can arrange VIP transfers
-            upon request.
+            Amanoi nằm cách Sân bay Cam Ranh (Nha Trang) - CXR 75 phút lái xe.
+            Đội ngũ trợ giúp đặc biệt của Amanoi có thể sắp xếp dịch vụ đưa đón
+            VIP theo yêu cầu.
           </p>
         </div>
 
         <div className="text-center">
-          <h1 className="text-3xl italic font-mono">Travelling around Asia </h1>
+          <h1 className="font-mono text-3xl italic">Du lịch quanh Châu Á </h1>
           <p className="font-body ">
-            Launch a multi-destination Aman journey in the region where it all
-            began. With 18 resorts across 11 countries, it’s never been easier
-            to linger for longer in Asia. <br /> Combine a stay at Amanoi with a
-            visit to nearby South-east Asian neighbours, such as slow-paced
-            Amantaka, Laos, at the foot of Mount Phousi, Siem Reap retreat
-            Amansara, Cambodia, at the jungle-veiled back door to Unesco-listed
-            Angkor Wat, and the original, Amanpuri, Thailand, on the palm-edged
-            shores of Andaman Sea.
+            Khởi động chương trình Aman nhiều điểm đến tại khu vực hành động nơi
+            tất cả bắt đầu. Với 18 khu nghỉ dưỡng trên 11 quốc gia, việc làm nán
+            lại lâu hơn ở Châu Á chưa bao giờ dễ dàng hơn thế. <br /> Kết hợp kỳ
+            nghỉ tại Amanoi với chuyến thăm các nước láng giềng Đông Nam Á gần
+            đó, thoáng như Amantaka, Lào, dưới chân núi Phousi, nơi ẩn trốn ở
+            Siem Reap Amansara, Campuchia, tại cửa sau được che phủ bởi rừng
+            cứng đến Angkor Wat đã được UNESCO công nhận và Amanpuri nguyên
+            thủy, Thái Lan, trên bờ biển Andaman có nhiều cây cọ.
           </p>
         </div>
       </div>
@@ -99,13 +98,13 @@ const GettingThere = () => {
         className="flex justify- gap-[400px]  items-start"
       >
         <div className="">
-          <h1 className="text-3xl font-body">Flight duration to Vietnam </h1>
+          <h1 className="text-3xl font-body">Thời gian bay tới VN </h1>
           <span className="font-body text-m">
-            Direct flights into Ho Chi Minh City (SGN)
+            Bay thẳng tới Ho Chi Minh City (SGN)
           </span>
         </div>
         <div className="">
-          <ul className="flex flex-col gap-2 list-disc	 ">
+          <ul className="flex flex-col gap-2 list-disc ">
             <li>Bangkok, Thailand – 1hr 30min </li>
             <li>Kuala Lumpur, Malaysia – 2hr </li>
             <li>Singapore, Republic of Singapore – 2hr </li>

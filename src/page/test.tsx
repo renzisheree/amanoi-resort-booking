@@ -60,7 +60,7 @@
 //     };
 
 //     axios
-//       .patch("https://api.badenn.me/auth/me", updatedProfileData, {
+//       .patch("http://localhost:3000/auth/me", updatedProfileData, {
 //         headers: { Authorization: `Bearer ${cookieValue}` },
 //       })
 //       .then((response) => {

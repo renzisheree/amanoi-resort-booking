@@ -20,7 +20,7 @@ class BookingSingleton {
   ): Promise<unknown> {
     try {
       const response = await axios.post(
-        `https://api.badenn.me/rooms/booking/search?start=${startDate}&end=${endDate}&adults=${adults}&children=${children}`
+        `http://localhost:3000/rooms/booking/search?start=${startDate}&end=${endDate}&adults=${adults}&children=${children}`
       );
       return response.data;
     } catch (error) {
