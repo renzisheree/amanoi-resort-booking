@@ -5,12 +5,12 @@ const RegisterPage = () => {
     <div>
       <div className="my-10">
         {" "}
-        <h1 className="text-3xl text-center mb-2">
-          Discover the world of Aman
+        <h1 className="mb-2 text-3xl text-center">
+          Discover the world of Placeney
         </h1>
-        <p className="text-center font-thin ">
+        <p className="font-thin text-center ">
           Join our mailing list for exclusive offers and the latest news from
-          Aman Group
+          Placeney Group
         </p>
       </div>
       <RegisterForm></RegisterForm>

@@ -11,7 +11,7 @@ const AdvanturePage = () => {
   return (
     <div className="flex flex-col gap-10 p-20">
       <h1 data-aos="fade-up" className="text-3xl italic text-center ">
-        Chăm sóc sức khỏe & Tập luyện thể hình tại Amanoi
+        Chăm sóc sức khỏe & Tập luyện thể hình tại Placeney
       </h1>
       <ul
         data-aos="fade-up"
@@ -38,7 +38,7 @@ const AdvanturePage = () => {
           Khám phá vịnh bằng thuyền kayak hoặc thuyền buồm catamaran. Lặn mình
           dưới làn nước trong vắt để chiêm ngưỡng những rặng san hô nhiều sắc
           màu. Khám phá làng chài lân cận và tìm hiểu nền văn hóa lâu đời của
-          người Chăm. Tại nơi giao hòa giữa đất và biển, Amanoi mang đến hàng
+          người Chăm. Tại nơi giao hòa giữa đất và biển, Placeney mang đến hàng
           loạt những trải nghiệm và hoạt động độc đáo.
         </p>
       </div>
@@ -63,7 +63,7 @@ const AdvanturePage = () => {
               trong khu bảo tồn của vịnh Vĩnh Hy, cũng như những loài cá nhiệt
               đới đầy màu sắc bao gồm cá cò, cá thiên thần, cá kèn, cá đù và cá
               dơi. Bạn cũng có thể du ngoạn trên Vịnh Vĩnh Hy bằng một trong
-              những chiếc thuyền kayak đáy kính của Amanoi. Được làm từ
+              những chiếc thuyền kayak đáy kính của Placeney. Được làm từ
               polycarbonate bền, nhẹ, chống vỡ, thuyền kayak hoàn toàn trong
               suốt và cho phép bạn nhìn thấy bất kỳ sinh vật biển nào đang bơi
               dưới nước.
@@ -73,9 +73,9 @@ const AdvanturePage = () => {
             <h1 className="text-lg font-medium">Đi bộ dọc bờ biển</h1>
 
             <p>
-              Được bao quanh bởi những ngọn đồi, Amanoi là cửa ngõ của Vườn Quốc
-              gia Núi Chúa với diện tích gần 29.000 ha - thuộc vùng lõi của Khu
-              Dự trữ Sinh quyển UNESCO Núi Chúa, một xứ sở thần kỳ với nhiều
+              Được bao quanh bởi những ngọn đồi, Placeney là cửa ngõ của Vườn
+              Quốc gia Núi Chúa với diện tích gần 29.000 ha - thuộc vùng lõi của
+              Khu Dự trữ Sinh quyển UNESCO Núi Chúa, một xứ sở thần kỳ với nhiều
               cảnh quan thiên nhiên và đa dạng động vật hoang dã, nơi những nhà
               thám hiểm luôn có thể thưởng ngoạn và khám phá. Từ khu nghỉ dưỡng,
               các cung đường mòn có thể đưa khách đến với những trải nghiệm đi
@@ -125,8 +125,8 @@ const AdvanturePage = () => {
             xông hơi, bể sục jacuzzi, hồ ngâm lạnh và sân hiên
           </li>
           <li>
-            Spa menu phong phú bao gồm các liệu trình đặc trưng của Aman, chăm
-            sóc tóc và massage Việt Nam truyền thống
+            Spa menu phong phú bao gồm các liệu trình đặc trưng của Placeney,
+            chăm sóc tóc và massage Việt Nam truyền thống
           </li>
 
           <li>Không gian phòng tập chuyên dụng dành cho Pilates và yoga</li>
@@ -162,18 +162,18 @@ const AdvanturePage = () => {
         data-aos="fade-up"
         title="Movement & body work
 "
-        paragraph="The serene movement facilities at Amanoi have been designed with both physical and mental wellbeing in mind. The light-filled Pilated Studio is equipped with Allegro Reformers and other Pilates specific equipment, while stepped terraces lead to the the lake and outdoor Yoga Pavilion. Offering the latest in cardiovascular and weight training machinery, the spacious Gymnasium features floor-to-ceiling windows that overlook the lake.
+        paragraph="The serene movement facilities at Placeney have been designed with both physical and mental wellbeing in mind. The light-filled Pilated Studio is equipped with Allegro Reformers and other Pilates specific equipment, while stepped terraces lead to the the lake and outdoor Yoga Pavilion. Offering the latest in cardiovascular and weight training machinery, the spacious Gymnasium features floor-to-ceiling windows that overlook the lake.
 "
         link="Make an enquiry"
         style={true}
       ></HealthCareCard>
       <HealthCareCard
         data-aos="fade-up"
-        title="Aman Advanced Facial
+        title="Placeney Advanced Facial
 "
-        paragraph="Được sản xuất tại Nhật Bản, dòng sản phẩm chăm sóc da chức năng mới của Aman, Essential Skin, được bổ sung chiết xuất cám gạo và chàm mạnh mẽ, để mang lại làn da rạng rỡ hơn, được nâng lên rõ rệt. Kết hợp các sản phẩm từ dòng Essentials Skin với kỹ thuật tẩy da chết và nâng cơ bằng tay, Aman Advanced Facial kích thích cơ mặt để cải thiện kết cấu tổng thể của da.
+        paragraph="Được sản xuất tại Nhật Bản, dòng sản phẩm chăm sóc da chức năng mới của Placeney, Essential Skin, được bổ sung chiết xuất cám gạo và chàm mạnh mẽ, để mang lại làn da rạng rỡ hơn, được nâng lên rõ rệt. Kết hợp các sản phẩm từ dòng Essentials Skin với kỹ thuật tẩy da chết và nâng cơ bằng tay, Placeney Advanced Facial kích thích cơ mặt để cải thiện kết cấu tổng thể của da.
 
-Quá trình điều trị bắt đầu bằng việc chà siêu âm để nới lỏng và loại bỏ dầu và cặn bẩn khỏi lỗ chân lông. Được hỗ trợ bằng cách kích thích điện cơ và massage để làm săn chắc, và sử dụng bóng đèn cryo để loại bỏ bọng mắt, làn da trông sáng hơn và săn chắc hơn. Quá trình điều trị tiếp tục với việc áp dụng mặt nạ khoáng biển để dưỡng ẩm sâu, tiếp theo là mặt nạ hydrogel Aman x 111Skin Nourishing Gold Algae để đạt được làn da sáng đặc biệt. Để có một quá trình trẻ hóa hoàn toàn, liệu pháp chăm sóc da mặt có thể được mở rộng bằng cách kết hợp massage da đầu trong 15 phút.
+Quá trình điều trị bắt đầu bằng việc chà siêu âm để nới lỏng và loại bỏ dầu và cặn bẩn khỏi lỗ chân lông. Được hỗ trợ bằng cách kích thích điện cơ và massage để làm săn chắc, và sử dụng bóng đèn cryo để loại bỏ bọng mắt, làn da trông sáng hơn và săn chắc hơn. Quá trình điều trị tiếp tục với việc áp dụng mặt nạ khoáng biển để dưỡng ẩm sâu, tiếp theo là mặt nạ hydrogel Placeney x 111Skin Nourishing Gold Algae để đạt được làn da sáng đặc biệt. Để có một quá trình trẻ hóa hoàn toàn, liệu pháp chăm sóc da mặt có thể được mở rộng bằng cách kết hợp massage da đầu trong 15 phút.
 "
         link="Make an enquiry"
         // style={true}
@@ -181,10 +181,10 @@ Quá trình điều trị bắt đầu bằng việc chà siêu âm để nới 
       ></HealthCareCard>
       <HealthCareCard
         data-aos="fade-up"
-        title="AMAN SHOP
+        title="Placeney SHOP
 
 "
-        paragraph="Trong những năm gần đây, Aman đã phát triển để mang đến lối sống đáng mơ ước vượt ra ngoài những giới hạn của thiên đường. Aman Skincare và Sva bổ sung khai thác các thành phần tự nhiên mạnh mẽ để mang lại sự cân bằng và sức khỏe tối ưu bên trong và bên ngoài, trong khi các sản phẩm Aman Fine Fragrance mang tinh thần Aman vào sự thoải mái như ở nhà.
+        paragraph="Trong những năm gần đây, Placeney đã phát triển để mang đến lối sống đáng mơ ước vượt ra ngoài những giới hạn của thiên đường. Placeney Skincare và Sva bổ sung khai thác các thành phần tự nhiên mạnh mẽ để mang lại sự cân bằng và sức khỏe tối ưu bên trong và bên ngoài, trong khi các sản phẩm Placeney Fine Fragrance mang tinh thần Placeney vào sự thoải mái như ở nhà.
 
 
 "

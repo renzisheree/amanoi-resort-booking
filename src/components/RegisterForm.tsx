@@ -42,10 +42,7 @@ const RegisterForm = () => {
   return (
     <div className="flex items-center justify-around gap-20">
       <div className="">
-        <MiddleLogo
-          srcImg="https://www.aman.com/themes/custom/aman/logo.svg"
-          width={400}
-        ></MiddleLogo>
+        <MiddleLogo width={400}></MiddleLogo>
       </div>
       <div className="w-[80vw] mx-auto py-5 ">
         <Formik

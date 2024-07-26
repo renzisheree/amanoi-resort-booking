@@ -1,53 +1,34 @@
 [
   {
     "id": 1,
-    "name": "Resort demo",
+    "name": "Cổ kính",
     "path": "https://images.unsplash.com/photo-1694843697790-d384af776f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
-  },
-  {
-    "id": 2,
-    "name": "Resort demo2",
-    "path": "https://images.unsplash.com/photo-1682687220509-61b8a906ca19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
   },
 
   {
     "id": 3,
-    "name": "Resort demo3",
+    "name": "Thức ăn",
     "path": "https://plus.unsplash.com/premium_photo-1694850980288-b14bd7f9c458?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2562&q=80"
   },
   {
     "id": 4,
-    "name": "Resort demo4",
+    "name": "Dồng điệu",
     "path": "https://images.unsplash.com/photo-1694830470387-2e0f234ecaf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
   },
-  {
-    "id": 5,
-    "name": "Resort demo5",
-    "path": "https://images.unsplash.com/photo-1694823925781-61293d74cace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
-  },
-  {
-    "id": 6,
-    "name": "Resort demo6",
-    "path": "https://images.unsplash.com/photo-1694813646556-0c422fbc979d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-  },
+
   {
     "id": 7,
-    "name": "Resort demo7",
+    "name": "Vui chơi",
     "path": "https://images.unsplash.com/photo-1682687982141-0143020ed57a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
   },
   {
     "id": 12,
-    "name": "Resort demo",
+    "name": "Cổ điển",
     "path": "https://images.unsplash.com/photo-1694843697790-d384af776f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
   },
   {
-    "id": 23,
-    "name": "Resort demo2",
-    "path": "https://images.unsplash.com/photo-1682687220509-61b8a906ca19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-  },
-  {
     "id": 135,
-    "name": "Resort demo",
+    "name": "Hiện đại",
     "path": "https://images.unsplash.com/photo-1694843697790-d384af776f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
   },
   {

@@ -16,11 +16,11 @@ const LoginForm = () => {
         validationSchema={yup.object({
           email: yup
             .string()
-            .email("Please enter valid email address")
-            .required("Please enter your email address"),
+            .email("Hãy nhập email của bạn")
+            .required("Hãy nhập email của bạn"),
           password: yup
             .string()
-            .min(8, "Your password must be at least 8 characters or greater")
+            .min(8, "Mật khẩu phải chứa ít nhất 8 kí tự")
             .matches(
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
               {
@@ -28,7 +28,7 @@ const LoginForm = () => {
                   "Your password must have at least 1 uppercase, 1 lowercase, 1 special character",
               }
             )
-            .required("Please enter your password"),
+            .required("Hãy nhập mật khẩu của bạn"),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
@@ -47,14 +47,14 @@ const LoginForm = () => {
             >
               <InputForm
                 name="email"
-                placeholder="Enter your email"
+                placeholder="Nhập mail của bạn"
                 id="email"
                 label="Email address"
                 type="email"
               ></InputForm>
               <InputForm
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Nhập mật khẩu của bạn"
                 id="password"
                 label="Password"
                 type="password"

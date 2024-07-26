@@ -1,23 +1,18 @@
 import { useNavigate } from "react-router-dom";
-
-const MiddleLogo = ({
-  srcImg,
-  width = 250,
-}: {
-  srcImg: string;
-  width?: number;
-}) => {
+import placenoi from "../assets/PlaceNoi.png";
+const MiddleLogo = ({ width = 250 }: { width?: number }) => {
   const navigate = useNavigate();
   return (
     <div
       className="ml-[15vw]
     "
     >
+      <img src="" alt="" />
       <img
         width={width}
         height={250}
-        src={srcImg}
-        alt=""
+        src={placenoi}
+        alt="logo"
         onClick={() => {
           navigate("/");
         }}

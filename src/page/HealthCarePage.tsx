@@ -11,7 +11,7 @@ const HealthCarePage = () => {
   return (
     <div className="flex flex-col gap-10 p-20">
       <h1 data-aos="fade-up" className="text-3xl italic text-center ">
-        Chăm sóc sức khỏe & Tập luyện thể hình tại Amanoi
+        Chăm sóc sức khỏe & Tập luyện thể hình tại Placeney
       </h1>
       <ul
         data-aos="fade-up"
@@ -34,9 +34,9 @@ const HealthCarePage = () => {
         </Swiper>
 
         <p className="italic text-sm w-[50vw]">
-          Tọa lạc bên hồ sen thanh tịnh, Aman Spa là nơi cân bằng tâm trí và cơ
-          thể, nơi các chuyên gia thiết kế các chương trình chăm sóc sức khỏe cá
-          nhân và cung cấp các liệu pháp Việt Nam và quốc tế trong khung cảnh
+          Tọa lạc bên hồ sen thanh tịnh, Placeney Spa là nơi cân bằng tâm trí và
+          cơ thể, nơi các chuyên gia thiết kế các chương trình chăm sóc sức khỏe
+          cá nhân và cung cấp các liệu pháp Việt Nam và quốc tế trong khung cảnh
           thiên nhiên thanh bình và tuyệt đẹp. Hai Wellness Villa biệt lập đóng
           vai trò là phần mở rộng hoàn toàn riêng tư của Spa.
         </p>
@@ -53,11 +53,11 @@ const HealthCarePage = () => {
           {" "}
           <span>
             <h1 className="text-lg font-medium">
-              Các Chương trình Spa của Amanoi
+              Các Chương trình Spa của Placeney
             </h1>
 
             <p>
-              Các chương trình trị liệu spa nửa ngày hoặc cả ngày của Amanoi
+              Các chương trình trị liệu spa nửa ngày hoặc cả ngày của Placeney
               được thiết kế để thúc đẩy sự thay đổi sâu sắc cho cơ thể và tâm
               trí bạn. Để đảm bảo kết quả có thể thấy rõ và mang lại cảm giác
               tĩnh tâm, các chương trình được cá nhân hoá để thúc đẩy sự cân
@@ -67,11 +67,11 @@ const HealthCarePage = () => {
           </span>
           <span>
             <h1 className="text-lg font-medium">
-              Các Chương trình Spa của Amanoi
+              Các Chương trình Spa của Placeney
             </h1>
 
             <p>
-              Các chương trình trị liệu spa nửa ngày hoặc cả ngày của Amanoi
+              Các chương trình trị liệu spa nửa ngày hoặc cả ngày của Placeney
               được thiết kế để thúc đẩy sự thay đổi sâu sắc cho cơ thể và tâm
               trí bạn. Để đảm bảo kết quả có thể thấy rõ và mang lại cảm giác
               tĩnh tâm, các chương trình được cá nhân hoá để thúc đẩy sự cân
@@ -81,11 +81,11 @@ const HealthCarePage = () => {
           </span>
           <span>
             <h1 className="text-lg font-medium">
-              Các Chương trình Spa của Amanoi
+              Các Chương trình Spa của Placeney
             </h1>
 
             <p>
-              Các chương trình trị liệu spa nửa ngày hoặc cả ngày của Amanoi
+              Các chương trình trị liệu spa nửa ngày hoặc cả ngày của Placeney
               được thiết kế để thúc đẩy sự thay đổi sâu sắc cho cơ thể và tâm
               trí bạn. Để đảm bảo kết quả có thể thấy rõ và mang lại cảm giác
               tĩnh tâm, các chương trình được cá nhân hoá để thúc đẩy sự cân
@@ -120,8 +120,8 @@ const HealthCarePage = () => {
             xông hơi, bể sục jacuzzi, hồ ngâm lạnh và sân hiên
           </li>
           <li>
-            Spa menu phong phú bao gồm các liệu trình đặc trưng của Aman, chăm
-            sóc tóc và massage Việt Nam truyền thống
+            Spa menu phong phú bao gồm các liệu trình đặc trưng của Placeney,
+            chăm sóc tóc và massage Việt Nam truyền thống
           </li>
 
           <li>Không gian phòng tập chuyên dụng dành cho Pilates và yoga</li>
@@ -157,7 +157,7 @@ const HealthCarePage = () => {
         data-aos="fade-up"
         title="Movement & body work
 "
-        paragraph="Các cơ sở vận động thanh thản tại Amanoi được thiết kế chú trọng đến sức khỏe thể chất và tinh thần. Studio Pilates tràn ngập ánh sáng được trang bị Allegro Reformers và các thiết bị dành riêng cho Pilates khác, trong khi các sân hiên có bậc thang dẫn ra hồ và Nhà tập Yoga ngoài trời. Cung cấp máy móc tập tạ và tim mạch mới nhất, Phòng tập thể dục rộng rãi có cửa sổ kính suốt từ trần đến sàn nhìn ra hồ.
+        paragraph="Các cơ sở vận động thanh thản tại Placeney được thiết kế chú trọng đến sức khỏe thể chất và tinh thần. Studio Pilates tràn ngập ánh sáng được trang bị Allegro Reformers và các thiết bị dành riêng cho Pilates khác, trong khi các sân hiên có bậc thang dẫn ra hồ và Nhà tập Yoga ngoài trời. Cung cấp máy móc tập tạ và tim mạch mới nhất, Phòng tập thể dục rộng rãi có cửa sổ kính suốt từ trần đến sàn nhìn ra hồ.
 
 "
         link="Make an enquiry"
@@ -165,9 +165,9 @@ const HealthCarePage = () => {
       ></HealthCareCard>
       <HealthCareCard
         data-aos="fade-up"
-        title="Aman Advanced Facial
+        title="Placeney Advanced Facial
 "
-        paragraph="Được sản xuất tại Nhật Bản, dòng sản phẩm chăm sóc da chức năng mới của Aman, Essential Skin, được bổ sung chiết xuất cám gạo và chàm mạnh mẽ, để mang lại làn da rạng rỡ hơn, được nâng lên rõ rệt. Kết hợp các sản phẩm từ dòng Essentials Skin với kỹ thuật tẩy da chết và nâng cơ bằng tay, Aman Advanced Facial kích thích cơ mặt để cải thiện kết cấu tổng thể của da.
+        paragraph="Được sản xuất tại Nhật Bản, dòng sản phẩm chăm sóc da chức năng mới của Placeney, Essential Skin, được bổ sung chiết xuất cám gạo và chàm mạnh mẽ, để mang lại làn da rạng rỡ hơn, được nâng lên rõ rệt. Kết hợp các sản phẩm từ dòng Essentials Skin với kỹ thuật tẩy da chết và nâng cơ bằng tay, Placeney Advanced Facial kích thích cơ mặt để cải thiện kết cấu tổng thể của da.
 
 Quá trình điều trị bắt đầu bằng việc chà siêu âm để nới lỏng và loại bỏ dầu và cặn bẩn khỏi lỗ chân lông. Được hỗ trợ bằng cách kích thích điện cơ và massage để làm săn chắc, và sử dụng bóng đèn cryo để loại bỏ bọng mắt, làn da trông sáng hơn và săn chắc hơn. Quá trình điều trị tiếp tục với việc áp dụng mặt nạ khoáng biển để dưỡng ẩm sâu, tiếp theo là mặt nạ hydrogel Aman x 111Skin Nourishing Gold Algae để đạt được làn da sáng đặc biệt. Để có một quá trình trẻ hóa hoàn toàn, liệu pháp chăm sóc da mặt có thể được mở rộng bằng cách kết hợp massage da đầu trong 15 phút.
 "
@@ -177,10 +177,10 @@ Quá trình điều trị bắt đầu bằng việc chà siêu âm để nới 
       ></HealthCareCard>
       <HealthCareCard
         data-aos="fade-up"
-        title="AMAN SHOP
+        title="Placeney SHOP
 
 "
-        paragraph="Trong những năm gần đây, Aman đã phát triển để mang đến lối sống đáng mơ ước vượt ra ngoài những giới hạn của thiên đường. Aman Skincare và Sva bổ sung khai thác các thành phần tự nhiên mạnh mẽ để mang lại sự cân bằng và sức khỏe tối ưu bên trong và bên ngoài, trong khi các sản phẩm Aman Fine Fragrance mang tinh thần Aman vào sự thoải mái như ở nhà.
+        paragraph="Trong những năm gần đây, Placeney đã phát triển để mang đến lối sống đáng mơ ước vượt ra ngoài những giới hạn của thiên đường. Placeney Skincare và Sva bổ sung khai thác các thành phần tự nhiên mạnh mẽ để mang lại sự cân bằng và sức khỏe tối ưu bên trong và bên ngoài, trong khi các sản phẩm Placeney Fine Fragrance mang tinh thần Placeney vào sự thoải mái như ở nhà.
 "
         link="Discover more..."
         style={true}

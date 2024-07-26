@@ -7,9 +7,9 @@ const FoodPage = () => {
     AOS.init();
   });
   return (
-    <div className="flex flex-col justify-center items-center p-20">
-      <h1 data-aos="fade-up" className="text-3xl  italic p-10 ">
-        Các bữa ăn tại Amanoi
+    <div className="flex flex-col items-center justify-center p-20">
+      <h1 data-aos="fade-up" className="p-10 text-3xl italic ">
+        Các bữa ăn tại Placeney
       </h1>
 
       <div data-aos="fade-up" className="">
@@ -19,18 +19,18 @@ const FoodPage = () => {
           className="w-[80vw] mx-auto"
         />
         <p className="text-center w-[60vw] p-10 text-sm italic mx-auto">
-          Các nhà hàng tại Amanoi mang tới những khung cảnh khác biệt - từ vị
+          Các nhà hàng tại Placeney mang tới những khung cảnh khác biệt - từ vị
           trí trên đỉnh vách đá của Nhà hàng đến Beach Club bên bờ biển. Phục vụ
           các món ăn tinh tế của ẩm thực Việt và quốc tế và lựa chọn các nguyên
           liệu tươi ngon, nhà hàng mở cửa đón khách nghỉ dưỡng tại resort. Ngoài
-          nhà hàng, Amanoi còn phục vụ các bữa ăn riêng tư tại các địa điểm
+          nhà hàng, Placeney còn phục vụ các bữa ăn riêng tư tại các địa điểm
           ngoài trời tuyệt đẹp khác.
         </p>
       </div>
 
       <div
         data-aos="fade-up"
-        className=" flex items-start gap-10 justify-center w-full italic pb-10"
+        className="flex items-start justify-center w-full gap-10 pb-10 italic "
       >
         <img
           src="https://www.aman.com/sites/default/files/styles/media_text_side_by_side_portrait_xwide_up/public/2021-03/Amanoi_Gallery_18.jpg?itok=3vbmL2Xp"
@@ -41,7 +41,7 @@ const FoodPage = () => {
           alt=""
         />
         <span className="flex flex-col gap-1">
-          <h1 className="text-xl font-medium italic ">Nhà hàng chính</h1>
+          <h1 className="text-xl italic font-medium ">Nhà hàng chính</h1>
           <p className="text-sm ">
             Tọa lạc trên đỉnh đồi, nhà hàng chính phục vụ ba bữa ăn hàng ngày
             với cả ẩm thực Việt Nam và quốc tế. Với thực đơn tận dụng tối đa các
@@ -49,7 +49,7 @@ const FoodPage = () => {
             đánh cá địa phương. Nhà hàng chính bao gồm cả khu vực trong nhà và
             khu vực ngoài trời với tầm nhìn bao quát vịnh biển tuyệt đẹp.
           </p>{" "}
-          <h1 className="text-xl font-medium italic ">Nhà hàng Beach Club</h1>
+          <h1 className="text-xl italic font-medium ">Nhà hàng Beach Club</h1>
           <p className="text-sm ">
             Tọa lạc ngay bên bờ cát trắng và chỉ cách biển vài bước chân, nhà
             hàng Beach Club được bao quanh bởi những tảng đá granit lớn với khu
@@ -58,10 +58,10 @@ const FoodPage = () => {
             ngày, với các món hải sản đặc biệt tươi ngon rất đáng để thưởng
             thức.
           </p>{" "}
-          <h1 className="text-xl font-medium italic ">Quầy Bar</h1>
+          <h1 className="text-xl italic font-medium ">Quầy Bar</h1>
           <p className="text-sm ">
             Nhìn ra Vườn Quốc gia Núi Chúa và thuộc khu sảnh chính Central
-            Pavilion, quầy bar tại Amanoi là không gian thư giãn lấy cảm hứng
+            Pavilion, quầy bar tại Placeney là không gian thư giãn lấy cảm hứng
             thiết kế từ các quán trà truyền thống của Việt Nam. Được trang trí
             với những bức hình nghệ thuật và hướng nhìn ra các ngọn núi xa xăm,
             đây là không gian để thư giãn và ngắm cảnh trên những chiếc ghế tựa
@@ -75,7 +75,7 @@ const FoodPage = () => {
         flexCol={false}
       ></ViewCard>
 
-      <div data-aos="fade-up" className=" ">
+      <div data-aos="fade-up" className="">
         <h1 className="text-3xl italic text-center">
           Trải nghiệm ẩm thực nổi bật
         </h1>

@@ -19,7 +19,7 @@ const EventPage = () => {
     <div className="">
       <div className="flex flex-col items-center justify-center gap-10">
         <h1 data-aos="fade-up" className="text-3xl italic">
-          Tiệc cưới và sự kiện tại Amanoi
+          Tiệc cưới và sự kiện tại Placeney
         </h1>
 
         <div data-aos="fade-up" className="mx-auto">
@@ -41,7 +41,7 @@ const EventPage = () => {
           <p>
             Được bao bọc bởi khung cảnh hoang sơ tuyệt đẹp trên đường bờ biển
             tuyệt đẹp, hồ nước phủ đầy sen và những hồ bơi trên đỉnh vách đá,
-            Amanoi mang đến những bối cảnh tự nhiên độc đáo cho những đám cưới
+            Placeney mang đến những bối cảnh tự nhiên độc đáo cho những đám cưới
             và lễ kỷ niệm có một không hai tại Việt Nam.
           </p>
           <p>
@@ -51,7 +51,7 @@ const EventPage = () => {
             Quốc gia Núi Chúa thuộc khu dự trự sinh quyển thế giới được UNESCO
             công nhận. Tọa lạc tại nơi thiên nhiên hùng vĩ nhưng cũng rất tiện
             lợi cho việc di chuyển- chỉ cách Sân bay Quốc tế Cam Ranh 70 phút về
-            phía Nam - Amanoi là lựa chọn tuyệt vời để tổ chức các sự kiện với
+            phía Nam - Placeney là lựa chọn tuyệt vời để tổ chức các sự kiện với
             thời tiết lý tưởng của vùng biển Ninh Thuận với ánh nắng rực rỡ phần
             lớn thời gian trong năm.
           </p>
@@ -93,11 +93,11 @@ const EventPage = () => {
             <h1 className="text-xl italic font-medium ">Quầy Bar</h1>
             <p className="text-sm ">
               Nhìn ra Vườn Quốc gia Núi Chúa và thuộc khu sảnh chính Central
-              Pavilion, quầy bar tại Amanoi là không gian thư giãn lấy cảm hứng
-              thiết kế từ các quán trà truyền thống của Việt Nam. Được trang trí
-              với những bức hình nghệ thuật và hướng nhìn ra các ngọn núi xa
-              xăm, đây là không gian để thư giãn và ngắm cảnh trên những chiếc
-              ghế tựa sofa bọc da và nhâm nhi những ly cocktail.
+              Pavilion, quầy bar tại Placeney là không gian thư giãn lấy cảm
+              hứng thiết kế từ các quán trà truyền thống của Việt Nam. Được
+              trang trí với những bức hình nghệ thuật và hướng nhìn ra các ngọn
+              núi xa xăm, đây là không gian để thư giãn và ngắm cảnh trên những
+              chiếc ghế tựa sofa bọc da và nhâm nhi những ly cocktail.
             </p>{" "}
           </span>
         </div>

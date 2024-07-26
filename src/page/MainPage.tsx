@@ -24,7 +24,7 @@ const MainPage = () => {
             <div className="">
               <h1>DESTINATION</h1>
 
-              <span>Aman, Ninh Thuan, Vietnam</span>
+              <span>Placeney, Ninh Thuan, Vietnam</span>
             </div>
 
             <div className="flex flex-col">
@@ -60,14 +60,14 @@ const MainPage = () => {
           <h3 className="font-medium text-[25px] italic">
             TỈNH NINH THUẬN, VIỆT NAM
           </h3>
-          <h1 className="font-thin italic text-[25px]">Amanoi</h1>
+          <h1 className="font-thin italic text-[25px]">Placeney</h1>
           <p className="font-light text-[15px] italic">
             Với dải bờ biển trải dài tuyệt đẹp của Việt Nam và được ôm trọn bởi
-            Vườn Quốc gia Núi Chúa, nhìn từ xa Amanoi như một thiên đường tự
+            Vườn Quốc gia Núi Chúa, nhìn từ xa Placeney như một thiên đường tự
             nhiên nhìn ra Vịnh Vĩnh Hy. Từ các nhà hàng và hồ bơi trên đỉnh vách
-            đá, đến Aman Spa bên hồ và bãi biển cát trắng riêng, khu nghỉ dưỡng
-            mang đến các cơ hội không giới hạn cho các hoạt động khám phá ngoài
-            trời, trải nghiệm văn hóa và thư giãn
+            đá, đến Placeney Spa bên hồ và bãi biển cát trắng riêng, khu nghỉ
+            dưỡng mang đến các cơ hội không giới hạn cho các hoạt động khám phá
+            ngoài trời, trải nghiệm văn hóa và thư giãn
           </p>
         </div>
       </section>
@@ -87,7 +87,8 @@ const MainPage = () => {
             cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
             cardType="Resort"
             cardTitle="The season's essentials"
-            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
+            cardParagraph="Được xây dựng dựa trên những điểm đến đầy cảm hứng nhất thế giới, bộ sưu tập Placeney Essentials là của bạn để khám phá. Mời những khoảnh khắc suy ngẫm và chăm sóc bản thân, mua sắm những sản phẩm đáng mơ ước nhất của chúng tôi cho mùa giải sắp tới
+."
             button={false}
           ></ViewCard>
           <ViewCard
@@ -95,7 +96,7 @@ const MainPage = () => {
             cardType="HomeStay"
             cardTitle="The season's essentials"
             button={false}
-            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
+            cardParagraph="Được xây dựng dựa trên những điểm đến đầy cảm hứng nhất thế giới, bộ sưu tập Placeney Essentials là của bạn để khám phá. Mời những khoảnh khắc suy ngẫm và chăm sóc bản thân, mua sắm những sản phẩm đáng mơ ước nhất của chúng tôi cho mùa giải sắp tới."
           ></ViewCard>
         </div>
         <a
@@ -120,16 +121,16 @@ const MainPage = () => {
             cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
-            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
+            cardParagraph="Được xây dựng dựa trên những điểm đến đầy cảm hứng nhất thế giới, bộ sưu tập Placeney Essentials là của bạn để khám phá. Mời những khoảnh khắc suy ngẫm và chăm sóc bản thân, mua sắm những sản phẩm đáng mơ ước nhất của chúng tôi cho mùa giải sắp tới."
             center={false}
           ></ViewCard>
           <ViewCard
             data-aos="fade-up"
-            cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+            cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
             center={false}
-            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
+            cardParagraph="Được xây dựng dựa trên những điểm đến đầy cảm hứng nhất thế giới, bộ sưu tập Placeney Essentials là của bạn để khám phá. Mời những khoảnh khắc suy ngẫm và chăm sóc bản thân, mua sắm những sản phẩm đáng mơ ước nhất của chúng tôi cho mùa giải sắp tới."
           ></ViewCard>
           <ViewCard
             data-aos="fade-left"
@@ -146,11 +147,11 @@ const MainPage = () => {
         >
           <ViewCard
             data-aos="fade-right"
-            cardImg="https://images.unsplash.com/photo-1695048987437-488232574ac1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+            cardImg="https://www.aman.com/sites/default/files/styles/slider_cards_equals_large/public/2021-03/Pavilions%2C-Amanoi%2C-Vietnam.jpg?itok=HbL_JBsB"
             cardType="HomeStay"
             cardTitle="The season's essentials"
             center={false}
-            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
+            cardParagraph="Được xây dựng dựa trên những điểm đến đầy cảm hứng nhất thế giới, bộ sưu tập Placeney Essentials là của bạn để khám phá. Mời những khoảnh khắc suy ngẫm và chăm sóc bản thân, mua sắm những sản phẩm đáng mơ ước nhất của chúng tôi cho mùa giải sắp tới."
             slide={2}
           ></ViewCard>
           <ViewCard
@@ -159,7 +160,7 @@ const MainPage = () => {
             cardType="HomeStay"
             cardTitle="The season's essentials"
             center={false}
-            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Aman Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
+            cardParagraph="Formulated with the world’s most inspiring destinations in mind, the Placeney Essentials collection is yours to discover. Inviting moments of reflection and self-care, shop our most coveted products for the season ahead."
             slide={1.5}
           ></ViewCard>
         </div>

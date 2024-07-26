@@ -86,21 +86,21 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
                 <div className="grid w-full grid-cols-2 gap-5">
                   <InputForm
                     name="firstname"
-                    placeholder="Enter your FirstName"
+                    placeholder="Nhập tên của bạn"
                     id="firstname"
                     label="First Name"
                     type="text"
                   ></InputForm>
                   <InputForm
                     name="lastname"
-                    placeholder="Enter your LastName"
+                    placeholder="Nhập họ của bạn"
                     id="lastname"
                     label="Last Name"
                     type="text"
                   ></InputForm>
                   <InputForm
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder="Nhập mail của bạn"
                     id="email"
                     label="Email address"
                     type="email"
@@ -115,29 +115,29 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
                   ></InputForm>
                   <InputForm
                     name="address"
-                    placeholder="Enter your address"
+                    placeholder="Nhập địa chỉ của bạn"
                     id="address"
                     label="Address"
                     type="text"
                   ></InputForm>
                   <InputForm
                     name="zipcode"
-                    placeholder="Enter your zipcode"
+                    placeholder="Zipcode"
                     id="zipcode"
                     label="Zipcode"
                     type="number"
                   ></InputForm>
                   <InputForm
                     name="city"
-                    placeholder="Enter your city"
+                    placeholder="Thành phố"
                     id="city"
                     label="City"
                     type="text"
                   ></InputForm>
                   <DropdownFormik
-                    labelText="Your country"
+                    labelText="Thành phố của bạn"
                     data={countryList}
-                    dropdownLabel="Select your country"
+                    dropdownLabel="Chọn thành phố"
                     name="country"
                     setValue={formik.setFieldValue}
                   ></DropdownFormik>
@@ -146,9 +146,9 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
                 <div className="">
                   <TextAreaFormik
                     name="note"
-                    placeholder="What's your additional"
+                    placeholder="Bạn có lời nhắn gì không"
                     id="note"
-                    label="Additional"
+                    label="Lời nhắn"
                   ></TextAreaFormik>
                 </div>
                 <div className="bg-[#3B504C] rounded-full ">

@@ -82,7 +82,7 @@ const RoomListPage = () => {
         </div>
       )}
       <div className="flex flex-col items-center justify-center gap-10">
-        <h1 className="text-3xl italic text-center">Phòng ở Amanoi</h1>
+        <h1 className="text-3xl italic text-center">Phòng ở Placeney</h1>
 
         <div className="">
           <ul className="flex items-center justify-center gap-10 cursor-pointer roomlist">
@@ -108,7 +108,7 @@ const RoomListPage = () => {
         <p className="text-sm italic text-center w-[60vw]">
           Được thiết kế từ những mái nhà uốn lượn ẩn hiện trong rừng cây và
           những chất liệu thân thiện với tự nhiên, các Pavilion và Villa của
-          Amanoi hòa mình giữa khung cảnh thiên nhiên tuyệt đẹp. Với việc tiếp
+          Placeney hòa mình giữa khung cảnh thiên nhiên tuyệt đẹp. Với việc tiếp
           cận các liệu trình trị liệu toàn diện của Việt Nam, tất cả tạo nên nét
           duyên dáng và giản đơn đầy nghệ thuật của phong cách thiết kế Việt
           Nam, bao quanh bởi rừng rậm nguyên sơ và làn nước trong vắt của Vịnh

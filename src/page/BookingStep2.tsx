@@ -15,7 +15,7 @@ const BookingStep2 = () => {
       <section className=" w-[100%]  relative flex flex-col h-[350px] bg-[url('https://be-cms-api.synxis.com/assets/chain/16840/hotel/62469/fileStorage/image/BE_Amanoi.png')] bg-cover bg-no-repeat bg-center">
         <div className="flex-grow"></div>
         <div className="w-[40%] flex flex-col gap-3 h-[200px]  bottom-0 left-0 overflow-hidden opacity-70 bg-[#DEDFDB] p-5">
-          <span className="text-xl ">Amanoi</span>
+          <span className="text-xl ">Placeney</span>
           <span className="flex gap-1">
             <svg
               width="20px"
@@ -68,7 +68,7 @@ const BookingStep2 = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            https://www.aman.com/resorts/amanoi
+            https://www.Placeney.com/resorts/Placeney
           </span>
         </div>
       </section>

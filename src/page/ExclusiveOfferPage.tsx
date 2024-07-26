@@ -10,9 +10,9 @@ const ExclusiveOfferPage = () => {
   return (
     <div className="flex flex-col items-center gap-10">
       <div data-aos="fade-up" className="flex flex-col items-center gap-3">
-        <h1 className="text-3xl italic">Ưu đãi độc quyền tại Amanoi</h1>
+        <h1 className="text-3xl italic">Ưu đãi độc quyền tại Placeney</h1>
         <span className=" italic text-center w-[60%]">
-          Sở hữu dải bờ biển trải dài tuyệt đẹp của Việt Nam, Amanoi mang đến
+          Sở hữu dải bờ biển trải dài tuyệt đẹp của Việt Nam, Placeney mang đến
           không gian nghỉ dưỡng độc đáo giữa Vườn Quốc gia Núi Chúa với các
           chương trình nghỉ dưỡng được thiết kế để giúp khách tận dụng tối đa kỳ
           nghỉ của mình

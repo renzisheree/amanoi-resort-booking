@@ -11,7 +11,7 @@ const ImagePage = () => {
   return (
     <>
       <h1 data-aos="fade-up" className="p-5 text-4xl italic text-center">
-        Khám phá Amanoi
+        Khám phá Placeney
       </h1>
 
       <div

@@ -86,11 +86,7 @@ const ProfilePage = () => {
 
   return cookieValue ? (
     <div className="flex items-center justify-center gap-20">
-      <MiddleLogo
-        srcImg="https://www.aman.com/themes/custom/aman/logo.svg
-            "
-        width={300}
-      ></MiddleLogo>
+      <MiddleLogo width={300}></MiddleLogo>
       <div className="flex font-body flex-col w-[500px] items-start justify-start gap-10 text-xl font-light">
         <div className="flex">
           <div className="w-[200px]">First Name : </div>{" "}

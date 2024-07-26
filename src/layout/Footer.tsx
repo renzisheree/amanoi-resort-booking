@@ -8,10 +8,10 @@ const Footer = () => {
   });
   return (
     <div data-aos="fade-up" className="py-10 ">
-      <div className="flex justify-start gap-20 ml-10 items-center py-10">
-        <h1 className="text-2xl font-semibold">AMANOI</h1>
+      <div className="flex items-center justify-start gap-20 py-10 ml-10">
+        <h1 className="text-2xl font-semibold">Placeney</h1>
 
-        <div className="flex justify-center items-center gap-10">
+        <div className="flex items-center justify-center gap-10">
           <p>
             Ninh Thuận <br />
             Việt Nam
@@ -20,20 +20,17 @@ const Footer = () => {
             Tel : +84 259 37 0777 <br />
             For reservation : +84 259353 577 7 <br />
             Fax: +84 259 377 0888 <br />
-            Email: amanoi@aman.com
+            Email: Placeney@place.com
           </p>
         </div>
       </div>
       <hr />
 
-      <div className="flex items-center justify-evenly gap-20  py-10 w-full h-full aeg ">
-        <MiddleLogo
-          width={150}
-          srcImg="https://www.aman.com/themes/custom/aman/logo.svg"
-        ></MiddleLogo>
+      <div className="flex items-center w-full h-full gap-20 py-10 justify-evenly aeg ">
+        <MiddleLogo width={150}></MiddleLogo>
         <div className="">
           <h2 className="mb-2">Theo dõi chúng tôi tại</h2>
-          <div className=" flex items-center justify-center gap-5">
+          <div className="flex items-center justify-center gap-5 ">
             <svg
               width="40px"
               height="40px"
