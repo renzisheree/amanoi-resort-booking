@@ -142,7 +142,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <h3>Bản quyền 2021, Aman Resorts Ltd</h3>
+        <h3>Bản quyền 2021, Placeney Resorts Ltd</h3>
       </div>
     </div>
   );
