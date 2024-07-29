@@ -25,7 +25,9 @@ const NavigationBar = () => {
   });
   return (
     <div
-      className={` z-50 ${isSticky ? "sticky " : ""}  bg-[#F3EEE7] top-0    `}
+      className={` z-50 ${
+        isSticky ? "sticky " : ""
+      }  bg-[#F3EEE7] top-0  cursor-pointer   `}
     >
       <div
         className={`navigation-bar-wrapper flex  z-9999 items-center text-center align-middle  justify-center  gap-x-10 my-10 border-gray-400 border-b-[1px] h-[80px] w-[80vw] mx-auto text-[13px]`}

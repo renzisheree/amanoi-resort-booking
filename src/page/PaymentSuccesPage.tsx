@@ -44,41 +44,42 @@ const PaymentSuccessPage = () => {
         <>
           <h1 className="mb-4 text-3xl font-bold">Thanh toán thành công</h1>
           {paymentData && (
-            <div className="p-4 bg-white rounded-lg shadow-md">
-              <h2 className="mb-2 text-xl font-bold">Payment Details</h2>
+            <div className="flex flex-col gap-4 p-4 bg-white rounded-lg shadow-md dir">
+              <h2 className="mb-2 text-xl font-bold">Chi tiết hoá đơn</h2>
               <p>
-                <span className="font-bold">Amount:</span>{" "}
-                {paymentData.vnpAmount}
+                <span className="font-bold">Số tiền:</span>{" "}
+                {new Intl.NumberFormat("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(Number(paymentData.vnpAmount / 100))}
+                ;
               </p>
               <p>
-                <span className="font-bold">Bank Code:</span>{" "}
+                <span className="font-bold">Mã ngân hàng:</span>{" "}
                 {paymentData.vnpBankCode}
               </p>
               <p>
-                <span className="font-bold">Bank Transaction No:</span>{" "}
-                {paymentData.vnpBankTranNo}
-              </p>
-              <p>
-                <span className="font-bold">Card Type:</span>{" "}
+                <span className="font-bold">Loại thẻ:</span>{" "}
                 {paymentData.vnpCardType}
               </p>
               <p>
-                <span className="font-bold">Order Info:</span>{" "}
+                <span className="font-bold">Thông tin hoá đơn:</span>{" "}
                 {paymentData.vnpOrderInfo}
               </p>
               <p>
-                <span className="font-bold">Pay Date:</span>{" "}
-                {paymentData.vnpPayDate}
-              </p>
-              <p>
-                <span className="font-bold">Response Code:</span>{" "}
-                {paymentData.vnpResponseCode}
+                <span className="font-bold">Trạng thái:</span>{" "}
+                {paymentData.vnpResponseCode == "00"
+                  ? "Thanh Toán thành công!"
+                  : "Thanh toán thất bại vui lòng thử lại sau!"}
               </p>
 
               <p>
-                <span className="font-bold">Transaction No:</span>{" "}
+                <span className="font-bold">Hoá đơn số</span>{" "}
                 {paymentData.vnpTransactionNo}
               </p>
+              <h3 className="text-lg italic text-center">
+                Chúng tôi rất vui lòng được đón tiếp bạn!
+              </h3>
             </div>
           )}
         </>

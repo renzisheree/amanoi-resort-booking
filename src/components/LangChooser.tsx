@@ -14,7 +14,7 @@ const LangChooser = () => {
         }}
         className="relative flex items-center justify-around px-5 py-2 border-b-2 border-gray-500 "
       >
-        <p className="mr-5 text-sm">Choose Language</p>
+        <p className="mr-5 text-sm">Chọn ngôn ngữ</p>
         <div className="">
           {isOpen ? (
             <svg

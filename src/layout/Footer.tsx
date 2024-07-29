@@ -17,8 +17,8 @@ const Footer = () => {
             Việt Nam
           </p>
           <p>
-            Tel : +84 259 37 0777 <br />
-            For reservation : +84 259353 577 7 <br />
+            Số điện thoại : +84 259 37 0777 <br />
+            Để đặt phòng: +84 259353 577 7 <br />
             Fax: +84 259 377 0888 <br />
             Email: Placeney@place.com
           </p>

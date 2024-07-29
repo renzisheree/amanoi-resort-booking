@@ -52,20 +52,20 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
           email: "",
         }}
         validationSchema={yup.object({
-          firstname: yup.string().required("Please enter your firstName"),
-          note: yup.string().required("Do you have any additional?"),
+          firstname: yup.string().required("Hãy điền họ của bạn"),
+          note: yup.string().required("Bạn có yêu cầu gì không?"),
 
-          lastname: yup.string().required("Please enter your lastName"),
-          address: yup.string().required("Please enter your address"),
-          city: yup.string().required("Please enter your city"),
-          country: yup.string().required("Please select your country"),
-          zipcode: yup.number().required("Please enter your zipcode"),
+          lastname: yup.string().required("Nhập tên của bạn"),
+          address: yup.string().required("Nhập địa chỉ của bạn"),
+          city: yup.string().required("Điền thành phố của bạn"),
+          country: yup.string().required("Chọn quốc gia của bạn"),
+          zipcode: yup.number().required("Hãy điền zipcode"),
           email: yup
             .string()
-            .email("Please enter valid email address")
-            .required("Please enter your email address"),
+            .email("Hãy nhập mail hợp lệ")
+            .required("Hãy điền email"),
 
-          phone: yup.number().required("Please enter your phone number"),
+          phone: yup.number().required("Hãy nhập số điện thoại của bạn"),
         })}
         onSubmit={(values: bookingProps, { setSubmitting, resetForm }) => {
           formHandler.processForm(values, () => {
@@ -88,36 +88,36 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
                     name="firstname"
                     placeholder="Nhập tên của bạn"
                     id="firstname"
-                    label="First Name"
+                    label="Họ của bạn"
                     type="text"
                   ></InputForm>
                   <InputForm
                     name="lastname"
                     placeholder="Nhập họ của bạn"
                     id="lastname"
-                    label="Last Name"
+                    label="Tên của bạn"
                     type="text"
                   ></InputForm>
                   <InputForm
                     name="email"
                     placeholder="Nhập mail của bạn"
                     id="email"
-                    label="Email address"
+                    label="Email của bạn"
                     type="email"
                   ></InputForm>
 
                   <InputForm
                     name="phone"
-                    placeholder="Enter your phone number"
+                    placeholder="Hãy nhập số điện thoại của bạn"
                     id="phone"
-                    label="Phone number"
+                    label="Số điện thoại"
                     type="text"
                   ></InputForm>
                   <InputForm
                     name="address"
                     placeholder="Nhập địa chỉ của bạn"
                     id="address"
-                    label="Address"
+                    label="Địa chỉ của bạn"
                     type="text"
                   ></InputForm>
                   <InputForm
@@ -161,7 +161,7 @@ const ReservationForm: React.FC<reserProps> = ({ _id }) => {
                     {formik.isSubmitting ? (
                       <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
                     ) : (
-                      "Book"
+                      "Đặt ngay"
                     )}
                   </button>
                 </div>

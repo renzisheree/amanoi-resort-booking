@@ -170,7 +170,7 @@ const Cart: React.FC<cartProps> = ({ startDate, endDate, children, adult }) => {
           }}
           className="px-5 py-2 bg-[#F3EEE7] rounded-full "
         >
-          Book now
+          Đặt ngay
         </button>
       )}
     </div>
@@ -251,7 +251,7 @@ const SelectRoom = () => {
                 Chi tiết phòng :
               </a>
 
-              <h1> Standard Daily Rate</h1>
+              <h1> Phòng cơ bản</h1>
 
               <div className="flex items-center justify-around gap-5 p-5">
                 <span className="flex justify-center">
@@ -280,7 +280,7 @@ const SelectRoom = () => {
                     }}
                     className="px-10 py-2 bg-[#3B504C] rounded-full text-white"
                   >
-                    Add
+                    Thêm ngay
                   </button>
                 </span>
               </div>

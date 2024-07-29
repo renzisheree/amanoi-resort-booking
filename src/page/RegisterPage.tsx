@@ -6,11 +6,10 @@ const RegisterPage = () => {
       <div className="my-10">
         {" "}
         <h1 className="mb-2 text-3xl text-center">
-          Discover the world of Placeney
+          Khám phá thế giới của Placeney
         </h1>
         <p className="font-thin text-center ">
-          Join our mailing list for exclusive offers and the latest news from
-          Placeney Group
+          Đăng ký ngay để hưởng những ưu đãi tuyệt dzoi
         </p>
       </div>
       <RegisterForm></RegisterForm>

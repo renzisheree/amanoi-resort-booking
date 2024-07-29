@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
+import dayjs from "dayjs";
 
 const MyBookingPage = () => {
   const cookieValue = Cookies.get("token");
@@ -25,14 +26,14 @@ const MyBookingPage = () => {
   const handleVNPAY = (price, id, name) => {
     const strPrice = price.toString();
     const data = {
-      vnp_Amount: strPrice,
+      vnp_Amount: strPrice * 24252,
       vnp_OrderInfo: name,
       booking_id: id,
     };
 
     axios({
       method: "POST",
-      url: "https://5883-113-22-33-78.ngrok-free.app/bookings/payment/url",
+      url: "http://localhost:3000/bookings/payment/url",
       data: data,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
@@ -55,25 +56,25 @@ const MyBookingPage = () => {
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              First Name
+              Họ
             </th>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              Last Name
+              Tên
             </th>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              Phone
+              SĐT
             </th>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              Start
+              Ngày vào
             </th>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              End
+              Ngày ra
             </th>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              Total Price
+              Giá phòng
             </th>
             <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-              Payment Status
+              Trạng thái thanh toán
             </th>
           </tr>
         </thead>
@@ -83,18 +84,24 @@ const MyBookingPage = () => {
               <td className="px-6 py-4 whitespace-nowrap">{items.firstName}</td>
               <td className="px-6 py-4 whitespace-nowrap">{items.lastName}</td>
               <td className="px-6 py-4 whitespace-nowrap">{items.phone}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{items.start}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{items.end}</td>
               <td className="px-6 py-4 whitespace-nowrap">
-                {items.totalPrice}
+                {dayjs(items.start).format("DD/MM/YYYY") + " 14:00 PM"}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {dayjs(items.end).format("DD/MM/YYYY") + " 12:00 AM"}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {items.totalPrice}$
               </td>
               <td
                 onClick={() => {
-                  handleVNPAY(
-                    items.totalPrice,
-                    items._id,
-                    `${items.firstName} ${items.lastName}`
-                  );
+                  items.payment_status != "Đã thanh toán"
+                    ? handleVNPAY(
+                        items.totalPrice,
+                        items._id,
+                        `${items.firstName} ${items.lastName}`
+                      )
+                    : "";
                 }}
                 className="px-6 py-4 cursor-pointer whitespace-nowrap"
               >

@@ -48,7 +48,7 @@ const ReservationRoomCard: React.FC<RRProps> = ({
             </svg>
           </span>
           <h1>{name}</h1>
-          <h1>Standard Daily Date</h1>
+          <h1>Phòng cơ bản</h1>
 
           <span>
             {bookingData.startDate} - {bookingData.endDate}

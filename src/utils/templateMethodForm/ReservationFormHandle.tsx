@@ -52,7 +52,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
     values.adult = this.bookingData.adult;
     values.children = this.bookingData.children;
     values.fee = this.foundObject.price * this.getRange() * 0.08;
-    values.totalPrice = this.foundObject.price * this.getRange();
+    values.totalPrice = this.foundObject.price * this.getRange() + values.fee;
     const changeRoom = [values.rooms];
 
     const rawData1 = {
@@ -121,7 +121,7 @@ class ReservationFormHandler extends AbstractFormHandler<bookingProps> {
         if (rooms1.length === 0) {
           this.navigate("/thanks");
         }
-        toast.success("Booking successful");
+        toast.success("Đặt phòng thành công!!");
       })
       .catch((error) => {
         toast.error(error);

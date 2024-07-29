@@ -31,7 +31,7 @@ const RegisterForm = () => {
     })
       .then(function (res) {
         if (res.data.code == 200) {
-          toast.success("Register successful");
+          toast.success("Đăng ký thành công");
           navigate("/login");
         }
       })
@@ -55,26 +55,26 @@ const RegisterForm = () => {
             password: "",
           }}
           validationSchema={yup.object({
-            firstname: yup.string().required("Please enter your firstName"),
+            firstname: yup.string().required("Nhập họ của bạn"),
 
-            lastname: yup.string().required("Please enter your lastName"),
+            lastname: yup.string().required("Nhập tên của bạn"),
 
             email: yup
               .string()
-              .email("Please enter valid email address")
-              .required("Please enter your email address"),
+              .email("Email không hợp lệ")
+              .required("Hãy nhập email của bạn"),
             password: yup
               .string()
-              .min(8, "Your password must be at least 8 characters or greater")
+              .min(8, "Mật khẩu phải trên 8 kí tự")
               .matches(
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                 {
                   message:
-                    "Your password must have at least 1 uppercase, 1 lowercase, 1 special character",
+                    "Mật khẩu phải bao gồm 1 chữ thường, 1 chữ hoa và 1 ký tự đặc biệt",
                 }
               )
-              .required("Please enter your password"),
-            country: yup.string().required("Please select your country"),
+              .required("Vui lòng nhập mật khẩu"),
+            country: yup.string().required("Hãy chọn đất nước của bạn"),
             // gender: yup
             //   .string()
             //   .required("Please select your gender")
@@ -83,7 +83,7 @@ const RegisterForm = () => {
             //     "You can only select male or female or other"
             //   ),
 
-            phone: yup.number().required("Please enter your phone number"),
+            phone: yup.number().required("Hãy nhập số điện thoại"),
             // term: yup
             //   .boolean()
             //   .oneOf([true], "Please check the term and conditions"),
@@ -107,21 +107,21 @@ const RegisterForm = () => {
               >
                 <InputForm
                   name="firstname"
-                  placeholder="Enter your FirstName"
+                  placeholder="Nhập họ của bạn"
                   id="firstname"
-                  label="FirstName"
+                  label="Họ"
                   type="text"
                 ></InputForm>
                 <InputForm
                   name="lastname"
-                  placeholder="Enter your LastName"
+                  placeholder="Nhập tên của bạn"
                   id="lastname"
-                  label="LastName"
+                  label="Tên"
                   type="text"
                 ></InputForm>
                 <InputForm
                   name="email"
-                  placeholder="Enter your email"
+                  placeholder="Nhập email của bạn"
                   id="email"
                   label="Email address"
                   type="email"
@@ -129,22 +129,22 @@ const RegisterForm = () => {
 
                 <InputForm
                   name="phone"
-                  placeholder="Enter your phone number"
+                  placeholder="Nhập số điện thoại"
                   id="phone"
-                  label="Phone number"
+                  label="Số điện thoại"
                   type="text"
                 ></InputForm>
                 <InputForm
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder="Nhập mật khẩu của bạn"
                   id="password"
-                  label="Password"
+                  label="Mật khẩu"
                   type="password"
                 ></InputForm>
                 <DropdownFormik
                   labelText="Country"
                   data={contryData}
-                  dropdownLabel="Select your country"
+                  dropdownLabel="Chọn đất nước của bạn"
                   name="country"
                   setValue={formik.setFieldValue}
                 ></DropdownFormik>

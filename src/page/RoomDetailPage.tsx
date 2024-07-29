@@ -116,7 +116,7 @@ const RoomDetailPage = () => {
       <div data-aos="fade-up" className="">
         <h1 className="text-3xl italic text-center">
           {" "}
-          Gói lưu chú của bạn bao gồm
+          Gói lưu trú của bạn bao gồm
         </h1>
 
         <ul className="grid grid-cols-3 gap-10 p-20 mt-10 list-disc bg-white ">

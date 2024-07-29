@@ -54,7 +54,7 @@ const ProfilePage = () => {
   const handleDeleteCookies = () => {
     Cookies.remove("token");
     navigate("/login");
-    toast.success("Logout successful");
+    toast.success("Đã đăng xuất!");
   };
   const handleConfirm = () => {
     if (passwordData.newPassword === passwordData.confirmNewPassword) {

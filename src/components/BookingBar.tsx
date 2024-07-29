@@ -34,16 +34,16 @@ const BookingBar = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center">
-        <span className="font-mediumP">AMAN</span>
+        <span className="font-mediumP">Placeney</span>
         <div className="flex items-center justify-center gap-5">
-          <span>ARRIVE : {values.startDate}</span>
-          <span>DEPART : {values.endDate}</span>
-          <span>Adult : {values.adult}</span>
-          <span>Children : {values.children}</span>
+          <span>Ngày vào : {values.startDate}</span>
+          <span>Ngày ra : {values.endDate}</span>
+          <span>Người lớn : {values.adult}</span>
+          <span>Trẻ eim : {values.children}</span>
         </div>
       </div>
 
-      <div className="px-10">Hello customer</div>
+      <div className="px-10">Chào bạn nhé!</div>
     </div>
   );
 };

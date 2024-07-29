@@ -36,26 +36,26 @@ const CardRoom: React.FC<CardRoomProps> = ({
   };
   return (
     <div className="p-5 shadow-md">
-      <h1>YOUR ROOM</h1>
+      <h1>Phòng của bạn</h1>
       <div className="flex flex-col items-center justify-center">
         <span>
           {startDate} - {endDate}
         </span>
         <span>
-          {adult} adult - {children} children
+          {adult} người lớn - {children} trẻ em
         </span>
       </div>
       <div className="flex flex-col items-center justify-center ">
         <div className="flex flex-col items-center justify-center">
           {" "}
           <span className="text-2xl font-medium">{roomName}</span>
-          <span>Standard Daily Rate</span>
+          <span>Phòng cơ bản</span>
         </div>
-        <div className="">{price}$ - day</div>
+        <div className="">{price}$ - ngày</div>
       </div>
-      <div className="">{range} night(s)</div>
+      <div className="">{range} đêm(s)</div>
       <div className="flex justify-between">
-        <span>Taxes and Fees</span>
+        <span>Phí và thuế</span>
         <span className="font-medium">
           {fee} {price * range * 0.08}$
         </span>
@@ -63,7 +63,7 @@ const CardRoom: React.FC<CardRoomProps> = ({
       <div className="flex justify-between">
         <span>Total : </span>
         <span className="font-bold">
-          {price * range - price * range * 0.08}$
+          {price * range + price * range * 0.08}$
         </span>
       </div>
       <button

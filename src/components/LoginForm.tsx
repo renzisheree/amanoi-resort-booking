@@ -25,7 +25,7 @@ const LoginForm = () => {
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
               {
                 message:
-                  "Your password must have at least 1 uppercase, 1 lowercase, 1 special character",
+                  "Mật khẩu cần 1 chữ thường, 1 chữ hoa và 1 ký tự đặc biệt",
               }
             )
             .required("Hãy nhập mật khẩu của bạn"),
@@ -56,7 +56,7 @@ const LoginForm = () => {
                 name="password"
                 placeholder="Nhập mật khẩu của bạn"
                 id="password"
-                label="Password"
+                label="Mật khẩu"
                 type="password"
               ></InputForm>
 
@@ -69,7 +69,7 @@ const LoginForm = () => {
                   {formik.isSubmitting ? (
                     <div className="w-5 h-5 mx-auto border-2 border-t-2 border-white rounded-full border-t-transparent animate-spin"></div>
                   ) : (
-                    "Login"
+                    "Đăng nhập"
                   )}
                 </button>
               </div>
@@ -91,17 +91,17 @@ const LoginForm = () => {
                   >
                     <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
                   </svg>{" "}
-                  Login with Google
+                  Đăng nhập với Google
                 </div>
               </div>
 
-              <h1>
+              <h1 className="p-5">
                 Bạn chưa có tài khoản?{" "}
                 <span
                   onClick={() => {
                     navigate("/register");
                   }}
-                  className="text-lg underline"
+                  className="p-3 text-lg bg-white rounded-full cursor-pointer"
                 >
                   Đăng ký
                 </span>

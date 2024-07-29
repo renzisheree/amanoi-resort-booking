@@ -5,7 +5,7 @@ import { DayJsDateFactory } from "../utils/dateFactory/DayJsDateFactory";
 import cn from "../utils/calendar/cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import isBetween from "dayjs/plugin/isBetween";
-import DropDownData from "../data/dropdownData.json";
+// import DropDownData from "../data/dropdownData.json";
 import * as yup from "yup";
 import countData from "../data/countData.json";
 import { Formik, useField } from "formik";
@@ -209,14 +209,14 @@ export default function Calendar() {
 
         <Formik
           initialValues={{
-            room: "",
+            // room: "",
             adult: "",
             children: "",
             startDate: "",
             endDate: "",
           }}
           validationSchema={yup.object({
-            room: yup.number().required("Please choose number of room(s)"),
+            // room: yup.number().required("Please choose number of room(s)"),
 
             children: yup
               .string()
@@ -236,13 +236,13 @@ export default function Calendar() {
                 className="my-10 ml-10 "
                 autoComplete="off"
               >
-                <DropdownFormik
+                {/* <DropdownFormik
                   labelText="Chọn số phòng "
                   data={DropDownData}
                   dropdownLabel="Số phòng"
                   name="room"
                   setValue={formik.setFieldValue}
-                ></DropdownFormik>{" "}
+                ></DropdownFormik>{" "} */}
                 <DropdownFormik
                   labelText="Số người lớn"
                   data={countData}

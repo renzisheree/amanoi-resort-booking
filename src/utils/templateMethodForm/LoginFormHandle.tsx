@@ -38,13 +38,12 @@ class LoginFormHandler extends AbstractFormHandler<LoginValues> {
           document.cookie = `token=${data.access_token};expires=${new Date(
             Date.now() + 86400 * 1000
           ).toUTCString()}`;
-          toast.success("Login successful");
+          toast.success("Đăng nhập thành công");
           this.navigate("/");
         }
       })
       .catch((e) => {
         toast.error(e);
-        console.log(e);
       });
   }
 }

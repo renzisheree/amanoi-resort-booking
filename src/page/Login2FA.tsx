@@ -62,7 +62,7 @@ const Login2FA = () => {
         ).toUTCString()}`;
 
         if (res.data.access_token != null) {
-          toast.success("OTP verification successful");
+          toast.success("Đăng nhập thành công");
           navigate("/");
         }
       })
